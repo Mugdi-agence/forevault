@@ -1,0 +1,247 @@
+// navbar.scss
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+$bg:           #111111;
+$surface:      #191919;
+$border:       #2a2a2a;
+$border-light: #383838;
+$white:        #ffffff;
+$white-60:     rgba(255, 255, 255, 0.60);
+$white-30:     rgba(255, 255, 255, 0.30);
+$white-10:     rgba(255, 255, 255, 0.10);
+$white-06:     rgba(255, 255, 255, 0.06);
+$radius-pill:  999px;
+$radius-md:    14px;
+$radius-sm:    10px;
+$font:         'Poppins', sans-serif;
+$nav-h:        76px;
+
+// ── Nav bar ────────────────────────────────────────────────
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: $nav-h;
+    font-family: $font;
+    backdrop-filter: blur(15px);
+    transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+    border-bottom: 1px solid transparent;
+
+    &--scrolled {
+        background: rgba(17, 17, 17, 0.51);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom-color: $border;
+    }
+
+    &__inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2.5rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    // ── Logo ──
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        flex-shrink: 0;
+    }
+
+    &__logo-icon {
+        font-size: 1.6rem;
+        color: $white;
+        line-height: 1;
+    }
+
+    &__logo-text {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: $white;
+        letter-spacing: -0.5px;
+    }
+
+    // ── Links ──
+    &__links {
+        list-style: none;
+        margin: 0; padding: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex: 1;
+    }
+
+    &__link {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: $white-60;
+        text-decoration: none;
+        border-radius: $radius-sm;
+        transition: color 0.2s, background 0.2s;
+        white-space: nowrap;
+
+        &:hover { color: $white; background: $white-06; }
+    }
+
+    // ── Actions ──
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.65rem 1.5rem;
+        border-radius: $radius-pill;
+        font-family: $font;
+        font-size: 0.92rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+        white-space: nowrap;
+
+        &--ghost {
+            color: $white-60;
+            background: transparent;
+            border: 1px solid transparent;
+
+            &:hover { color: $white; background: $white-06; }
+        }
+
+        &--solid {
+            color: #111;
+            background: $white;
+            border: 1px solid $white;
+            letter-spacing: -0.1px;
+
+            &:hover { background: #e8e8e8; transform: translateY(-1px); }
+            &:active { transform: translateY(0); }
+        }
+    }
+
+    // ── Burger ──
+    &__burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        width: 42px;
+        height: 42px;
+        padding: 8px;
+        background: $white-06;
+        border: 1px solid $border;
+        border-radius: $radius-sm;
+        cursor: pointer;
+        margin-left: auto;
+
+        span {
+            display: block;
+            height: 1.5px;
+            background: $white-60;
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s, width 0.3s;
+            transform-origin: center;
+
+            &:nth-child(1) { width: 100%; }
+            &:nth-child(2) { width: 70%; }
+            &:nth-child(3) { width: 100%; }
+        }
+
+        &--open span {
+            &:nth-child(1) { transform: translateY(7.5px) rotate(45deg); width: 100%; }
+            &:nth-child(2) { opacity: 0; transform: scaleX(0); }
+            &:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); width: 100%; }
+        }
+    }
+}
+
+// ── Mobile overlay ─────────────────────────────────────────
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 98;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+
+    &--visible { display: block; }
+}
+
+// ── Mobile drawer ──────────────────────────────────────────
+.mobile-nav {
+    position: fixed;
+    top: $nav-h;
+    left: 0; right: 0;
+    z-index: 99;
+    background: $surface;
+    border-bottom: 1px solid $border;
+    padding: 2rem 2rem 2.5rem;
+    font-family: $font;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__links {
+        list-style: none;
+        margin: 0; padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.9rem 1rem;
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: $white-60;
+        text-decoration: none;
+        border-radius: $radius-sm;
+        transition: color 0.2s, background 0.2s;
+
+        &:hover { color: $white; background: $white-06; }
+    }
+
+    &__link-arrow {
+        font-size: 0.85rem;
+        color: $white-30;
+        transition: transform 0.2s;
+    }
+
+    &__cta {
+        display: flex;
+        gap: 0.75rem;
+
+        .nav__btn {
+            flex: 1;
+            justify-content: center;
+            padding: 0.85rem;
+            font-size: 0.95rem;
+        }
+    }
+}
+
+// ── Responsive ─────────────────────────────────────────────
+@media (max-width: 860px) {
+    .nav {
+        &__links   { display: none; }
+        &__actions { display: none; }
+        &__burger  { display: flex; }
+        &__inner   { gap: 1rem; padding: 0 1.5rem; }
+    }
+}
