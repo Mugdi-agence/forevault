@@ -95,8 +95,8 @@ function toUSD(views, rpm, countryMult, isShorts, retentionRate, durationMin) {
     // ── SHORTS ───────────────────────────────────────────────────────────────
     if (isShorts) {
         // Le pool Shorts est mondial : l'influence géo est réelle mais atténuée.
-        const SHORTS_RATIO = 0.006;
-        const geoFactor    = 0.55 + countryFactor * 0.45;
+        const SHORTS_RATIO = rpm > 10 ? 0.017 : 0.025;
+        const geoFactor    = 0.7 + countryFactor * 0.3;
         const shortsRPM    = rpm * SHORTS_RATIO * geoFactor * retentionFactor;
         return (views / 1000) * shortsRPM;
     }
