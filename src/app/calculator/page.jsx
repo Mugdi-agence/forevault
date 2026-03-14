@@ -301,10 +301,39 @@ function CalculatorInner() {
         const midrollNote   = !shorts && totalDurMin >= 8
             ? totalDurMin >= 15 ? "2 mid-rolls" : "1 mid-roll"
             : "Pre-roll only";
+            const retentionFactor = Math.max(
+                0.70,
+                Math.min(
+                    1.30,
+                    retentionRate >= 45
+                        ? 1 + (retentionRate - 45) * 0.005
+                        : 1 - (45 - retentionRate) * 0.006
+                )
+            );
+
+            const countryFactor = countryData.multiplier / BASE_COUNTRY_MULT;
+
+            let effectiveRPMusd;
+            if (shorts) {
+                const SHORTS_RATIO = nicheData.rpm > 10 ? 0.017 : 0.025;
+                const geoFactor = 0.7 + countryFactor * 0.3;
+
+                effectiveRPMusd =
+                    nicheData.rpm *
+                    SHORTS_RATIO *
+                    geoFactor *
+                    retentionFactor;
+            } else {
+                effectiveRPMusd =
+                    nicheData.rpm *
+                    countryFactor *
+                    retentionFactor *
+                    getDurationMultiplier(totalDurMin, shorts);
+            }
 
         setResult({
             earningsUSD,
-            effectiveRPMusd: nicheData.rpm * countryData.multiplier * getDurationMultiplier(totalDurMin, shorts),
+            effectiveRPMusd,
             niche:           nicheData.niche,
             country:         countryData.name,
             format:          shorts ? "Shorts" : "Long Form",
@@ -477,7 +506,7 @@ function CalculatorInner() {
 
                             <div className="meta-grid" ref={metaRef}>
                                 <MetaTag label="Effective RPM" highlight>
-                                    <span ref={rpmRef}>{fmt(displayRPM, currency)}</span>
+                                <span ref={rpmRef}>{fmt(displayRPM, currency)}</span>
                                 </MetaTag>
                                 <MetaTag label="Niche"     value={result.niche} />
                                 <MetaTag label="Country"   value={result.country} />
