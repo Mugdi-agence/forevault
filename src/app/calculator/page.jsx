@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useState, useEffect, Suspense } from "react";
+import { useRef, useState, useEffect, useMemo, Suspense } from "react";
 import { niches, countryRPM } from "../constants";
 import {
     BarChart, Bar, XAxis, YAxis, Tooltip,
@@ -10,7 +10,7 @@ import './styles.scss';
 import Navbar from "../nav";
 import Footer from "../footer";
 import { useSearchParams } from "next/navigation";
- 
+
 const CURRENCIES = [
     { code: "USD", symbol: "$",   label: "US Dollar",         rate: 1.000 },
     { code: "EUR", symbol: "€",   label: "Euro",              rate: 0.924 },
@@ -25,53 +25,119 @@ const CURRENCIES = [
     { code: "INR", symbol: "₹",   label: "Indian Rupee",      rate: 83.12 },
     { code: "MAD", symbol: "د.م", label: "Moroccan Dirham",   rate: 10.06 },
 ];
- 
-function getDurationMultiplier(durationMinutes, isShorts) {
-    if (isShorts) return 1.0;
-    if (durationMinutes >= 15) return 1.55;
-    if (durationMinutes >= 8)  return 1.28;
-    return 1.0;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// expandNiches — normalise vers un champ rpm unique
+//   "Long-form" / "Shorts" → gardés tels quels
+//   "Both"                 → deux entrées avec le même rpm (toUSD gère la diff)
+// ─────────────────────────────────────────────────────────────────────────────
+function expandNiches(rawNiches) {
+    const result = [];
+    for (const n of rawNiches) {
+        const f = (n.format || "").toLowerCase();
+        if (f === "shorts") {
+            result.push({ ...n, _resolved_format: "Shorts" });
+        } else if (f === "long-form" || f === "long form") {
+            result.push({ ...n, _resolved_format: "Long-form" });
+        } else {
+            // "Both" → split, même rpm de base pour les deux
+            result.push({ ...n, id: `${n.id}-long`,   niche: `${n.niche} (Long-form)`, _resolved_format: "Long-form" });
+            result.push({ ...n, id: `${n.id}-shorts`, niche: `${n.niche} (Shorts)`,    _resolved_format: "Shorts"    });
+        }
+    }
+    return result;
 }
- 
+
+const allNiches       = expandNiches(niches);
+const sortedCountries = [...countryRPM].sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// toUSD — estimation réaliste des revenus YouTube
+//
+// Le champ `rpm` des constants représente le RPM créateur observé dans
+// YouTube Studio pour une vidéo ~10 min, audience US, rétention ~45 %.
+// (ex : Finance US ≈ $12–18, Entertainment ≈ $2–4, Shorts Finance ≈ $0.08–0.12)
+//
+// Long-form :
+//   earnings = (views / 1000) × rpm × countryFactor × retentionFactor × durationFactor
+//   • countryFactor   : 1.0 pour US, ~0.15 pour IN, ~0.55 pour FR
+//   • retentionFactor : ±15 % max centré sur 45 %
+//   • durationFactor  : 0.72 (< 4 min) → 1.55 (≥ 30 min)
+//
+// Shorts :
+//   RPM créateur typique : $0.03–$0.15 / 1 000 vues
+//   Conversion : rpm_long × SHORTS_RATIO (0.6 %) × geoFactor × retentionFactor
+//   Finance ($12 RPM) → ~$0.07 → réaliste ✓
+//   Entertainment ($3 RPM) → ~$0.017 → réaliste ✓
+// ─────────────────────────────────────────────────────────────────────────────
 const BASE_COUNTRY_MULT = 2.20;
- 
-function toUSD(views, nicheBaseRPM, countryMult, isShorts, retentionRate, durationMin) {
-    const normalizedCountry = countryMult / BASE_COUNTRY_MULT;
- 
+
+function toUSD(views, rpm, countryMult, isShorts, retentionRate, durationMin) {
+    views         = Math.max(0,   Number(views)         || 0);
+    rpm           = Math.max(0,   Number(rpm)           || 0);
+    retentionRate = Math.max(0,   Math.min(100, Number(retentionRate) || 45));
+    durationMin   = Math.max(0.1, Number(durationMin)   || 0.1);
+    countryMult   = Math.max(0,   Number(countryMult)   || BASE_COUNTRY_MULT);
+
+    const countryFactor = countryMult / BASE_COUNTRY_MULT; // 1.0 = US
+
+    // Retention factor : ±15 % max, centré sur 45 %
+    let retentionFactor;
+    if (retentionRate >= 45) {
+        retentionFactor = 1 + (retentionRate - 45) * 0.005;  // +0.5 % / point
+    } else {
+        retentionFactor = 1 - (45 - retentionRate) * 0.006;  // -0.6 % / point
+    }
+    retentionFactor = Math.max(0.70, Math.min(1.30, retentionFactor));
+
+    // ── SHORTS ───────────────────────────────────────────────────────────────
     if (isShorts) {
-        const shortsRPM = nicheBaseRPM * normalizedCountry;
+        // Le pool Shorts est mondial : l'influence géo est réelle mais atténuée.
+        const SHORTS_RATIO = 0.006;
+        const geoFactor    = 0.55 + countryFactor * 0.45;
+        const shortsRPM    = rpm * SHORTS_RATIO * geoFactor * retentionFactor;
         return (views / 1000) * shortsRPM;
     }
- 
-    let retentionBonus = 1;
-    if (retentionRate > 50)      retentionBonus += (retentionRate - 50) * 0.004;
-    else if (retentionRate < 35) retentionBonus -= (35 - retentionRate) * 0.006;
-    retentionBonus = Math.max(0.75, Math.min(1.25, retentionBonus));
- 
-    let adDensity = 1;
-    if (durationMin >= 8  && durationMin < 15) adDensity = 1.25;
-    else if (durationMin >= 15 && durationMin < 30) adDensity = 1.40;
-    else if (durationMin >= 30)                     adDensity = 1.60;
- 
-    const adjustedRPM = nicheBaseRPM * normalizedCountry * retentionBonus * adDensity;
+
+    // ── LONG-FORM ────────────────────────────────────────────────────────────
+    // durationFactor : impact des mid-rolls sur le revenu total
+    let durationFactor;
+    if      (durationMin < 4)  durationFactor = 0.72; // pas de mid-roll, peu d'annonceurs
+    else if (durationMin < 8)  durationFactor = 0.92; // pré-roll seul
+    else if (durationMin < 15) durationFactor = 1.18; // 1 mid-roll débloqué
+    else if (durationMin < 30) durationFactor = 1.38; // 2 mid-rolls
+    else                       durationFactor = 1.55; // 3+ mid-rolls
+
+    const adjustedRPM = rpm * countryFactor * retentionFactor * durationFactor;
     return (views / 1000) * adjustedRPM;
 }
- 
+
+function getDurationMultiplier(durationMin, isShorts) {
+    if (isShorts)              return 1.0;
+    if (durationMin >= 30)     return 1.55;
+    if (durationMin >= 15)     return 1.38;
+    if (durationMin >= 8)      return 1.18;
+    if (durationMin >= 4)      return 0.92;
+    return 0.72;
+}
+
 function convert(usd, currency) { return usd * currency.rate; }
- 
+
 function fmt(amount, currency) {
-    const n = amount >= 1000
+    const n = Math.abs(amount) >= 1000
         ? amount.toLocaleString("en-US", { maximumFractionDigits: 0 })
-        : amount.toFixed(2);
+        : Number(amount).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     return `${currency.symbol}${n}`;
 }
- 
+
 function fmtDuration(totalSec) {
     const m = Math.floor(totalSec / 60);
     const s = totalSec % 60;
     return `${m}:${String(s).padStart(2, "0")}`;
 }
- 
+
 function useCountUp(target, currency) {
     const spanRef = useRef(null);
     const objRef  = useRef({ val: 0 });
@@ -90,7 +156,7 @@ function useCountUp(target, currency) {
     }, [target, currency]);
     return spanRef;
 }
- 
+
 function CustomTooltip({ active, payload, currency }) {
     if (!active || !payload?.length) return null;
     const d = payload[0].payload;
@@ -103,8 +169,8 @@ function CustomTooltip({ active, payload, currency }) {
         </div>
     );
 }
- 
-// ── Inner component that uses useSearchParams ─────────────
+
+// ── Inner component ───────────────────────────────────────────────────────────
 function CalculatorInner() {
     const viewsRef       = useRef();
     const countryRef     = useRef();
@@ -113,40 +179,51 @@ function CalculatorInner() {
     const nichesRef      = useRef();
     const durationMinRef = useRef();
     const durationSecRef = useRef();
- 
+
     const layoutRef  = useRef();
     const formRef    = useRef();
     const resultsRef = useRef();
     const heroRef    = useRef();
     const metaRef    = useRef();
     const chartRef   = useRef();
- 
+
     const [result,   setResult]   = useState(null);
     const [error,    setError]    = useState("");
     const [currency, setCurrency] = useState(CURRENCIES[0]);
     const [rawViews, setRawViews] = useState("");
     const [isShorts, setIsShorts] = useState(false);
     const searchParams = useSearchParams();
- 
+
+    const visibleNiches = useMemo(
+        () => allNiches.filter(n =>
+            isShorts ? n._resolved_format === "Shorts" : n._resolved_format === "Long-form"
+        ),
+        [isShorts]
+    );
+
+    useEffect(() => {
+        if (nichesRef.current) nichesRef.current.value = "";
+    }, [isShorts]);
+
     useEffect(() => {
         const nicheParam = searchParams.get("niche");
         if (nicheParam && nichesRef.current) {
-            const exists = niches.find(n => n.id === nicheParam);
+            const exists = visibleNiches.find(n => n.id === nicheParam);
             if (exists) nichesRef.current.value = nicheParam;
         }
-    }, [searchParams]);
- 
+    }, [searchParams, visibleNiches]);
+
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.from(layoutRef.current, { opacity: 0, y: 40, scale: 0.97, duration: 0.9, ease: "expo.out" });
-            gsap.from(".panel__head",   { opacity: 0, y: 20, duration: 0.7, delay: 0.35, ease: "power3.out" });
-            gsap.from(".field",         { opacity: 0, y: 16, duration: 0.5, stagger: 0.07, delay: 0.5, ease: "power2.out" });
-            gsap.from(".currency-grid", { opacity: 0, y: 10, duration: 0.5, delay: 0.85, ease: "power2.out" });
-            gsap.from(".form__btn",     { opacity: 0, scale: 0.95, duration: 0.45, delay: 1.0, ease: "back.out(1.7)" });
+            gsap.from(".panel__head",    { opacity: 0, y: 20, duration: 0.7, delay: 0.35, ease: "power3.out" });
+            gsap.from(".field",          { opacity: 0, y: 16, duration: 0.5, stagger: 0.07, delay: 0.5, ease: "power2.out" });
+            gsap.from(".currency-grid",  { opacity: 0, y: 10, duration: 0.5, delay: 0.85, ease: "power2.out" });
+            gsap.from(".form__btn",      { opacity: 0, scale: 0.95, duration: 0.45, delay: 1.0, ease: "back.out(1.7)" });
         });
         return () => ctx.revert();
     }, []);
- 
+
     useEffect(() => {
         if (!result || !resultsRef.current) return;
         const ctx = gsap.context(() => {
@@ -158,79 +235,76 @@ function CalculatorInner() {
         }, resultsRef);
         return () => ctx.revert();
     }, [result]);
- 
+
     function handleCurrencyChange(cur) {
         setCurrency(cur);
         gsap.from(".hero__amount", { opacity: 0, y: -8, duration: 0.3, stagger: 0.05, ease: "power2.out" });
     }
- 
+
     function handleViewsChange(e) {
         const digits = e.target.value.replace(/\D/g, "");
         setRawViews(digits ? parseInt(digits, 10).toLocaleString("en-US") : "");
     }
- 
+
     function handleFormatChange(e) {
         const shorts = e.target.value === "shorts";
         setIsShorts(shorts);
-        if (shorts) {
-            if (parseInt(durationMinRef.current?.value || 0) >= 3) {
-                durationMinRef.current.value = "3";
-                if (durationSecRef.current) durationSecRef.current.value = "0";
-            }
+        if (shorts && parseInt(durationMinRef.current?.value || 0) >= 3) {
+            durationMinRef.current.value = "3";
+            if (durationSecRef.current) durationSecRef.current.value = "0";
         }
     }
- 
+
     function handleCalculate() {
         setError("");
- 
+
         gsap.timeline()
             .to(".form__btn", { scale: 0.96, duration: 0.1, ease: "power2.in" })
             .to(".form__btn", { scale: 1,    duration: 0.4, ease: "elastic.out(1, 0.5)" });
- 
+
         const views         = parseFloat(rawViews.replace(/,/g, ""));
         const retentionRate = parseFloat(retentionRef.current.value);
         const nicheId       = nichesRef.current.value;
         const countryId     = countryRef.current.value;
         const shorts        = isShorts;
- 
-        const durMin      = parseInt(durationMinRef.current?.value || 0);
-        const durSec      = parseInt(durationSecRef.current?.value || 0);
-        const totalDurSec = durMin * 60 + durSec;
-        const totalDurMin = totalDurSec / 60;
- 
+        const durMin        = parseInt(durationMinRef.current?.value  || 0);
+        const durSec        = parseInt(durationSecRef.current?.value  || 0);
+        const totalDurSec   = durMin * 60 + durSec;
+        const totalDurMin   = totalDurSec / 60;
+
         if (!views || views <= 0)      return setError("Please enter a valid view count.");
         if (!nicheId)                  return setError("Please select a niche.");
         if (!countryId)                return setError("Please select a geography.");
         if (isNaN(retentionRate) || retentionRate < 0 || retentionRate > 100)
-            return setError("Retention rate must be between 0 and 100.");
+                                       return setError("Retention rate must be between 0 and 100.");
         if (totalDurSec <= 0)          return setError("Please enter a valid video duration.");
         if (shorts && totalDurMin > 3) return setError("Shorts cannot exceed 3 minutes.");
- 
-        const nicheData    = niches.find(n => n.id === nicheId);
-        const countryData  = countryRPM.find(c => c.id === countryId);
-        const nicheBaseRPM = shorts ? nicheData.rpm_shorts : nicheData.rpm_long;
-        const earningsUSD  = toUSD(views, nicheBaseRPM, countryData.multiplier, shorts, retentionRate, totalDurMin);
- 
-        const allNicheEarnings = niches.map(n => {
-            const rpm = shorts ? n.rpm_shorts : n.rpm_long;
-            return {
+
+        const nicheData   = visibleNiches.find(n => n.id === nicheId);
+        const countryData = sortedCountries.find(c => c.id === countryId);
+
+        const earningsUSD = toUSD(views, nicheData.rpm, countryData.multiplier, shorts, retentionRate, totalDurMin);
+
+        // Graphique : mêmes vues / durée / rétention / pays, rpm de chaque niche
+        const allNicheEarnings = visibleNiches
+            .map(n => ({
                 id:          n.id,
                 name:        n.niche.length > 18 ? n.niche.slice(0, 16) + "…" : n.niche,
                 fullName:    n.niche,
-                earningsUSD: toUSD(views, rpm, countryData.multiplier, shorts, retentionRate, totalDurMin),
+                earningsUSD: toUSD(views, n.rpm, countryData.multiplier, shorts, retentionRate, totalDurMin),
                 isSelected:  n.id === nicheId,
-            };
-        }).sort((a, b) => b.earningsUSD - a.earningsUSD);
- 
+            }))
+            .sort((a, b) => b.earningsUSD - a.earningsUSD);
+
         const averageUSD    = allNicheEarnings.reduce((s, n) => s + n.earningsUSD, 0) / allNicheEarnings.length;
         const durationLabel = fmtDuration(totalDurSec);
         const midrollNote   = !shorts && totalDurMin >= 8
             ? totalDurMin >= 15 ? "2 mid-rolls" : "1 mid-roll"
             : "Pre-roll only";
- 
+
         setResult({
             earningsUSD,
-            effectiveRPMusd: nicheBaseRPM * countryData.multiplier * getDurationMultiplier(totalDurMin, shorts),
+            effectiveRPMusd: nicheData.rpm * countryData.multiplier * getDurationMultiplier(totalDurMin, shorts),
             niche:           nicheData.niche,
             country:         countryData.name,
             format:          shorts ? "Shorts" : "Long Form",
@@ -242,7 +316,7 @@ function CalculatorInner() {
             midrollNote,
         });
     }
- 
+
     const displayEarnings = result ? convert(result.earningsUSD,     currency) : 0;
     const displayAverage  = result ? convert(result.averageUSD,      currency) : 0;
     const displayRPM      = result ? convert(result.effectiveRPMusd, currency) : 0;
@@ -252,23 +326,23 @@ function CalculatorInner() {
             earnings: parseFloat(convert(n.earningsUSD, currency).toFixed(2)),
           }))
         : [];
- 
+
     const earningsRef = useCountUp(displayEarnings, currency);
     const avgRef      = useCountUp(displayAverage,  currency);
     const rpmRef      = useCountUp(displayRPM,      currency);
- 
+
     return (
         <div className="appl">
         <div className="page">
             <div className="layout" ref={layoutRef}>
- 
+
                 <aside className="panel panel--form" ref={formRef}>
                     <div className="panel__head">
                         <span className="panel__badge">YouTube</span>
                         <h1 className="panel__title">Adsense revenue calculator</h1>
                         <p className="panel__sub">Estimate your YouTube earnings</p>
                     </div>
- 
+
                     <div className="form">
                         <Field label="Views">
                             <input
@@ -280,7 +354,7 @@ function CalculatorInner() {
                                 onChange={handleViewsChange}
                             />
                         </Field>
- 
+
                         <Field label="Retention (%)">
                             <input
                                 ref={retentionRef}
@@ -291,16 +365,7 @@ function CalculatorInner() {
                                 max="100"
                             />
                         </Field>
- 
-                        <Field label="Niche">
-                            <select ref={nichesRef} className="field__input" defaultValue="">
-                                <option value="" disabled>Select a niche…</option>
-                                {niches.map(n => (
-                                    <option key={n.id} value={n.id}>{n.topic}</option>
-                                ))}
-                            </select>
-                        </Field>
- 
+
                         <div className="form__row">
                             <Field label="Format">
                                 <select
@@ -312,7 +377,7 @@ function CalculatorInner() {
                                     <option value="shorts">Shorts</option>
                                 </select>
                             </Field>
- 
+
                             <Field label={isShorts ? "Duration (max 3:00)" : "Video duration"}>
                                 <div className="duration-input">
                                     <input
@@ -339,16 +404,25 @@ function CalculatorInner() {
                                 )}
                             </Field>
                         </div>
- 
+
+                        <Field label="Niche">
+                            <select ref={nichesRef} className="field__input" defaultValue="">
+                                <option value="" disabled>Select a niche…</option>
+                                {visibleNiches.map(n => (
+                                    <option key={n.id} value={n.id}>{n.topic}</option>
+                                ))}
+                            </select>
+                        </Field>
+
                         <Field label="Geography">
                             <select ref={countryRef} className="field__input" defaultValue="">
                                 <option value="" disabled>Country…</option>
-                                {countryRPM.map(c => (
+                                {sortedCountries.map(c => (
                                     <option key={c.id} value={c.id}>{c.name}</option>
                                 ))}
                             </select>
                         </Field>
- 
+
                         <Field label="Display currency">
                             <div className="currency-grid">
                                 {CURRENCIES.map(cur => (
@@ -365,16 +439,16 @@ function CalculatorInner() {
                                 ))}
                             </div>
                         </Field>
- 
+
                         {error && <p className="form__error">⚠ {error}</p>}
- 
+
                         <button className="form__btn" onClick={handleCalculate}>
                             Calculate earnings
                             <span className="form__btn-arrow">→</span>
                         </button>
                     </div>
                 </aside>
- 
+
                 <main className="panel panel--result">
                     {!result ? (
                         <div className="empty-state">
@@ -400,7 +474,7 @@ function CalculatorInner() {
                                     </p>
                                 </div>
                             </div>
- 
+
                             <div className="meta-grid" ref={metaRef}>
                                 <MetaTag label="Effective RPM" highlight>
                                     <span ref={rpmRef}>{fmt(displayRPM, currency)}</span>
@@ -413,9 +487,9 @@ function CalculatorInner() {
                                 <MetaTag label="Duration"  value={result.durationLabel} />
                                 <MetaTag label="Ad slots"  value={result.midrollNote} highlight />
                             </div>
- 
+
                             <div className="chart-block" ref={chartRef}>
-                                <p className="chart-block__title">Niche comparison</p>
+                                <p className="chart-block__title">Niche comparison — same parameters</p>
                                 <ResponsiveContainer width="100%" height={220} className="charts">
                                     <BarChart data={chartData} margin={{ top: 8, right: 4, left: -10, bottom: 55 }}>
                                         <XAxis
@@ -474,15 +548,14 @@ function CalculatorInner() {
                         </div>
                     )}
                 </main>
- 
+
             </div>
         </div>
         <Footer />
         </div>
     );
 }
- 
-// ── Page export — wraps inner in Suspense ─────────────────
+
 export default function Calculator() {
     return (
         <>
@@ -499,7 +572,7 @@ export default function Calculator() {
         </>
     );
 }
- 
+
 function Field({ label, children }) {
     return (
         <label className="field">
@@ -508,7 +581,7 @@ function Field({ label, children }) {
         </label>
     );
 }
- 
+
 function MetaTag({ label, value, highlight, children }) {
     return (
         <div className={`meta-tag ${highlight ? "meta-tag--highlight" : ""}`}>
@@ -517,4 +590,3 @@ function MetaTag({ label, value, highlight, children }) {
         </div>
     );
 }
- 

@@ -30,7 +30,23 @@ function StatRow({ label, children }) {
     );
 }
 
-// ── openId + setOpenId viennent du parent ──────────────────
+// ── Format badge ───────────────────────────────────────────
+const FORMAT_META = {
+    "Long-form": { label: "Long-form", cls: "long"   },
+    "Shorts":    { label: "Shorts",    cls: "shorts"  },
+    "Both":      { label: "Both",      cls: "both"    },
+};
+
+function FormatBadge({ format }) {
+    const meta = FORMAT_META[format] ?? FORMAT_META["Long-form"];
+    return (
+        <span className={`niche-card__format niche-card__format--${meta.cls}`}>
+            {meta.label === "Shorts" ? "▶ Shorts" : meta.label === "Long-form" ? "▬ Long-form" : "⇄ Both"}
+        </span>
+    );
+}
+
+// ── NicheCard ──────────────────────────────────────────────
 function NicheCard({ niche, index, openId, setOpenId }) {
     const detailRef = useRef();
     const cardRef   = useRef();
@@ -38,7 +54,6 @@ function NicheCard({ niche, index, openId, setOpenId }) {
 
     const open = openId === niche.id;
 
-    // ── Entrance animation ─────────────────────────────────
     useEffect(() => {
         const el = cardRef.current;
         if (!el) return;
@@ -56,11 +71,9 @@ function NicheCard({ niche, index, openId, setOpenId }) {
         return () => gsap.killTweensOf(el);
     }, []);
 
-    // ── Sync animation quand open change ──────────────────
     useEffect(() => {
         const el = detailRef.current;
         if (!el) return;
-
         if (open) {
             gsap.fromTo(el,
                 { height: 0, opacity: 0 },
@@ -73,22 +86,20 @@ function NicheCard({ niche, index, openId, setOpenId }) {
                 clearProps: "opacity,transform",
             });
         } else {
-            gsap.to(el, {
-                height: 0, opacity: 0,
-                duration: 0.32, ease: "expo.in",
-            }, "<");
+            gsap.to(el, { height: 0, opacity: 0, duration: 0.32, ease: "expo.in" });
         }
     }, [open]);
 
-    function toggle() {
-        setOpenId(open ? null : niche.id);
-    }
+    function toggle() { setOpenId(open ? null : niche.id); }
 
     function goToCalculator() {
-        router.push(`/calculator?niche=${niche.id}`);
+        // On pousse vers le format correspondant si possible
+        const fmt   = niche.format === "Shorts" ? "shorts" : "long";
+        const query = `?niche=${niche.id}&format=${fmt}`;
+        router.push(`/calculator${query}`);
     }
 
-    const rpmColor = niche.rpm_long >= 20 ? "high" : niche.rpm_long >= 10 ? "mid" : "low";
+    const rpmColor = niche.rpm >= 12 ? "high" : niche.rpm >= 6 ? "mid" : "low";
 
     return (
         <div ref={cardRef} className={`niche-card ${open ? "niche-card--open" : ""} ${niche.trending ? "niche-card--trending" : ""}`}>
@@ -96,11 +107,13 @@ function NicheCard({ niche, index, openId, setOpenId }) {
             <div className="niche-card__row" onClick={toggle}>
                 <div className="niche-card__left">
                     <span className={`niche-card__rpm niche-card__rpm--${rpmColor}`}>
-                        ${niche.rpm_long.toFixed(2)}
+                        ${niche.rpm.toFixed(2)}
                     </span>
                     <div className="niche-card__info">
                         <p className="niche-card__name">{niche.niche}</p>
                         <div className="niche-card__pills">
+                            {/* Format badge en premier */}
+                            <FormatBadge format={niche.format} />
                             <span className={`niche-card__pill niche-card__pill--${niche.popularite}`}>
                                 {niche.popularite}
                             </span>
@@ -121,26 +134,25 @@ function NicheCard({ niche, index, openId, setOpenId }) {
                 </button>
             </div>
 
-            {/* ── toujours dans le DOM, affiché/masqué par GSAP ── */}
             <div ref={detailRef} className="niche-card__detail" style={{ height: 0, overflow: "hidden", opacity: 0 }}>
                 <div className="niche-card__detail-inner">
                     <div className="niche-card__stats">
-                        <StatRow label="RPM Long Form">
-                            <strong>${niche.rpm_long.toFixed(2)}</strong> / 1000 views
+                        <StatRow label="Base RPM">
+                            <strong>${niche.rpm.toFixed(2)}</strong> / 1 000 views
                         </StatRow>
-                        <StatRow label="RPM Shorts">
-                            <strong>${niche.rpm_shorts.toFixed(2)}</strong> / 1000 views
+                        <StatRow label="Format">
+                            <FormatBadge format={niche.format} />
                         </StatRow>
                         <StatRow label="Saturation">
                             <ScoreBar value={niche.saturation} variant="danger" />
                         </StatRow>
                         <StatRow label="Revenue potential">
-                            <ScoreBar value={niche.potentiel_economique} variant="success" />
+                            <ScoreBar value={niche.economic_potential} variant="success" />
                         </StatRow>
                         <StatRow label="Ease of creation">
-                            <ScoreBar value={niche.facilite_creation} variant="neutral" />
+                            <ScoreBar value={niche.creation_ease} variant="neutral" />
                         </StatRow>
-                        <StatRow label="type">
+                        <StatRow label="Type">
                             <span>{niche.faceless}</span>
                         </StatRow>
                     </div>
@@ -156,6 +168,7 @@ function NicheCard({ niche, index, openId, setOpenId }) {
     );
 }
 
+// ── Toolbar constants ──────────────────────────────────────
 const SORT_OPTIONS = [
     { value: "rpm_desc",  label: "RPM ↓" },
     { value: "rpm_asc",   label: "RPM ↑" },
@@ -163,51 +176,59 @@ const SORT_OPTIONS = [
     { value: "potential", label: "Best potential" },
 ];
 
+const FORMAT_FILTERS = [
+    { value: "all",       label: "All formats" },
+    { value: "Long-form", label: "▬ Long-form"  },
+    { value: "Shorts",    label: "▶ Shorts"     },
+    { value: "Both",      label: "⇄ Both"       },
+];
+
+// ── Page ───────────────────────────────────────────────────
 export default function NicheFinder() {
-    const headerRef = useRef();
-    const [search,    setSearch]    = useState("");
-    const [sort,      setSort]      = useState("rpm_desc");
-    const [filterPop, setFilterPop] = useState("all");
-    const [openId,    setOpenId]    = useState(null); // ← une seule carte ouverte
-    const [visibleCount, setVisibleCount] = useState(12); // pour "Show More"
+    const headerRef  = useRef();
+    const [search,       setSearch]       = useState("");
+    const [sort,         setSort]         = useState("rpm_desc");
+    const [filterPop,    setFilterPop]    = useState("all");
+    const [filterFormat, setFilterFormat] = useState("all");
+    const [openId,       setOpenId]       = useState(null);
+    const [visibleCount, setVisibleCount] = useState(12);
 
     useEffect(() => {
-        gsap.from(headerRef.current, {
-            opacity: 0, y: -20,
-            duration: 0.7, ease: "expo.out",
-        });
+        gsap.from(headerRef.current, { opacity: 0, y: -20, duration: 0.7, ease: "expo.out" });
     }, []);
 
-    // Ferme la carte ouverte si elle disparaît du filtre
     const filtered = niches
         .filter(n => {
-            const matchSearch = n.niche.toLowerCase().includes(search.toLowerCase());
-            const matchPop    = filterPop === "all" || n.popularite === filterPop;
-            return matchSearch && matchPop;
+            const matchSearch  = n.niche.toLowerCase().includes(search.toLowerCase())
+                              || n.topic.toLowerCase().includes(search.toLowerCase());
+            const matchPop     = filterPop    === "all" || n.popularite === filterPop;
+            const matchFormat  = filterFormat === "all" || n.format     === filterFormat;
+            return matchSearch && matchPop && matchFormat;
         })
         .sort((a, b) => {
+            // Trending toujours en premier
             if (a.trending && !b.trending) return -1;
             if (!a.trending && b.trending) return 1;
-            if (sort === "rpm_desc")  return b.rpm_long - a.rpm_long;
-            if (sort === "rpm_asc")   return a.rpm_long - b.rpm_long;
+            if (sort === "rpm_desc")  return b.rpm - a.rpm;
+            if (sort === "rpm_asc")   return a.rpm - b.rpm;
             if (sort === "sat_asc")   return a.saturation - b.saturation;
             if (sort === "potential") return b.potentiel_economique - a.potentiel_economique;
             return 0;
         });
 
-    // Si la carte ouverte est filtrée dehors → reset
     useEffect(() => {
-        if (openId && !filtered.find(n => n.id === openId)) {
-            setOpenId(null);
-        }
+        if (openId && !filtered.find(n => n.id === openId)) setOpenId(null);
     }, [filtered, openId]);
 
-    // Reset le "count" si search/filter change
-    useEffect(() => {
-        setVisibleCount(12);
-    }, [search, sort, filterPop]);
+    useEffect(() => { setVisibleCount(12); }, [search, sort, filterPop, filterFormat]);
 
     const displayed = filtered.slice(0, visibleCount);
+
+    // Compteurs par format pour les badges du filtre
+    const formatCounts = niches.reduce((acc, n) => {
+        acc[n.format] = (acc[n.format] || 0) + 1;
+        return acc;
+    }, {});
 
     return (
         <>
@@ -224,6 +245,7 @@ export default function NicheFinder() {
                 </div>
 
                 <div className="nf-toolbar">
+                    {/* Search */}
                     <div className="nf-search">
                         <span className="nf-search__icon">⌕</span>
                         <input
@@ -234,32 +256,33 @@ export default function NicheFinder() {
                             onChange={e => setSearch(e.target.value)}
                         />
                     </div>
+
                     <div className="nf-filters">
-                        <div className="nf-toggle">
-                            {["all", "mainstream", "niché"].map(v => (
+                        {/* Format filter — nouveau */}
+                        <div className="nf-toggle nf-toggle--format">
+                            {FORMAT_FILTERS.map(f => (
                                 <button
-                                    key={v}
-                                    className={`nf-toggle__btn ${filterPop === v ? "nf-toggle__btn--active" : ""}`}
-                                    onClick={() => setFilterPop(v)}
+                                    key={f.value}
+                                    className={`nf-toggle__btn ${filterFormat === f.value ? "nf-toggle__btn--active" : ""}`}
+                                    onClick={() => setFilterFormat(f.value)}
                                 >
-                                    {v === "all" ? "All" : v.charAt(0).toUpperCase() + v.slice(1)}
+                                    {f.label}
+                                    {f.value !== "all" && (
+                                        <span className="nf-toggle__count">
+                                            {formatCounts[f.value] ?? 0}
+                                        </span>
+                                    )}
                                 </button>
                             ))}
                         </div>
-                        <select
-                            className="nf-select"
-                            value={sort}
-                            onChange={e => setSort(e.target.value)}
-                        >
-                            {SORT_OPTIONS.map(o => (
-                                <option key={o.value} value={o.value}>{o.label}</option>
-                            ))}
-                        </select>
                     </div>
                 </div>
 
                 <p className="nf-count">
                     {filtered.length} niche{filtered.length !== 1 ? "s" : ""}
+                    {filterFormat !== "all" && (
+                        <span className="nf-count__format"> · {filterFormat}</span>
+                    )}
                 </p>
 
                 <div className="nf-list">
@@ -278,14 +301,13 @@ export default function NicheFinder() {
                     )}
                 </div>
 
-                {/* Bouton Show More */}
                 {filtered.length > visibleCount && (
                     <div className="nf-showmore-wrap">
                         <button
                             className="nf-showmore"
                             onClick={() => setVisibleCount(v => v + 12)}
                         >
-                            Show More
+                            Show More ({filtered.length - visibleCount} remaining)
                         </button>
                     </div>
                 )}
