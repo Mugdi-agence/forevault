@@ -1,27 +1,7 @@
-"use client";
-import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+import { GoogleAnalytics } from '@next/third-parties/google'
+import ClientWrapper from ".clientWrapper";
 
 export default function RootLayout({ children }) {
-  useEffect(() => {
-    const lenis = new Lenis({
-      smooth: true,
-      lerp: 0.1,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.2,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
   return (
     <html lang="en">
       <head>
@@ -48,7 +28,12 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/logo.png" />
         <meta name="thumbnail" content="/logo.png" />
       </head>
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body suppressHydrationWarning={true}>
+        <ClientWrapper>
+          {children}
+        </ClientWrapper>
+        <GoogleAnalytics gaId="G-N2X7Y2KNGF" />
+      </body>
     </html>
   );
 }
