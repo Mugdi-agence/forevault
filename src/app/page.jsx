@@ -118,7 +118,7 @@ function CalcMockup({ compact = false }) {
                 </div>
                 <div className="calc-mockup__url">
                     <span className="calc-mockup__lock">⊕</span>
-                    forevault.io/calculator
+                    forevault.mugdi.com/calculator
                 </div>
             </div>
  
