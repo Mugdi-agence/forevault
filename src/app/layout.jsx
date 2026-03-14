@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
-import ClientWrapper from ".clientWrapper";
+import ClientWrapper from './clientWrapper';
 
 export default function RootLayout({ children }) {
   return (
@@ -14,6 +14,7 @@ export default function RootLayout({ children }) {
           name="keywords"
           content="youtube revenue calculator, youtube rpm calculator, youtube niche finder, youtube monetization calculator, faceless youtube niches, youtube earnings estimator, youtube rpm by country, youtube income calculator, youtube niche browser, youtube analytics tools"
         />
+        <meta name="google-site-verification" content="Pv1Y0g4gx4ktodKlnG4H-pXGAkIPURgNsu5zn6f5vDc" />
         <meta name="author" content="Forevault" />
         <meta property="og:title" content="Forevault — YouTube Revenue Calculator & Niche Finder" />
         <meta
