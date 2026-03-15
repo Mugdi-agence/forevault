@@ -28,8 +28,6 @@ const CURRENCIES = [
 
 // ─────────────────────────────────────────────────────────────────────────────
 // expandNiches — normalise vers un champ rpm unique
-//   "Long-form" / "Shorts" → gardés tels quels
-//   "Both"                 → deux entrées avec le même rpm (toUSD gère la diff)
 // ─────────────────────────────────────────────────────────────────────────────
 function expandNiches(rawNiches) {
     const result = [];
@@ -40,7 +38,6 @@ function expandNiches(rawNiches) {
         } else if (f === "long-form" || f === "long form") {
             result.push({ ...n, _resolved_format: "Long-form" });
         } else {
-            // "Both" → split, même rpm de base pour les deux
             result.push({ ...n, id: `${n.id}-long`,   niche: `${n.niche} (Long-form)`, _resolved_format: "Long-form" });
             result.push({ ...n, id: `${n.id}-shorts`, niche: `${n.niche} (Shorts)`,    _resolved_format: "Shorts"    });
         }
@@ -53,25 +50,6 @@ const sortedCountries = [...countryRPM].sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
 );
 
-// ─────────────────────────────────────────────────────────────────────────────
-// toUSD — estimation réaliste des revenus YouTube
-//
-// Le champ `rpm` des constants représente le RPM créateur observé dans
-// YouTube Studio pour une vidéo ~10 min, audience US, rétention ~45 %.
-// (ex : Finance US ≈ $12–18, Entertainment ≈ $2–4, Shorts Finance ≈ $0.08–0.12)
-//
-// Long-form :
-//   earnings = (views / 1000) × rpm × countryFactor × retentionFactor × durationFactor
-//   • countryFactor   : 1.0 pour US, ~0.15 pour IN, ~0.55 pour FR
-//   • retentionFactor : ±15 % max centré sur 45 %
-//   • durationFactor  : 0.72 (< 4 min) → 1.55 (≥ 30 min)
-//
-// Shorts :
-//   RPM créateur typique : $0.03–$0.15 / 1 000 vues
-//   Conversion : rpm_long × SHORTS_RATIO (0.6 %) × geoFactor × retentionFactor
-//   Finance ($12 RPM) → ~$0.07 → réaliste ✓
-//   Entertainment ($3 RPM) → ~$0.017 → réaliste ✓
-// ─────────────────────────────────────────────────────────────────────────────
 const BASE_COUNTRY_MULT = 2.20;
 
 function toUSD(views, rpm, countryMult, isShorts, retentionRate, durationMin) {
@@ -81,34 +59,29 @@ function toUSD(views, rpm, countryMult, isShorts, retentionRate, durationMin) {
     durationMin   = Math.max(0.1, Number(durationMin)   || 0.1);
     countryMult   = Math.max(0,   Number(countryMult)   || BASE_COUNTRY_MULT);
 
-    const countryFactor = countryMult / BASE_COUNTRY_MULT; // 1.0 = US
+    const countryFactor = countryMult / BASE_COUNTRY_MULT;
 
-    // Retention factor : ±15 % max, centré sur 45 %
     let retentionFactor;
     if (retentionRate >= 45) {
-        retentionFactor = 1 + (retentionRate - 45) * 0.005;  // +0.5 % / point
+        retentionFactor = 1 + (retentionRate - 45) * 0.005;
     } else {
-        retentionFactor = 1 - (45 - retentionRate) * 0.006;  // -0.6 % / point
+        retentionFactor = 1 - (45 - retentionRate) * 0.006;
     }
     retentionFactor = Math.max(0.70, Math.min(1.30, retentionFactor));
 
-    // ── SHORTS ───────────────────────────────────────────────────────────────
     if (isShorts) {
-        // Le pool Shorts est mondial : l'influence géo est réelle mais atténuée.
         const SHORTS_RATIO = rpm > 10 ? 0.017 : 0.025;
         const geoFactor    = 0.7 + countryFactor * 0.3;
         const shortsRPM    = rpm * SHORTS_RATIO * geoFactor * retentionFactor;
         return (views / 1000) * shortsRPM;
     }
 
-    // ── LONG-FORM ────────────────────────────────────────────────────────────
-    // durationFactor : impact des mid-rolls sur le revenu total
     let durationFactor;
-    if      (durationMin < 4)  durationFactor = 0.72; // pas de mid-roll, peu d'annonceurs
-    else if (durationMin < 8)  durationFactor = 0.92; // pré-roll seul
-    else if (durationMin < 15) durationFactor = 1.18; // 1 mid-roll débloqué
-    else if (durationMin < 30) durationFactor = 1.38; // 2 mid-rolls
-    else                       durationFactor = 1.55; // 3+ mid-rolls
+    if      (durationMin < 4)  durationFactor = 0.72;
+    else if (durationMin < 8)  durationFactor = 0.92;
+    else if (durationMin < 15) durationFactor = 1.18;
+    else if (durationMin < 30) durationFactor = 1.38;
+    else                       durationFactor = 1.55;
 
     const adjustedRPM = rpm * countryFactor * retentionFactor * durationFactor;
     return (views / 1000) * adjustedRPM;
@@ -136,6 +109,16 @@ function fmtDuration(totalSec) {
     const m = Math.floor(totalSec / 60);
     const s = totalSec % 60;
     return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+// ── Bucket de vues pour GA4 (évite de logger des valeurs exactes) ─────────────
+function getViewsBracket(views) {
+    if (views <        1_000) return "<1k";
+    if (views <       10_000) return "1k–10k";
+    if (views <      100_000) return "10k–100k";
+    if (views <    1_000_000) return "100k–1M";
+    if (views <   10_000_000) return "1M–10M";
+    return "10M+";
 }
 
 function useCountUp(target, currency) {
@@ -239,6 +222,16 @@ function CalculatorInner() {
     function handleCurrencyChange(cur) {
         setCurrency(cur);
         gsap.from(".hero__amount", { opacity: 0, y: -8, duration: 0.3, stagger: 0.05, ease: "power2.out" });
+
+        // 🔥 Track le changement de devise (uniquement si un résultat est affiché)
+        if (result && typeof gtag === "function") {
+            gtag("event", "calculator_currency_change", {
+                currency_from: currency.code,
+                currency_to:   cur.code,
+                niche_label:   result.niche,
+                video_format:  result.format,
+            });
+        }
     }
 
     function handleViewsChange(e) {
@@ -282,10 +275,41 @@ function CalculatorInner() {
 
         const nicheData   = visibleNiches.find(n => n.id === nicheId);
         const countryData = sortedCountries.find(c => c.id === countryId);
-
         const earningsUSD = toUSD(views, nicheData.rpm, countryData.multiplier, shorts, retentionRate, totalDurMin);
 
-        // Graphique : mêmes vues / durée / rétention / pays, rpm de chaque niche
+        const adSlots = shorts
+            ? "none"
+            : totalDurMin >= 15
+                ? "2_midrolls"
+                : totalDurMin >= 8
+                    ? "1_midroll"
+                    : "pre_roll_only";
+
+        // ── 🔥 Tracking GA4 ───────────────────────────────────────────────────
+        if (typeof gtag === "function") {
+            gtag("event", "calculator_run", {
+                // Inputs
+                video_format:     shorts ? "shorts" : "long_form",
+                niche_id:         nicheId,
+                niche_label:      nicheData.niche,
+                niche_faceless:   nicheData.faceless ?? "unknown",
+                country_id:       countryId,
+                country_label:    countryData.name,
+                views_bracket:    getViewsBracket(views),
+                retention_rate:   retentionRate,
+                duration_sec:     totalDurSec,
+                ad_slots:         adSlots,
+                // Output
+                estimated_usd:    Math.round(earningsUSD * 100) / 100,
+                effective_rpm:    Math.round(
+                    toUSD(1000, nicheData.rpm, countryData.multiplier, shorts, retentionRate, totalDurMin)
+                    * 100
+                ) / 100,
+                // Préférences UI
+                display_currency: currency.code,
+            });
+        }
+
         const allNicheEarnings = visibleNiches
             .map(n => ({
                 id:          n.id,
@@ -301,35 +325,27 @@ function CalculatorInner() {
         const midrollNote   = !shorts && totalDurMin >= 8
             ? totalDurMin >= 15 ? "2 mid-rolls" : "1 mid-roll"
             : "Pre-roll only";
-            const retentionFactor = Math.max(
-                0.70,
-                Math.min(
-                    1.30,
-                    retentionRate >= 45
-                        ? 1 + (retentionRate - 45) * 0.005
-                        : 1 - (45 - retentionRate) * 0.006
-                )
-            );
 
-            const countryFactor = countryData.multiplier / BASE_COUNTRY_MULT;
+        const retentionFactor = Math.max(
+            0.70,
+            Math.min(
+                1.30,
+                retentionRate >= 45
+                    ? 1 + (retentionRate - 45) * 0.005
+                    : 1 - (45 - retentionRate) * 0.006
+            )
+        );
 
-            let effectiveRPMusd;
-            if (shorts) {
-                const SHORTS_RATIO = nicheData.rpm > 10 ? 0.017 : 0.025;
-                const geoFactor = 0.7 + countryFactor * 0.3;
+        const countryFactor = countryData.multiplier / BASE_COUNTRY_MULT;
 
-                effectiveRPMusd =
-                    nicheData.rpm *
-                    SHORTS_RATIO *
-                    geoFactor *
-                    retentionFactor;
-            } else {
-                effectiveRPMusd =
-                    nicheData.rpm *
-                    countryFactor *
-                    retentionFactor *
-                    getDurationMultiplier(totalDurMin, shorts);
-            }
+        let effectiveRPMusd;
+        if (shorts) {
+            const SHORTS_RATIO = nicheData.rpm > 10 ? 0.017 : 0.025;
+            const geoFactor    = 0.7 + countryFactor * 0.3;
+            effectiveRPMusd    = nicheData.rpm * SHORTS_RATIO * geoFactor * retentionFactor;
+        } else {
+            effectiveRPMusd = nicheData.rpm * countryFactor * retentionFactor * getDurationMultiplier(totalDurMin, shorts);
+        }
 
         setResult({
             earningsUSD,
@@ -506,7 +522,7 @@ function CalculatorInner() {
 
                             <div className="meta-grid" ref={metaRef}>
                                 <MetaTag label="Effective RPM" highlight>
-                                <span ref={rpmRef}>{fmt(displayRPM, currency)}</span>
+                                    <span ref={rpmRef}>{fmt(displayRPM, currency)}</span>
                                 </MetaTag>
                                 <MetaTag label="Niche"     value={result.niche} />
                                 <MetaTag label="Country"   value={result.country} />

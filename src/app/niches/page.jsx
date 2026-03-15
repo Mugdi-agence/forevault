@@ -90,10 +90,40 @@ function NicheCard({ niche, index, openId, setOpenId }) {
         }
     }, [open]);
 
-    function toggle() { setOpenId(open ? null : niche.id); }
+    function toggle() {
+        const isOpening = !open;
+        setOpenId(isOpening ? niche.id : null);
+
+        // 🔥 Track uniquement à l'ouverture
+        if (isOpening && typeof gtag === "function") {
+            gtag("event", "niche_expanded", {
+                niche_id:         niche.id,
+                niche_label:      niche.niche,
+                niche_format:     niche.format,               // "Long-form" | "Shorts" | "Both"
+                niche_faceless:   niche.faceless ?? "unknown",
+                niche_rpm:        niche.rpm,
+                niche_saturation: niche.saturation,
+                niche_potential:  niche.economic_potential,
+                niche_trending:   niche.trending ? "yes" : "no",
+                niche_popularity: niche.popularite,
+            });
+        }
+    }
 
     function goToCalculator() {
-        // On pousse vers le format correspondant si possible
+        // 🔥 Track le clic CTA vers le calculateur
+        if (typeof gtag === "function") {
+            gtag("event", "niche_cta_click", {
+                niche_id:         niche.id,
+                niche_label:      niche.niche,
+                niche_format:     niche.format,
+                niche_faceless:   niche.faceless ?? "unknown",
+                niche_rpm:        niche.rpm,
+                niche_trending:   niche.trending ? "yes" : "no",
+                destination:      "calculator",
+            });
+        }
+
         const fmt   = niche.format === "Shorts" ? "shorts" : "long";
         const query = `?niche=${niche.id}&format=${fmt}`;
         router.push(`/calculator${query}`);
@@ -112,7 +142,6 @@ function NicheCard({ niche, index, openId, setOpenId }) {
                     <div className="niche-card__info">
                         <p className="niche-card__name">{niche.niche}</p>
                         <div className="niche-card__pills">
-                            {/* Format badge en premier */}
                             <FormatBadge format={niche.format} />
                             <span className={`niche-card__pill niche-card__pill--${niche.popularite}`}>
                                 {niche.popularite}
@@ -197,6 +226,31 @@ export default function NicheFinder() {
         gsap.from(headerRef.current, { opacity: 0, y: -20, duration: 0.7, ease: "expo.out" });
     }, []);
 
+    // 🔥 Track la recherche (avec debounce pour ne pas spammer)
+    useEffect(() => {
+        if (!search) return;
+        const timer = setTimeout(() => {
+            if (typeof gtag === "function") {
+                gtag("event", "niche_search", {
+                    search_query:   search,
+                    filter_format:  filterFormat,
+                    results_count:  filtered.length,
+                });
+            }
+        }, 800);
+        return () => clearTimeout(timer);
+    }, [search]);
+
+    // 🔥 Track les changements de filtre format
+    function handleFormatFilter(value) {
+        setFilterFormat(value);
+        if (typeof gtag === "function") {
+            gtag("event", "niche_filter_format", {
+                filter_value: value,
+            });
+        }
+    }
+
     const filtered = niches
         .filter(n => {
             const matchSearch  = n.niche.toLowerCase().includes(search.toLowerCase())
@@ -206,7 +260,6 @@ export default function NicheFinder() {
             return matchSearch && matchPop && matchFormat;
         })
         .sort((a, b) => {
-            // Trending toujours en premier
             if (a.trending && !b.trending) return -1;
             if (!a.trending && b.trending) return 1;
             if (sort === "rpm_desc")  return b.rpm - a.rpm;
@@ -229,6 +282,19 @@ export default function NicheFinder() {
         acc[n.format] = (acc[n.format] || 0) + 1;
         return acc;
     }, {});
+
+    // 🔥 Track le "Show more"
+    function handleShowMore() {
+        setVisibleCount(v => v + 12);
+        if (typeof gtag === "function") {
+            gtag("event", "niche_show_more", {
+                visible_before: visibleCount,
+                visible_after:  visibleCount + 12,
+                total_filtered: filtered.length,
+                filter_format:  filterFormat,
+            });
+        }
+    }
 
     return (
         <>
@@ -258,13 +324,13 @@ export default function NicheFinder() {
                     </div>
 
                     <div className="nf-filters">
-                        {/* Format filter — nouveau */}
+                        {/* Format filter */}
                         <div className="nf-toggle nf-toggle--format">
                             {FORMAT_FILTERS.map(f => (
                                 <button
                                     key={f.value}
                                     className={`nf-toggle__btn ${filterFormat === f.value ? "nf-toggle__btn--active" : ""}`}
-                                    onClick={() => setFilterFormat(f.value)}
+                                    onClick={() => handleFormatFilter(f.value)}
                                 >
                                     {f.label}
                                     {f.value !== "all" && (
@@ -305,7 +371,7 @@ export default function NicheFinder() {
                     <div className="nf-showmore-wrap">
                         <button
                             className="nf-showmore"
-                            onClick={() => setVisibleCount(v => v + 12)}
+                            onClick={handleShowMore}
                         >
                             Show More ({filtered.length - visibleCount} remaining)
                         </button>
