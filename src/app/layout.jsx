@@ -1,5 +1,6 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
 import ClientWrapper from './clientWrapper';
+import { Analytics } from "@vercel/analytics/next"
 
 export default function RootLayout({ children }) {
   return (
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
           {children}
         </ClientWrapper>
         <GoogleAnalytics gaId="G-N2X7Y2KNGF" />
+        <Analytics/>
       </body>
     </html>
   );
