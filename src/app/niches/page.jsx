@@ -94,12 +94,12 @@ function NicheCard({ niche, index, openId, setOpenId }) {
         const isOpening = !open;
         setOpenId(isOpening ? niche.id : null);
 
-        // 🔥 Track uniquement à l'ouverture
+        // Track uniquement à l'ouverture
         if (isOpening && typeof gtag === "function") {
             gtag("event", "niche_expanded", {
                 niche_id:         niche.id,
                 niche_label:      niche.niche,
-                niche_format:     niche.format,               // "Long-form" | "Shorts" | "Both"
+                niche_format:     niche.format,
                 niche_faceless:   niche.faceless ?? "unknown",
                 niche_rpm:        niche.rpm,
                 niche_saturation: niche.saturation,
@@ -111,7 +111,7 @@ function NicheCard({ niche, index, openId, setOpenId }) {
     }
 
     function goToCalculator() {
-        // 🔥 Track le clic CTA vers le calculateur
+        // Track le clic CTA vers le calculateur
         if (typeof gtag === "function") {
             gtag("event", "niche_cta_click", {
                 niche_id:         niche.id,
@@ -226,7 +226,7 @@ export default function NicheFinder() {
         gsap.from(headerRef.current, { opacity: 0, y: -20, duration: 0.7, ease: "expo.out" });
     }, []);
 
-    // 🔥 Track la recherche (avec debounce pour ne pas spammer)
+    // Track la recherche (avec debounce pour ne pas spammer)
     useEffect(() => {
         if (!search) return;
         const timer = setTimeout(() => {
@@ -241,7 +241,7 @@ export default function NicheFinder() {
         return () => clearTimeout(timer);
     }, [search]);
 
-    // 🔥 Track les changements de filtre format
+    // Track les changements de filtre format
     function handleFormatFilter(value) {
         setFilterFormat(value);
         if (typeof gtag === "function") {

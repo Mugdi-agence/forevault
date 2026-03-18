@@ -243,7 +243,7 @@ $font:         'Poppins', sans-serif;
     gap: 1rem;
     padding: 3rem;
 
-    &__icon { font-size: 2.5rem; opacity: 0.25; }
+    &__icon { font-size: 2.5rem; opacity: 0.25; transform: scale(2); }
     &__text { text-align: center; font-size: 0.83rem; color: $white-30; line-height: 1.7; }
 }
 

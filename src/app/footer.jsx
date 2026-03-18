@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const LINKS = {
     Product: [
         { label: "Calculator", href: "./calculator" },
+        // { label: "Predictor", href: "./predictor" },
         { label: "how it works", href: "../#how-it-works" },
         { label: "Niches", href: "./niches" }
     ],

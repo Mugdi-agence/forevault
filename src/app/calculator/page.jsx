@@ -10,6 +10,7 @@ import './styles.scss';
 import Navbar from "../nav";
 import Footer from "../footer";
 import { useSearchParams } from "next/navigation";
+import AlignVerticalBottomIcon from '@mui/icons-material/AlignVerticalBottom';
 
 const CURRENCIES = [
     { code: "USD", symbol: "$",   label: "US Dollar",         rate: 1.000 },
@@ -70,7 +71,7 @@ function toUSD(views, rpm, countryMult, isShorts, retentionRate, durationMin) {
     retentionFactor = Math.max(0.70, Math.min(1.30, retentionFactor));
 
     if (isShorts) {
-        const SHORTS_RATIO = rpm > 10 ? 0.017 : 0.025;
+        const SHORTS_RATIO = rpm > 10 ? 0.012 : 0.018;
         const geoFactor    = 0.7 + countryFactor * 0.3;
         const shortsRPM    = rpm * SHORTS_RATIO * geoFactor * retentionFactor;
         return (views / 1000) * shortsRPM;
@@ -497,7 +498,7 @@ function CalculatorInner() {
                 <main className="panel panel--result">
                     {!result ? (
                         <div className="empty-state">
-                            <span className="empty-state__icon">📊</span>
+                            <span className="empty-state__icon"><AlignVerticalBottomIcon/></span>
                             <p className="empty-state__text">
                                 Fill in the form on the left<br />to see your revenue estimate
                             </p>
