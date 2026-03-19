@@ -3,6 +3,7 @@ import ClientWrapper from './clientWrapper';
 import { Analytics } from "@vercel/analytics/next"
 import Navbar from './nav';
 import Footer from './footer';
+import Script from 'next/script';
 
 export default function RootLayout({ children }) {
   return (
@@ -31,8 +32,8 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/logo.png" />
         <link rel="shortcut icon" href="/logo.png" />
         <meta name="thumbnail" content="/logo.png" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2975418958939959"
-     crossorigin="anonymous"></script>
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2975418958939959"
+     crossorigin="anonymous"></Script>
       </head>
       <body suppressHydrationWarning={true}>
         <ClientWrapper>
