@@ -379,6 +379,8 @@ function CalculatorInner() {
 
     return (
         <div className="appl">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2975418958939959"
+     crossorigin="anonymous"></script>
         <div className="page">
             <div className="layout" ref={layoutRef}>
 

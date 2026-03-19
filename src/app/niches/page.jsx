@@ -133,7 +133,8 @@ function NicheCard({ niche, index, openId, setOpenId }) {
 
     return (
         <div ref={cardRef} className={`niche-card ${open ? "niche-card--open" : ""} ${niche.trending ? "niche-card--trending" : ""}`}>
-
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2975418958939959"
+     crossorigin="anonymous"></script>
             <div className="niche-card__row" onClick={toggle}>
                 <div className="niche-card__left">
                     <span className={`niche-card__rpm niche-card__rpm--${rpmColor}`}>
