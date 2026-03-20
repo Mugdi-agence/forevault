@@ -8,6 +8,12 @@ import './footer.scss';
 gsap.registerPlugin(ScrollTrigger);
 
 const LINKS = {
+    Services: [
+        { label: "Terms Of Service", href: "./terms" },
+        { label: "Privacy Policy", href: "./privacy" },
+        { label: "About", href: "./about" }
+    ],
+
     Product: [
         { label: "Calculator", href: "./calculator" },
         // { label: "Predictor", href: "./predictor" },

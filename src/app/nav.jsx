@@ -9,6 +9,7 @@ const NAV_LINKS = [
     // { label: "Predictor",  href: "./predictor" },
     { label: "how it works",      href: "../#how-it-works" },
     { label: "Niches",      href: "./niches" },
+    { label: "How to get Viral",      href: "./blog" },
 ];
 
 export default function Navbar() {
