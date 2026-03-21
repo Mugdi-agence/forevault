@@ -482,3 +482,443 @@ body {
         }
     }
 }
+// ═══════════════════════════════════════════════════════════════════════════
+// NF-CONTENT — rich publisher content section (below the niche finder)
+// ═══════════════════════════════════════════════════════════════════════════
+
+.nf-content {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+    font-family: $font;
+    color: $white;
+
+    // ── Shared typography ──────────────────────────────────────────────────
+
+    &__eyebrow {
+        display: inline-flex;
+        padding: 3px 10px;
+        border-radius: 999px;
+        border: 1px solid $border-light;
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        color: $white-30;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+    }
+
+    &__h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: -0.4px;
+        line-height: 1.22;
+        color: $white;
+        margin-bottom: 1rem;
+    }
+
+    &__h3 {
+        font-size: 0.87rem;
+        font-weight: 700;
+        color: $white;
+        margin-bottom: 0.4rem;
+    }
+
+    &__p {
+        font-size: 0.87rem;
+        line-height: 1.76;
+        color: $white-60;
+        margin-bottom: 1rem;
+    }
+
+    &__lead {
+        font-size: 0.93rem;
+        line-height: 1.78;
+        color: $white-60;
+    }
+
+    &__link {
+        color: $white;
+        text-decoration-color: $white-30;
+        text-underline-offset: 3px;
+        transition: text-decoration-color 0.2s;
+        &:hover { text-decoration-color: $white; }
+    }
+
+    // ── Intro ──────────────────────────────────────────────────────────────
+    &__intro {
+        padding: 3rem 0 2.5rem;
+        border-bottom: 1px solid $border;
+        margin-bottom: 2.5rem;
+    }
+
+    // ── Stats row ──────────────────────────────────────────────────────────
+    &__stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 3rem;
+    }
+
+    &__stat {
+        background: $surface;
+        border: 1px solid $border;
+        border-radius: $radius-md;
+        padding: 1.2rem 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+
+    &__stat-val {
+        font-size: 1.8rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        color: $white;
+        line-height: 1;
+    }
+
+    &__stat-label {
+        font-size: 0.63rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: $white-30;
+        line-height: 1.3;
+    }
+
+    // ── Content blocks ─────────────────────────────────────────────────────
+    &__block {
+        padding: 2.5rem 0;
+        border-top: 1px solid $border;
+    }
+
+    // ── Metric cards (how to read) ─────────────────────────────────────────
+    &__metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    &__metric-card {
+        background: $surface;
+        border: 1px solid $border;
+        border-radius: $radius-md;
+        padding: 1.2rem 1.3rem;
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+        backdrop-filter: blur(10px);
+    }
+
+    &__metric-icon {
+        font-size: 1rem;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $white-06;
+        border: 1px solid $border;
+        border-radius: $radius-sm;
+        flex-shrink: 0;
+        color: $white-60;
+    }
+
+    // ── RPM Tier guide ─────────────────────────────────────────────────────
+    &__tiers {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        margin-top: 1.5rem;
+    }
+
+    &__tier {
+        background: $surface;
+        border: 1px solid $border;
+        border-radius: $radius-md;
+        padding: 1.3rem 1.5rem;
+        backdrop-filter: blur(10px);
+
+        &--s { border-left: 3px solid $green; }
+        &--a { border-left: 3px solid $neutral; }
+        &--b { border-left: 3px solid rgba(251, 191, 36, 0.8); }
+        &--c { border-left: 3px solid $red; }
+    }
+
+    &__tier-head {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    &__tier-badge {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 800;
+        border: 1px solid $border-light;
+        border-radius: $radius-sm;
+        color: $white;
+        background: $white-06;
+        flex-shrink: 0;
+    }
+
+    &__tier-rpm {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: $white;
+    }
+
+    &__tier-niches {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 0.75rem;
+
+        span {
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 3px 9px;
+            border-radius: 999px;
+            border: 1px solid $border-light;
+            color: $white-60;
+            background: $white-06;
+        }
+    }
+
+    &__tier-why {
+        font-size: 0.82rem;
+        line-height: 1.7;
+        color: $white-30;
+    }
+
+    // ── Numbered steps ─────────────────────────────────────────────────────
+    &__steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding-left: 1.4rem;
+        counter-reset: steps;
+        list-style: none;
+        margin-top: 1rem;
+
+        li {
+            position: relative;
+            font-size: 0.87rem;
+            line-height: 1.72;
+            color: $white-60;
+            padding-left: 0.5rem;
+
+            &::before {
+                content: counter(steps);
+                counter-increment: steps;
+                position: absolute;
+                left: -1.4rem;
+                top: 0.08em;
+                width: 1.1rem;
+                height: 1.1rem;
+                background: $white-10;
+                border: 1px solid $border-light;
+                border-radius: 50%;
+                font-size: 0.58rem;
+                font-weight: 700;
+                color: $white-30;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            strong { color: $white; font-weight: 600; }
+            em     { font-style: italic; }
+            a      { color: $white; text-decoration-color: $white-30; }
+        }
+    }
+
+    // ── CTA section ────────────────────────────────────────────────────────
+    &__ctas {
+        padding: 2.5rem 0;
+        border-top: 1px solid $border;
+    }
+
+    &__ctas-label {
+        font-size: 0.62rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+        color: $white-30;
+        margin-bottom: 1rem;
+    }
+
+    &__cta-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    &__cta-card {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        padding: 1.1rem 1.3rem;
+        background: $surface;
+        border: 1px solid $border;
+        border-radius: $radius-md;
+        text-decoration: none;
+        color: $white;
+        backdrop-filter: blur(10px);
+        transition: border-color 0.18s, background 0.18s;
+
+        &:hover {
+            border-color: $border-light;
+            background: $surface-2;
+        }
+
+        &:hover .nf-content__cta-arrow { transform: translateX(4px); }
+
+        strong {
+            display: block;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: $white;
+            margin-bottom: 0.15rem;
+        }
+
+        span:not(.nf-content__cta-icon):not(.nf-content__cta-arrow) {
+            font-size: 0.7rem;
+            color: $white-30;
+            line-height: 1.4;
+        }
+
+        div { flex: 1; min-width: 0; }
+    }
+
+    &__cta-icon {
+        font-size: 1rem;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $white-06;
+        border: 1px solid $border;
+        border-radius: $radius-sm;
+        color: $white-30;
+        flex-shrink: 0;
+    }
+
+    &__cta-arrow {
+        color: $white-30;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        transition: transform 0.2s;
+    }
+
+    // ── FAQ ────────────────────────────────────────────────────────────────
+    &__faq {
+        padding: 2.5rem 0;
+        border-top: 1px solid $border;
+    }
+
+    // ── Disclaimer ─────────────────────────────────────────────────────────
+    &__disclaimer {
+        font-size: 0.71rem;
+        line-height: 1.65;
+        color: $white-30;
+        border-top: 1px solid $border;
+        padding-top: 2rem;
+
+        a { color: $white-30; text-decoration-color: transparent;
+            &:hover { color: $white-60; } }
+    }
+}
+
+// ── FAQ items ──────────────────────────────────────────────────────────────────
+.nf-faq {
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        border-bottom: 1px solid $border;
+        &:first-child { border-top: 1px solid $border; }
+        &--open .nf-faq__q { color: $white; }
+    }
+
+    &__q {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.1rem 0;
+        background: none;
+        border: none;
+        color: $white-60;
+        font-family: $font;
+        font-size: 0.87rem;
+        font-weight: 600;
+        text-align: left;
+        cursor: pointer;
+        transition: color 0.15s;
+
+        &:hover { color: $white; }
+    }
+
+    &__chevron {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: $white-30;
+        flex-shrink: 0;
+        width: 20px;
+        text-align: center;
+        line-height: 1;
+    }
+
+    &__a {
+        padding: 0 0 1.2rem;
+        p {
+            font-size: 0.84rem;
+            line-height: 1.78;
+            color: $white-60;
+        }
+    }
+}
+
+// ── Responsive ─────────────────────────────────────────────────────────────────
+@media (max-width: 860px) {
+    .nf-content {
+        padding: 0 1rem 4rem;
+        &__stats   { grid-template-columns: repeat(2, 1fr); }
+        &__metrics { grid-template-columns: repeat(2, 1fr); }
+        &__cta-grid { grid-template-columns: 1fr; }
+    }
+}
+
+@media (max-width: 560px) {
+    .nf-content {
+        padding: 0 0.75rem 3rem;
+        &__h2    { font-size: 1.2rem; }
+        &__stats { grid-template-columns: repeat(2, 1fr); }
+        &__metrics { grid-template-columns: 1fr; }
+        &__stat-val { font-size: 1.5rem; }
+        &__metric-card { flex-direction: column; gap: 0.6rem; }
+    }
+}
+
+@media (max-width: 400px) {
+    .nf-content {
+        padding: 0 0.5rem 3rem;
+        &__cta-card { padding: 0.9rem 1rem; }
+        &__tiers { gap: 0.5rem; }
+    }
+}

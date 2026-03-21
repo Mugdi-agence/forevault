@@ -1,532 +1,1113 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-// ── Tokens ────────────────────────────────────────────────────────────────────
+// ── Tokens — aligned with the global design system ────────────────────────────
 $green:    #22c55e;
 $yellow:   #eab308;
 $red:      #ef4444;
 
-$green-g:  rgba(34, 197, 94, .14);
-$yellow-g: rgba(234, 179, 8,  .11);
-$red-g:    rgba(239, 68,  68, .14);
+$green-g:  rgba(34,  197, 94,  .10);
+$yellow-g: rgba(234, 179,  8,  .09);
+$red-g:    rgba(239,  68, 68,  .10);
 
 $surface:  rgba(17, 17, 17, .97);
-$s2:       rgba(24, 24, 24, .92);
-$border:   #232323;
-$b2:       #333;
+$s2:       rgba(22, 22, 22, .92);
+$s3:       rgba(28, 28, 28, .80);
+$border:   #222222;
+$b2:       #2e2e2e;
+$b3:       #3a3a3a;
 
 $white: #ffffff;
+$w80:   rgba(255, 255, 255, .80);
 $w60:   rgba(255, 255, 255, .60);
 $w30:   rgba(255, 255, 255, .30);
+$w16:   rgba(255, 255, 255, .16);
 $w12:   rgba(255, 255, 255, .12);
+$w08:   rgba(255, 255, 255, .08);
 $w06:   rgba(255, 255, 255, .06);
+$w04:   rgba(255, 255, 255, .04);
 
 $font: 'Poppins', sans-serif;
 
 $r-xl: 24px;
 $r-lg: 16px;
 $r-md: 12px;
-$r-sm: 8px;
+$r-sm:  8px;
+$r-xs:  5px;
 
 // ── Reset ─────────────────────────────────────────────────────────────────────
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-// ── Root ──────────────────────────────────────────────────────────────────────
-.ytp-root {
-  height: 85vh;
-  font-family: $font;
-  color: $white;
-  margin-bottom: 10vh;
-  padding-top: 10vh;
+// ── Shell ─────────────────────────────────────────────────────────────────────
+.containering {
+    min-height: 100vh;
 }
 
-.containering {
-  background: url(/background.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+.fonds {
+  background: url(/background.png) center / cover no-repeat;
+  z-index: -1;
+  position: fixed; width: 100%; height: 100vh;
+  top: 0; left: 0;
+}
 
+.ytp-root {
+    font-family: $font;
+    color: $white;
+    padding: 7.5rem 1.5rem 5rem;
 }
 
 // ── Layout ────────────────────────────────────────────────────────────────────
 .ytp-layout {
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  max-width: 1080px;
-  margin: 0 auto;
-  border: 1px solid $border;
-  border-radius: $r-xl;
-  overflow: hidden;
-  box-shadow: 0 48px 100px rgba(0, 0, 0, .78);
-  will-change: transform, opacity;
-  backdrop-filter: blur(15px);
+    display: grid;
+    grid-template-columns: 390px 1fr;
+    max-width: 1080px;
+    margin: 0 auto;
+    border: 1px solid $border;
+    border-radius: $r-xl;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.03) inset,
+        0 48px 100px rgba(0,0,0,.75),
+        0 8px 24px rgba(0,0,0,.4);
+    will-change: transform, opacity;
+    backdrop-filter: blur(20px);
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
 // FORM PANEL
 // ══════════════════════════════════════════════════════════════════════════════
 .ytp-form {
-  background: $surface;
-  border-right: 1px solid $border;
-  padding: 2.4rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
+    background: $surface;
+    border-right: 1px solid $border;
+    padding: 2.4rem 2.2rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.65rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: $b2 transparent;
 
-  
-  overflow: hidden;
+    &::-webkit-scrollbar       { width: 3px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: $b2; border-radius: 2px; }
 }
 
+// ── Header ────────────────────────────────────────────────────────────────────
 .ytp-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 12px;
-  border-radius: 999px;
-  border: 1px solid $b2;
-  font-size: .65rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  color: $w30;
-  text-transform: uppercase;
-  width: fit-content;
-  margin-bottom: .2rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid $b2;
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: $w30;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: .3rem;
 }
 
 .ytp-title {
-  font-size: 1.8rem;
-  font-weight: 900;
-  letter-spacing: -.7px;
-  line-height: 1.1;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -.6px;
+    line-height: 1.1;
+    color: $white;
 }
 
 .ytp-sub {
-  font-size: .77rem;
-  color: $w30;
-  margin-top: .1rem;
+    font-size: .76rem;
+    color: $w30;
+    margin-top: .15rem;
+    font-weight: 400;
 }
 
 // ── Format toggle ─────────────────────────────────────────────────────────────
 .ytp-toggle {
-  display: flex;
-  background: $w06;
-  border: 1px solid $border;
-  border-radius: $r-md;
-  padding: 4px;
-  gap: 4px;
-  position: relative;
-  overflow: hidden;
+    display: flex;
+    background: $w06;
+    border: 1px solid $border;
+    border-radius: $r-md;
+    padding: 4px;
+    gap: 4px;
+    position: relative;
+    overflow: hidden;
 }
 
 .ytp-toggle-pill {
-  position: absolute;
-  top: 4px;
-  height: calc(100% - 8px);
-  border-radius: 9px;
-  background: $white;
-  pointer-events: none;
-  z-index: 0;
-  will-change: left, width;
+    position: absolute;
+    top: 4px;
+    height: calc(100% - 8px);
+    border-radius: 9px;
+    background: $white;
+    pointer-events: none;
+    z-index: 0;
+    will-change: left, width;
 }
 
 .ytp-toggle-btn {
-  flex: 1;
-  padding: .55rem;
-  border: none;
-  border-radius: 9px;
-  background: transparent;
-  color: $w30;
-  font-family: $font;
-  font-size: .8rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: color .2s;
-  position: relative;
-  z-index: 1;
+    flex: 1;
+    padding: .55rem;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: $w30;
+    font-family: $font;
+    font-size: .79rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color .2s;
+    position: relative;
+    z-index: 1;
+    letter-spacing: .1px;
 
-  &.active { color: #111; }
+    &.active { color: #111; }
+    &:not(.active):hover { color: $w60; }
+}
+
+// ── Divider between logical groups ───────────────────────────────────────────
+.ytp-divider {
+    height: 1px;
+    background: $border;
+    margin: .1rem 0;
 }
 
 // ── Fields ────────────────────────────────────────────────────────────────────
 .ytp-field {
-  display: flex;
-  flex-direction: column;
-  gap: .32rem;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
 }
 
 .ytp-label {
-  font-size: .67rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .7px;
-  color: $w30;
+    font-size: .64rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .75px;
+    color: $w30;
+    line-height: 1;
 }
 
 .ytp-hint {
-  font-size: .63rem;
-  font-style: italic;
-  color: $w30;
-  margin-top: .1rem;
+    font-size: .62rem;
+    font-style: italic;
+    color: $w30;
+    margin-top: .08rem;
+    line-height: 1.45;
 
-  &.green  { color: $green;  opacity: .85; }
-  &.yellow { color: $yellow; opacity: .85; }
-  &.red    { color: $red;    opacity: .85; }
+    &.green  { color: rgba(34,  197, 94, .9); font-style: normal; font-weight: 500; }
+    &.yellow { color: rgba(234, 179,  8, .9); font-style: normal; font-weight: 500; }
+    &.red    { color: rgba(239,  68, 68, .9); font-style: normal; font-weight: 500; }
 }
 
 .ytp-input {
-  background: $s2;
-  border: 1px solid $border;
-  border-radius: $r-sm;
-  padding: .65rem .85rem;
-  color: $white;
-  font-family: $font;
-  font-size: .87rem;
-  font-weight: 500;
-  outline: none;
-  width: 100%;
-  appearance: none;
-  transition: border-color .25s, background .25s;
+    background: $s2;
+    border: 1px solid $b2;
+    border-radius: $r-sm;
+    padding: .6rem .8rem;
+    color: $white;
+    font-family: $font;
+    font-size: .85rem;
+    font-weight: 500;
+    outline: none;
+    width: 100%;
+    appearance: none;
+    transition: border-color .2s, background .2s, box-shadow .2s;
 
-  &::placeholder { color: rgba(255, 255, 255, .16); }
-  &:focus        { border-color: $w30; background: #1e1e1e; }
+    &::placeholder { color: $w16; }
 
-  &.valid { border-color: rgba(34,  197, 94, .45); }
-  &.warn  { border-color: rgba(234, 179,  8, .45); }
-  &.bad   { border-color: rgba(239,  68, 68, .45); }
+    &:focus {
+        border-color: $w30;
+        background: #1e1e1e;
+        box-shadow: 0 0 0 3px rgba(255,255,255,.04);
+    }
 
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button { -webkit-appearance: none; }
+    // Validation states
+    &.valid {
+        border-color: rgba(34,  197, 94, .4);
+        &:focus { box-shadow: 0 0 0 3px rgba(34, 197, 94, .06); }
+    }
+    &.warn  {
+        border-color: rgba(234, 179,  8, .4);
+        &:focus { box-shadow: 0 0 0 3px rgba(234, 179, 8, .06); }
+    }
+    &.bad   {
+        border-color: rgba(239,  68, 68, .4);
+        &:focus { box-shadow: 0 0 0 3px rgba(239, 68, 68, .06); }
+    }
 
-  &[type=date]::-webkit-calendar-picker-indicator {
-    filter: invert(1) opacity(.3);
-    cursor: pointer;
-  }
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button { -webkit-appearance: none; }
 }
 
 .ytp-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .7rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .85rem;
 }
 
 // ── Duration ──────────────────────────────────────────────────────────────────
 .ytp-dur {
-  display: flex;
-  align-items: center;
-  gap: .35rem;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
 
-  &-sep {
-    font-size: .75rem;
-    font-weight: 600;
-    color: $w30;
-    flex-shrink: 0;
-  }
+    &-sep {
+        font-size: .72rem;
+        font-weight: 600;
+        color: $w30;
+        flex-shrink: 0;
+    }
 
-  &-part {
-    flex: 1;
-    min-width: 0;
-    text-align: center;
-    padding-left:  .4rem !important;
-    padding-right: .4rem !important;
-  }
+    &-part {
+        flex: 1;
+        min-width: 0;
+        text-align: center;
+        padding-left:  .35rem !important;
+        padding-right: .35rem !important;
+    }
 }
 
-// ── Engagement ────────────────────────────────────────────────────────────────
+// ── Engagement 2×2 grid ───────────────────────────────────────────────────────
+// The grid itself is the old .ytp-eng-grid, now used for 4 input fields
 .ytp-eng-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: .4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .65rem;
 }
 
-.ytp-eng-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .18rem;
-  padding: .55rem .2rem;
-  background: $s2;
-  border: 1px solid $border;
-  border-radius: $r-sm;
-  color: $w30;
-  font-family: $font;
-  cursor: pointer;
-  transition: border-color .18s, color .18s, background .18s;
-  will-change: transform;
+.ytp-eng-input-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: .28rem;
+    background: $w04;
+    border: 1px solid $border;
+    border-radius: $r-sm;
+    padding: .55rem .7rem .6rem;
+    transition: border-color .18s, background .18s;
 
-  &:hover  { border-color: $b2;    color: $w60; }
-  &.active { border-color: $white; background: $w12; color: $white; }
+    &:focus-within {
+        border-color: $b3;
+        background: rgba(255,255,255,.05);
+    }
 
-  &.active .ytp-eng-pts { color: rgba(255, 255, 255, .45); }
+    // Make the inner input borderless — border is on the wrap
+    .ytp-input {
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        font-size: .82rem;
+        box-shadow: none !important;
+
+        &:focus { background: transparent; box-shadow: none !important; }
+        &::placeholder { color: $w16; }
+    }
 }
 
-.ytp-eng-icon { font-size: .95rem; line-height: 1; }
-.ytp-eng-name { font-size: .6rem;  font-weight: 700; letter-spacing: .3px; }
-.ytp-eng-pts  { font-size: .55rem; color: $w30; }
+.ytp-eng-input-label {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .65px;
+    color: $w30;
+    line-height: 1;
 
-// ── Error + CTA ───────────────────────────────────────────────────────────────
+    span:first-child { font-size: .78rem; line-height: 1; }
+}
+
+.ytp-eng-pts {
+    margin-left: auto;
+    font-size: .55rem;
+    font-weight: 600;
+    color: rgba(255,255,255,.15);
+    letter-spacing: .2px;
+}
+
+// ── Error ──────────────────────────────────────────────────────────────────────
 .ytp-error {
-  font-size: .77rem;
-  color: $red;
-  font-weight: 500;
-  padding: .6rem .9rem;
-  background: $red-g;
-  border: 1px solid rgba(239, 68, 68, .25);
-  border-radius: $r-sm;
+    font-size: .75rem;
+    color: $red;
+    font-weight: 500;
+    padding: .55rem .85rem;
+    background: $red-g;
+    border: 1px solid rgba(239, 68, 68, .22);
+    border-radius: $r-sm;
+    line-height: 1.45;
 }
 
+// ── CTA button ────────────────────────────────────────────────────────────────
 .ytp-btn {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .65rem;
-  padding: .9rem 1.4rem;
-  background: $white;
-  border: none;
-  border-radius: $r-md;
-  color: #111;
-  font-family: $font;
-  font-size: .88rem;
-  font-weight: 800;
-  cursor: pointer;
-  transition: background .2s;
-  will-change: transform;
-  letter-spacing: .2px;
+    margin-top: .2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    padding: .85rem 1.4rem;
+    background: $white;
+    border: none;
+    border-radius: $r-md;
+    color: #111;
+    font-family: $font;
+    font-size: .87rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background .2s, box-shadow .2s;
+    will-change: transform;
+    letter-spacing: .2px;
 
-  &:hover               { background: #e6e6e6; }
-  &:hover .ytp-btn-arrow { transform: translateX(4px); }
+    &:hover {
+        background: #ececec;
+        box-shadow: 0 4px 20px rgba(255,255,255,.10);
+    }
+
+    &:hover .ytp-btn-arrow { transform: translateX(4px); }
 }
 
 .ytp-btn-arrow {
-  display: inline-block;
-  transition: transform .2s;
+    display: inline-block;
+    transition: transform .2s;
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
 // RESULT PANEL
 // ══════════════════════════════════════════════════════════════════════════════
 .ytp-result {
-  background: $s2;
-  padding: 2.4rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.35rem;
-  overflow: hidden;
+    background: $s3;
+    padding: 2.2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: $b2 transparent;
+
+    &::-webkit-scrollbar       { width: 3px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: $b2; border-radius: 2px; }
 }
 
 // ── Empty state ───────────────────────────────────────────────────────────────
 .ytp-empty {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  opacity: .22;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .9rem;
 
-  &-icon { font-size: 3.2rem; }
-  &-text { font-size: .83rem; line-height: 1.75; text-align: center; }
+    &-icon {
+        font-size: 2rem;
+        opacity: .15;
+    }
+
+    &-text {
+        font-size: .8rem;
+        line-height: 1.75;
+        text-align: center;
+        color: $w30;
+        font-weight: 400;
+    }
 }
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
 .ytp-hero {
-  display: flex;
-  border: 1px solid $border;
-  border-radius: $r-lg;
-  overflow: hidden;
-  will-change: transform, opacity;
-
-  &-block {
-    flex: 1;
-    padding: 1.3rem 1.5rem;
     display: flex;
-    flex-direction: column;
-    gap: .2rem;
+    border: 1px solid $border;
+    border-radius: $r-lg;
+    overflow: hidden;
+    will-change: transform, opacity;
+    background: $w04;
 
-    &.green { background: rgba(34, 197, 94, .07); }
-  }
+    &-block {
+        flex: 1;
+        padding: 1.3rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: .18rem;
 
-  &-sep   { width: 1px; background: $border; flex-shrink: 0; }
+        &.green { background: rgba(34, 197, 94, .06); }
+    }
 
-  &-label {
-    font-size: .64rem;
-    text-transform: uppercase;
-    letter-spacing: .8px;
-    color: $w30;
-    font-weight: 600;
-  }
+    &-sep { width: 1px; background: $border; flex-shrink: 0; }
 
-  &-val {
-    font-size: 1.9rem;
-    font-weight: 900;
-    letter-spacing: -1.2px;
+    &-label {
+        font-size: .6rem;
+        text-transform: uppercase;
+        letter-spacing: .85px;
+        color: $w30;
+        font-weight: 600;
+    }
 
-    &.green { color: $green; }
-    &.muted { font-size: 1.5rem; color: $w60; font-weight: 800; }
-  }
+    &-val {
+        font-size: 1.9rem;
+        font-weight: 900;
+        letter-spacing: -1px;
+        line-height: 1.05;
 
-  &-sub { font-size: .65rem; color: $w30; margin-top: .05rem; }
+        &.green { color: $green; }
+        &.muted { font-size: 1.5rem; color: $w60; font-weight: 800; }
+    }
+
+    &-sub { font-size: .62rem; color: $w30; margin-top: .08rem; }
 }
 
 // ── Meta grid ─────────────────────────────────────────────────────────────────
 .ytp-meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: .55rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
 }
 
 .ytp-tag {
-  background: $w06;
-  border: 1px solid $border;
-  border-radius: $r-sm;
-  padding: .65rem .85rem;
-  display: flex;
-  flex-direction: column;
-  gap: .18rem;
-  will-change: transform, opacity;
-  transition: border-color .2s;
+    background: $w06;
+    border: 1px solid $border;
+    border-radius: $r-sm;
+    padding: .6rem .8rem;
+    display: flex;
+    flex-direction: column;
+    gap: .16rem;
+    will-change: transform, opacity;
+    transition: border-color .2s;
 
-  &.hl     { border-color: $w30;                     background: $w12; }
-  &.green  { border-color: rgba(34, 197, 94, .3);    background: rgba(34, 197, 94, .06); }
-  &.red    { border-color: rgba(239,  68, 68, .3);   background: rgba(239,  68, 68, .06); }
-  &.yellow { border-color: rgba(234, 179,  8, .3);   background: rgba(234, 179,  8, .06); }
+    &.hl {
+        border-color: rgba(255,255,255,.22);
+        background: $w12;
+    }
 
-  &.green  .ytp-tag-val { color: $green; }
-  &.red    .ytp-tag-val { color: $red; }
-  &.yellow .ytp-tag-val { color: $yellow; }
+    &.green  { border-color: rgba(34,  197, 94, .28); background: rgba(34,  197, 94, .05); }
+    &.red    { border-color: rgba(239,  68, 68, .28); background: rgba(239,  68, 68, .05); }
+    &.yellow { border-color: rgba(234, 179,  8, .28); background: rgba(234, 179,  8, .05); }
 
-  &-label {
-    font-size: .59rem;
-    text-transform: uppercase;
-    letter-spacing: .6px;
-    color: $w30;
-    font-weight: 600;
-  }
+    &.green  .ytp-tag-val { color: $green; }
+    &.red    .ytp-tag-val { color: $red; }
+    &.yellow .ytp-tag-val { color: $yellow; }
 
-  &-val {
-    font-size: .83rem;
-    font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    &-label {
+        font-size: .57rem;
+        text-transform: uppercase;
+        letter-spacing: .65px;
+        color: $w30;
+        font-weight: 600;
+    }
+
+    &-val {
+        font-size: .82rem;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $w80;
+    }
 }
 
 // ── Score bar ─────────────────────────────────────────────────────────────────
-.score-wrap    { display: flex; flex-direction: column; gap: .35rem; }
+.score-wrap    { display: flex; flex-direction: column; gap: .32rem; }
 .score-row     { display: flex; align-items: center; gap: .5rem; }
-.score-track   { flex: 1; height: 5px; background: rgba(255, 255, 255, .08); border-radius: 3px; overflow: hidden; }
-.score-fill    { height: 100%; border-radius: 3px; width: 0; }
-.score-num     { font-size: .78rem; font-weight: 800; min-width: 30px; text-align: right; }
-.score-verdict { font-size: .62rem; font-weight: 700; letter-spacing: .4px; }
+.score-track   {
+    flex: 1;
+    height: 4px;
+    background: $w08;
+    border-radius: 2px;
+    overflow: hidden;
+}
+.score-fill    { height: 100%; border-radius: 2px; width: 0; }
+.score-num     { font-size: .76rem; font-weight: 800; min-width: 28px; text-align: right; }
+.score-verdict { font-size: .6rem;  font-weight: 700; letter-spacing: .35px; }
 
 // ── Insight banner ────────────────────────────────────────────────────────────
 .ytp-insight {
-  border-radius: $r-sm;
-  padding: .65rem .95rem;
-  font-size: .73rem;
-  line-height: 1.55;
-  display: flex;
-  align-items: flex-start;
-  gap: .6rem;
-  will-change: transform, opacity;
+    border-radius: $r-sm;
+    padding: .7rem 1rem;
+    font-size: .72rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: .65rem;
+    will-change: transform, opacity;
 
-  &.green  { background: rgba(34, 197, 94, .07); border: 1px solid rgba(34, 197, 94, .20); color: rgba(34, 197, 94, .9); }
-  &.yellow { background: rgba(234, 179,  8, .07); border: 1px solid rgba(234, 179,  8, .18); color: rgba(234, 179,  8, .9); }
-  &.red    { background: rgba(239,  68, 68, .07); border: 1px solid rgba(239,  68, 68, .20); color: rgba(239,  68, 68, .9); }
+    &.green  {
+        background: rgba(34,  197, 94, .07);
+        border: 1px solid rgba(34,  197, 94, .18);
+        color: rgba(34,  197, 94, .88);
+    }
+    &.yellow {
+        background: rgba(234, 179,  8, .07);
+        border: 1px solid rgba(234, 179,  8, .16);
+        color: rgba(234, 179,  8, .88);
+    }
+    &.red {
+        background: rgba(239,  68, 68, .07);
+        border: 1px solid rgba(239,  68, 68, .18);
+        color: rgba(239,  68, 68, .88);
+    }
 
-  &-icon { font-size: 1rem; flex-shrink: 0; margin-top: .1rem; }
+    &-icon { font-size: .95rem; flex-shrink: 0; margin-top: .1rem; }
 
-  b { font-weight: 700; }
+    b { font-weight: 700; }
 }
 
 // ── Milestones ────────────────────────────────────────────────────────────────
-.ytp-milestones { display: flex; gap: .5rem; }
+.ytp-milestones { display: flex; gap: .45rem; }
 
 .ytp-milestone {
-  flex: 1;
-  background: $w06;
-  border: 1px solid $border;
-  border-radius: $r-sm;
-  padding: .55rem .8rem;
-  text-align: center;
-  will-change: transform, opacity;
-  transition: border-color .2s, background .2s;
+    flex: 1;
+    background: $w06;
+    border: 1px solid $border;
+    border-radius: $r-sm;
+    padding: .55rem .75rem;
+    text-align: center;
+    will-change: transform, opacity;
+    transition: border-color .2s, background .2s;
 
-  &:hover { border-color: $b2; }
-  &.green { border-color: rgba(34, 197, 94, .3); background: rgba(34, 197, 94, .05); }
-  &.red   { border-color: rgba(239,  68, 68, .3); background: rgba(239,  68, 68, .05); }
+    &:hover { border-color: $b2; background: $w08; }
 
-  &-day { font-size: .57rem; font-weight: 600; color: $w30; text-transform: uppercase; letter-spacing: .5px; }
-  &-val { font-size: .92rem; font-weight: 800; margin-top: .1rem; }
+    &.green {
+        border-color: rgba(34,  197, 94, .28);
+        background:   rgba(34,  197, 94, .05);
+    }
+    &.red {
+        border-color: rgba(239,  68, 68, .28);
+        background:   rgba(239,  68, 68, .05);
+    }
+
+    &-day {
+        font-size: .55rem;
+        font-weight: 700;
+        color: $w30;
+        text-transform: uppercase;
+        letter-spacing: .55px;
+    }
+
+    &-val {
+        font-size: .9rem;
+        font-weight: 800;
+        margin-top: .12rem;
+        letter-spacing: -.2px;
+    }
 }
 
-// ── Chart block ───────────────────────────────────────────────────────────────
+// ── Chart ─────────────────────────────────────────────────────────────────────
 .ytp-chart-block {
-  display: flex;
-  flex-direction: column;
-  gap: .7rem;
-  flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+    flex: 1;
 }
 
 .ytp-chart-head  { display: flex; align-items: center; justify-content: space-between; }
-.ytp-chart-title { font-size: .64rem; text-transform: uppercase; letter-spacing: .8px; color: $w30; font-weight: 600; }
-.ytp-chart-tabs  { display: flex; gap: .35rem; }
+
+.ytp-chart-title {
+    font-size: .6rem;
+    text-transform: uppercase;
+    letter-spacing: .85px;
+    color: $w30;
+    font-weight: 600;
+}
+
+.ytp-chart-tabs { display: flex; gap: .3rem; }
 
 .ytp-chart-tab {
-  padding: .28rem .75rem;
-  border-radius: 999px;
-  border: 1px solid $border;
-  background: transparent;
-  color: $w30;
-  font-family: $font;
-  font-size: .67rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .18s;
-  will-change: transform;
+    padding: .26rem .7rem;
+    border-radius: 999px;
+    border: 1px solid $border;
+    background: transparent;
+    color: $w30;
+    font-family: $font;
+    font-size: .65rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .18s;
 
-  &.active            { border-color: rgba(255, 255, 255, .45); background: $w12; color: $white; }
-  &:hover:not(.active) { border-color: $b2; color: $w60; }
+    &.active             { border-color: $b3; background: $w12; color: $white; }
+    &:hover:not(.active) { border-color: $b2; color: $w60; }
 }
 
 // ── Chart tooltip ─────────────────────────────────────────────────────────────
 .ytp-tip {
-  background: #181818;
-  border: 1px solid #333;
-  border-radius: $r-sm;
-  padding: 8px 14px;
+    background: #171717;
+    border: 1px solid $b2;
+    border-radius: $r-sm;
+    padding: 8px 13px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.4);
 
-  &-day { font-size: .7rem;  color: $w30; margin-bottom: 2px; }
-  &-val { font-size: .92rem; font-weight: 800; color: $white; letter-spacing: -.3px; }
-  &-lbl { font-size: .63rem; color: $w30; }
+    &-day { font-size: .68rem; color: $w30; margin-bottom: 2px; }
+    &-val { font-size: .9rem;  font-weight: 800; color: $white; letter-spacing: -.3px; }
+    &-lbl { font-size: .6rem;  color: $w30; }
 }
 
 // ── Chart legend ──────────────────────────────────────────────────────────────
 .ytp-legend {
-  display: flex;
-  gap: 1.2rem;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 1.1rem;
+    flex-wrap: wrap;
 
-  &-item { display: flex; align-items: center; gap: .4rem; font-size: .67rem; color: $w30; }
-  &-dot  { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  &-dash { width: 16px; border-top: 2px dashed rgba(255, 255, 255, .3); flex-shrink: 0; }
+    &-item { display: flex; align-items: center; gap: .38rem; font-size: .65rem; color: $w30; }
+    &-dot  { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    &-dash { width: 14px; border-top: 2px dashed rgba(255,255,255,.28); flex-shrink: 0; }
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
 // RESPONSIVE
 // ══════════════════════════════════════════════════════════════════════════════
-@media (max-width: 900px) {
-  .ytp-layout { grid-template-columns: 1fr; }
-  .ytp-form   { border-right: none; border-bottom: 1px solid $border; }
+
+// Tablette — stack columns
+@media (max-width: 940px) {
+    .ytp-layout {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+    .ytp-form {
+        border-right: none;
+        border-bottom: 1px solid $border;
+    }
+}
+
+// Mobile
+@media (max-width: 560px) {
+    .ytp-root {
+        padding: 5.5rem .75rem 3rem;
+    }
+
+    .ytp-form,
+    .ytp-result {
+        padding: 1.5rem 1.1rem;
+    }
+
+    .ytp-row  { grid-template-columns: 1fr; gap: .55rem; }
+    .ytp-meta { grid-template-columns: repeat(2, 1fr); }
+
+    .ytp-milestones { flex-direction: column; gap: .4rem; }
+
+    .ytp-hero {
+        flex-direction: column;
+
+        &-sep { width: 100%; height: 1px; }
+        &-val { font-size: 1.65rem; }
+        &-val.muted { font-size: 1.35rem; }
+    }
+
+    .ytp-title   { font-size: 1.55rem; }
+    .ytp-eng-grid { grid-template-columns: 1fr 1fr; }
+}
+
+// Petit mobile
+@media (max-width: 400px) {
+    .ytp-form,
+    .ytp-result { padding: 1.25rem .9rem; }
+
+    .ytp-title { font-size: 1.35rem; }
+    .ytp-meta  { grid-template-columns: repeat(2, 1fr); gap: .4rem; }
+
+    .ytp-eng-grid { grid-template-columns: 1fr; }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// YTP-CONTENT — rich SEO content section (below the tool)
+// Same design language as .calc-content and .nf-content
+// ═══════════════════════════════════════════════════════════════════════════════
+
+.ytp-content {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+    font-family: $font;
+    color: $white;
+
+    &__eyebrow {
+        display: inline-flex;
+        padding: 3px 10px;
+        border-radius: 999px;
+        border: 1px solid $b2;
+        font-size: .6rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        color: $w30;
+        text-transform: uppercase;
+        margin-bottom: .75rem;
+    }
+
+    &__h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: -.4px;
+        line-height: 1.2;
+        color: $white;
+        margin-bottom: 1rem;
+    }
+
+    &__h3 {
+        font-size: .87rem;
+        font-weight: 700;
+        color: $white;
+        margin-bottom: .4rem;
+        letter-spacing: -.1px;
+    }
+
+    &__p {
+        font-size: .87rem;
+        line-height: 1.76;
+        color: $w60;
+        margin-bottom: 1rem;
+    }
+
+    &__lead {
+        font-size: .93rem;
+        line-height: 1.78;
+        color: $w60;
+    }
+
+    &__link {
+        color: $w60;
+        text-decoration-color: $w30;
+        text-underline-offset: 3px;
+        transition: color .2s;
+        &:hover { color: $white; }
+    }
+
+    // Intro
+    &__intro {
+        padding: 3rem 0 2.5rem;
+        border-bottom: 1px solid $border;
+        margin-bottom: 2.5rem;
+    }
+
+    // Stats row
+    &__stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: .75rem;
+        margin-bottom: 3rem;
+    }
+
+    &__stat {
+        background: $surface;
+        border: 1px solid $border;
+        border-radius: $r-md;
+        padding: 1.2rem 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: .3rem;
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+
+    &__stat-val {
+        font-size: 1.8rem;
+        font-weight: 800;
+        letter-spacing: -.5px;
+        color: $white;
+        line-height: 1;
+    }
+
+    &__stat-label {
+        font-size: .63rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .6px;
+        color: $w30;
+        line-height: 1.3;
+    }
+
+    // Content blocks
+    &__block {
+        padding: 2.5rem 0;
+        border-top: 1px solid $border;
+    }
+
+    // Numbered steps
+    &__steps {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+        padding-left: 1.4rem;
+        counter-reset: steps;
+        list-style: none;
+        margin-top: 1rem;
+
+        li {
+            position: relative;
+            font-size: .87rem;
+            line-height: 1.72;
+            color: $w60;
+            padding-left: .5rem;
+
+            &::before {
+                content: counter(steps);
+                counter-increment: steps;
+                position: absolute;
+                left: -1.4rem;
+                top: .08em;
+                width: 1.1rem;
+                height: 1.1rem;
+                background: $w08;
+                border: 1px solid $b2;
+                border-radius: 50%;
+                font-size: .58rem;
+                font-weight: 700;
+                color: $w30;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            strong { color: $white; font-weight: 600; }
+        }
+    }
+
+    // Metric cards grid (2×3)
+    &__metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: .75rem;
+        margin-top: 1.5rem;
+    }
+
+    &__metric-card {
+        background: $surface;
+        border: 1px solid $border;
+        border-radius: $r-md;
+        padding: 1.2rem 1.3rem;
+        display: flex;
+        gap: .85rem;
+        align-items: flex-start;
+        backdrop-filter: blur(10px);
+    }
+
+    &__metric-icon {
+        font-size: 1rem;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $w06;
+        border: 1px solid $border;
+        border-radius: $r-sm;
+        flex-shrink: 0;
+    }
+
+    // Algo score tiers
+    &__tiers {
+        display: flex;
+        flex-direction: column;
+        gap: .65rem;
+        margin-top: 1.5rem;
+    }
+
+    &__tier {
+        background: $surface;
+        border: 1px solid $border;
+        border-radius: $r-md;
+        padding: 1.2rem 1.5rem;
+        backdrop-filter: blur(10px);
+
+        &--s { border-left: 3px solid $green; }
+        &--a { border-left: 3px solid rgba(34, 197, 200, .8); }
+        &--b { border-left: 3px solid $yellow; }
+        &--c { border-left: 3px solid $red; }
+    }
+
+    &__tier-head {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        margin-bottom: .6rem;
+    }
+
+    &__tier-badge {
+        padding: 2px 9px;
+        border: 1px solid $b2;
+        border-radius: $r-xs;
+        font-size: .7rem;
+        font-weight: 800;
+        color: $white;
+        background: $w06;
+        white-space: nowrap;
+    }
+
+    &__tier-name {
+        font-size: .86rem;
+        font-weight: 700;
+        color: $white;
+    }
+
+    &__tier-why {
+        font-size: .82rem;
+        line-height: 1.7;
+        color: $w30;
+    }
+
+    // CTA section
+    &__ctas {
+        padding: 2.5rem 0;
+        border-top: 1px solid $border;
+    }
+
+    &__ctas-label {
+        font-size: .6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+        color: $w30;
+        margin-bottom: 1rem;
+    }
+
+    &__cta-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: .75rem;
+    }
+
+    &__cta-card {
+        display: flex;
+        align-items: center;
+        gap: .9rem;
+        padding: 1.1rem 1.3rem;
+        background: $surface;
+        border: 1px solid $border;
+        border-radius: $r-md;
+        text-decoration: none;
+        color: $white;
+        backdrop-filter: blur(10px);
+        transition: border-color .18s, background .18s;
+
+        &:hover {
+            border-color: $b2;
+            background: $s2;
+        }
+
+        &:hover .ytp-content__cta-arrow { transform: translateX(4px); }
+
+        strong {
+            display: block;
+            font-size: .84rem;
+            font-weight: 700;
+            color: $white;
+            margin-bottom: .15rem;
+        }
+
+        span:not(.ytp-content__cta-icon):not(.ytp-content__cta-arrow) {
+            font-size: .7rem;
+            color: $w30;
+            line-height: 1.4;
+        }
+
+        div { flex: 1; min-width: 0; }
+    }
+
+    &__cta-icon {
+        font-size: 1rem;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $w06;
+        border: 1px solid $border;
+        border-radius: $r-sm;
+        color: $w30;
+        flex-shrink: 0;
+    }
+
+    &__cta-arrow {
+        color: $w30;
+        font-size: .9rem;
+        flex-shrink: 0;
+        transition: transform .2s;
+    }
+
+    // FAQ
+    &__faq {
+        padding: 2.5rem 0;
+        border-top: 1px solid $border;
+    }
+
+    // Disclaimer
+    &__disclaimer {
+        font-size: .71rem;
+        line-height: 1.65;
+        color: $w30;
+        border-top: 1px solid $border;
+        padding-top: 2rem;
+    }
+}
+
+// FAQ items
+.ytp-faq {
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        border-bottom: 1px solid $border;
+        &:first-child { border-top: 1px solid $border; }
+        &--open .ytp-faq__q { color: $white; }
+    }
+
+    &__q {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.1rem 0;
+        background: none;
+        border: none;
+        color: $w60;
+        font-family: $font;
+        font-size: .87rem;
+        font-weight: 600;
+        text-align: left;
+        cursor: pointer;
+        transition: color .15s;
+
+        &:hover { color: $white; }
+    }
+
+    &__chevron {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: $w30;
+        flex-shrink: 0;
+        width: 20px;
+        text-align: center;
+        line-height: 1;
+    }
+
+    &__a {
+        padding: 0 0 1.2rem;
+        p {
+            font-size: .84rem;
+            line-height: 1.78;
+            color: $w60;
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 860px) {
+    .ytp-content {
+        padding: 0 1rem 4rem;
+        &__stats   { grid-template-columns: repeat(2, 1fr); }
+        &__metrics { grid-template-columns: repeat(2, 1fr); }
+        &__cta-grid { grid-template-columns: 1fr; }
+    }
 }
 
 @media (max-width: 560px) {
-  .ytp-root               { padding: 1rem .75rem 2.5rem; }
-  .ytp-form, .ytp-result  { padding: 1.5rem 1.1rem; }
-  .ytp-row                { grid-template-columns: 1fr; }
-  .ytp-meta               { grid-template-columns: repeat(2, 1fr); }
-  .ytp-milestones         { flex-direction: column; }
-
-  .ytp-hero {
-    flex-direction: column;
-    &-sep { width: 100%; height: 1px; }
-  }
+    .ytp-content {
+        padding: 0 .75rem 3rem;
+        &__h2    { font-size: 1.2rem; }
+        &__stats { grid-template-columns: repeat(2, 1fr); }
+        &__metrics { grid-template-columns: 1fr; }
+        &__metric-card { flex-direction: column; gap: .6rem; }
+        &__stat-val { font-size: 1.5rem; }
+    }
 }

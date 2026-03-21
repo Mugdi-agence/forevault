@@ -6,10 +6,10 @@ import './navbar.scss';
 
 const NAV_LINKS = [
     { label: "Calculator",  href: "./calculator" },
-    // { label: "Predictor",  href: "./predictor" },
+    { label: "Predictor",  href: "./predictor" },
     { label: "how it works",      href: "../#how-it-works" },
     { label: "Niches",      href: "./niches" },
-    { label: "How to get Viral",      href: "./blog" },
+    { label: "Blog",      href: "./blog" },
 ];
 
 export default function Navbar() {
