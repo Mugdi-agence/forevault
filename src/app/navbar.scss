@@ -28,7 +28,7 @@ $nav-h:        76px;
     border-bottom: 1px solid transparent;
 
     &--scrolled {
-        background: rgba(17, 17, 17, 0.51);
+        background: rgba(255, 255, 255, 0.51);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-bottom-color: $border;
@@ -53,17 +53,10 @@ $nav-h:        76px;
         flex-shrink: 0;
     }
 
-    &__logo-icon {
-        font-size: 1.6rem;
-        color: $white;
-        line-height: 1;
-    }
-
-    &__logo-text {
-        font-size: 1.25rem;
-        font-weight: 800;
-        color: $white;
-        letter-spacing: -0.5px;
+    &__logo-image {
+        width: var(--logo-width);
+        height: 50px;
+        
     }
 
     // ── Links ──

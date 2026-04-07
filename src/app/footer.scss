@@ -57,16 +57,10 @@ $font:          'Poppins', sans-serif;
         width: fit-content;
     }
 
-    &__logo-icon {
-        font-size: 1.7rem;
-        color: $white;
-    }
-
-    &__logo-text {
-        font-size: 1.22rem;
-        font-weight: 800;
-        color: $white;
-        letter-spacing: -0.5px;
+    &__logo-image {
+        width: var(--logo-width);
+        height: 50px;
+        
     }
 
     &__tagline {

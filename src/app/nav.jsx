@@ -1,94 +1,117 @@
-// Navbar.jsx
 "use client"
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import './navbar.scss';
+import Image from 'next/image';
+import logo from './logo.png';
 
 const NAV_LINKS = [
-    { label: "Calculator",  href: "./calculator" },
-    { label: "Predictor",  href: "./predictor" },
-    { label: "how it works",      href: "../#how-it-works" },
+    { label: "Calculator",  href: "./youtube-revenue-calculator" },
+    { label: "Predictor",   href: "./predictor" },
+    { label: "How it works", href: "../#how-it-works" },
     { label: "Niches",      href: "./niches" },
-    { label: "Blog",      href: "./blog" },
+    { label: "Blog",        href: "./blog" },
 ];
 
 export default function Navbar() {
-    const navRef      = useRef();
-    const logoRef     = useRef();
-    const linksRef    = useRef();
-    const ctaRef      = useRef();
-    const burgerRef   = useRef();
-    const mobileRef   = useRef();
-    const overlayRef  = useRef();
+    const navRef     = useRef();
+    const burgerRef  = useRef();
+    const mobileRef  = useRef();
+    const overlayRef = useRef();
 
-    const [menuOpen,   setMenuOpen]   = useState(false);
-    const [scrolled,   setScrolled]   = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const menuTlRef = useRef(null);
 
-    // ── Entrance ───────────────────────────────────────────
+    // ── Entrance: blur(15px) + opacity(0) + scale(0.5) → clear ────────────
     useEffect(() => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
 
-            tl.from(navRef.current, {
-                y: -80,
-                opacity: 0,
-                duration: 0.9,
-            })
-            .from(logoRef.current, {
-                opacity: 0,
-                x: -16,
-                duration: 0.6,
-            }, "-=0.5")
-            .from(".nav__link", {
-                opacity: 0,
-                y: -10,
-                stagger: 0.07,
-                duration: 0.5,
-            }, "-=0.4")
-            .from(ctaRef.current, {
-                opacity: 0,
-                scale: 0.88,
-                duration: 0.45,
-                ease: "back.out(1.7)",
-            }, "-=0.3");
+            // Nav container
+            tl.fromTo(navRef.current,
+                { filter: "blur(15px)", opacity: 0, scale: 0.5 },
+                { filter: "blur(0px)",  opacity: 1, scale: 1, duration: 0.85 }
+            )
+            // Logo
+            .fromTo(".nav__logo",
+                { filter: "blur(8px)", opacity: 0, x: -12 },
+                { filter: "blur(0px)", opacity: 1, x: 0, duration: 0.55 },
+                "-=0.45"
+            )
+            // Links staggered
+            .fromTo(".nav__link",
+                { filter: "blur(6px)", opacity: 0, y: -8 },
+                { filter: "blur(0px)", opacity: 1, y: 0, stagger: 0.07, duration: 0.45 },
+                "-=0.35"
+            )
+            // CTA
+            .fromTo(".nav__btn--solid",
+                { filter: "blur(8px)", opacity: 0, scale: 0.88 },
+                { filter: "blur(0px)", opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" },
+                "-=0.25"
+            );
         });
 
         return () => ctx.revert();
     }, []);
 
-    // ── Scroll blur ────────────────────────────────────────
+    // ── Scroll: hide on down, reveal on up ────────────────────────────────
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 20);
+        let lastY    = 0;
+        let hidden   = false;
+        const NAV_H  = navRef.current?.offsetHeight ?? 76;
+        const THRESH = 80; // don't trigger before 80px of scroll
+
+        const onScroll = () => {
+            const y    = window.scrollY;
+            const diff = y - lastY;
+
+            if (y < THRESH) {
+                // Always visible near top
+                if (hidden) {
+                    gsap.to(navRef.current, { y: 0, duration: 0.45, ease: "power3.out" });
+                    hidden = false;
+                }
+            } else if (diff > 4 && !hidden) {
+                // Scrolling DOWN → slide out upward
+                gsap.to(navRef.current, { y: -(NAV_H + 8), duration: 0.4, ease: "power2.inOut" });
+                hidden = true;
+            } else if (diff < -4 && hidden) {
+                // Scrolling UP → slide back in
+                gsap.to(navRef.current, { y: 0, duration: 0.45, ease: "power3.out" });
+                hidden = false;
+            }
+
+            lastY = y;
+        };
+
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    // ── Mobile menu GSAP timeline ──────────────────────────
+
     useEffect(() => {
         menuTlRef.current = gsap.timeline({ paused: true, defaults: { ease: "expo.out" } })
             .to(overlayRef.current, {
                 opacity: 1,
                 pointerEvents: "all",
-                duration: 0.35,
+                duration: 0.3,
             })
-            .from(mobileRef.current, {
-                y: -30,
-                opacity: 0,
-                duration: 0.45,
-            }, "<0.05")
-            .from(".mobile-nav__link", {
-                opacity: 0,
-                x: -20,
-                stagger: 0.07,
-                duration: 0.4,
-            }, "-=0.25")
-            .from(".mobile-nav__cta", {
-                opacity: 0,
-                y: 10,
-                duration: 0.35,
-                ease: "back.out(1.5)",
-            }, "-=0.2");
+            .fromTo(mobileRef.current,
+                { filter: "blur(10px)", opacity: 0, y: -20 },
+                { filter: "blur(0px)",  opacity: 1, y: 0, duration: 0.45 },
+                "<0.05"
+            )
+            .fromTo(".mobile-nav__link",
+                { filter: "blur(4px)", opacity: 0, x: -16 },
+                { filter: "blur(0px)", opacity: 1, x: 0, stagger: 0.06, duration: 0.38 },
+                "-=0.25"
+            )
+            .fromTo(".mobile-nav__cta",
+                { filter: "blur(6px)", opacity: 0, y: 10 },
+                { filter: "blur(0px)", opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.5)" },
+                "-=0.2"
+            );
     }, []);
 
     function toggleMenu() {
@@ -104,27 +127,24 @@ export default function Navbar() {
         menuTlRef.current.reverse().then(() => setMenuOpen(false));
     }
 
-    // ── Link hover magnetic effect ─────────────────────────
+    // ── Magnetic hover ─────────────────────────────────────────────────────
     function handleLinkEnter(e) {
-        gsap.to(e.currentTarget, { y: -2, duration: 0.25, ease: "power2.out" });
+        gsap.to(e.currentTarget, { y: -2, duration: 0.22, ease: "power2.out" });
     }
     function handleLinkLeave(e) {
-        gsap.to(e.currentTarget, { y: 0, duration: 0.3, ease: "elastic.out(1, 0.5)" });
+        gsap.to(e.currentTarget, { y: 0, duration: 0.4, ease: "elastic.out(1, 0.5)" });
     }
 
     return (
         <>
-            <nav ref={navRef} className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
+            <nav ref={navRef} className="nav">
                 <div className="nav__inner">
 
-                    {/* Logo */}
-                    <a ref={logoRef} href="/" className="nav__logo">
-                        <span className="nav__logo-icon">◈</span>
-                        <span className="nav__logo-text">Forevault</span>
+                    <a href="/" className="nav__logo">
+                        <Image src={logo} alt="Logo" className="nav__logo-image" />
                     </a>
 
-                    {/* Desktop links */}
-                    <ul ref={linksRef} className="nav__links">
+                    <ul className="nav__links">
                         {NAV_LINKS.map(l => (
                             <li key={l.href}>
                                 <a
@@ -139,12 +159,10 @@ export default function Navbar() {
                         ))}
                     </ul>
 
-                    {/* Desktop CTA */}
-                    <div ref={ctaRef} className="nav__actions">
+                    <div className="nav__actions">
                         <a href="./niches" className="nav__btn nav__btn--solid">Get started</a>
                     </div>
 
-                    {/* Burger */}
                     <button
                         ref={burgerRef}
                         className={`nav__burger ${menuOpen ? "nav__burger--open" : ""}`}
@@ -153,17 +171,16 @@ export default function Navbar() {
                     >
                         <span /><span /><span />
                     </button>
+
                 </div>
             </nav>
 
-            {/* Mobile overlay */}
             <div
                 ref={overlayRef}
                 className={`mobile-overlay ${menuOpen ? "mobile-overlay--visible" : ""}`}
                 onClick={closeMenu}
-            ></div>
+            />
 
-            {/* Mobile drawer */}
             {menuOpen && (
                 <div ref={mobileRef} className="mobile-nav">
                     <ul className="mobile-nav__links">

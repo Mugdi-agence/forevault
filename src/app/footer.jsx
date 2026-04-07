@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import './footer.scss';
+import logo from './logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ const LINKS = {
     ],
 
     Product: [
-        { label: "Calculator", href: "./calculator" },
+        { label: "Calculator", href: "./youtube-revenue-calculator" },
         { label: "Predictor", href: "./predictor" },
         { label: "how it works", href: "../#how-it-works" },
         { label: "Niches", href: "./niches" },
@@ -53,8 +54,7 @@ export default function Footer() {
                 <div ref={topRef} className="footer2__top">
                     <div className="footer2__brand">
                         <a href="/" className="footer2__logo">
-                            <span className="footer2__logo-icon">◈</span>
-                            <span className="footer2__logo-text">Forevault</span>
+                            <img src={logo.src} alt="Forevault" className="footer2__logo-image" />
                         </a>
                         <p className="footer2__tagline">
                             Estimate, compare and optimise<br />your YouTube revenue.
