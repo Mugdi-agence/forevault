@@ -17,7 +17,7 @@ const LINKS = {
 
     Product: [
         { label: "Calculator", href: "./youtube-revenue-calculator" },
-        { label: "Predictor", href: "./predictor" },
+        { label: "Predictor", href: "./youtube-views-predictor" },
         { label: "how it works", href: "../#how-it-works" },
         { label: "Niches", href: "./niches" },
         { label: "Blog", href: "./blog" }

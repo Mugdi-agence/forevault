@@ -7,7 +7,7 @@ import logo from './logo.png';
 
 const NAV_LINKS = [
     { label: "Calculator",  href: "./youtube-revenue-calculator" },
-    { label: "Predictor",   href: "./predictor" },
+    { label: "Predictor",   href: "./youtube-views-predictor" },
     { 
         label: "Guide", 
         href: "#", 
