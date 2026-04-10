@@ -26,7 +26,7 @@ export default function Article({ onRelatedClick }) {
             <ArticleHero
                 category="Research"
                 title="How to Analyze Viral Content and Find Winning Formats"
-                lead="Most creators misunderstand market analysis. They copy ideas. What actually matters — and what actually works — is copying formats."
+                lead="Most creators study the wrong thing. They copy topics, thumbnails, or trends. What actually travels well is the format — the underlying emotional structure that makes people keep watching."
                 author={{ name: "Qodan", role: "Content Strategy" }}
                 date="March 16, 2026"
                 readTime="5 min read"
@@ -37,23 +37,27 @@ export default function Article({ onRelatedClick }) {
             />
 
             <Lead>
-                The market doesn't tell you what to create. It shows you what already works on the human brain. Here's how to read that signal correctly.
+                Viral analysis is not about guessing what the internet wants next. It is about reading what already holds attention, then understanding why it works at a psychological level. Once you can identify the structure behind a successful video, you can adapt it without copying it.
             </Lead>
 
-            <H2>Step 1: Find "Dopamine Niches"</H2>
+            <H2>Step 1: Look for “dopamine niches”</H2>
 
             <Body>
-                Some niches naturally generate high-stimulation content. Not because of the topic — because of the <strong>type of stimulation they deliver</strong>. Cooking, cleaning, satisfying drawings, slime, and industrial processes all share a common thread: they produce visible, satisfying transformation with zero ambiguity.
+                Some niches reliably create high-stimulation viewing experiences. That has less to do with the subject itself and more to do with the kind of sensory payoff it delivers. Cleaning, cooking, satisfying drawings, slime, restoration, and industrial process videos all share a similar trait: they show visible transformation with very little ambiguity. The viewer does not need much explanation to feel rewarded.
+            </Body>
+
+            <Body>
+                That is why these formats spread so efficiently. They are easy to understand, easy to keep watching, and they deliver a clear before-and-after signal. The brain responds quickly to that kind of resolution.
             </Body>
 
             <Callout type="info" title="The key insight">
-                Don't focus on the topic. Focus on what <em>feeling</em> that content produces. That feeling is what you're adapting — not the subject matter.
+                Do not focus only on the topic. Focus on the feeling the content creates. The topic is just the container. The feeling is the mechanism.
             </Callout>
 
-            <H2>Step 2: Break Down Viral Videos</H2>
+            <H2>Step 2: Deconstruct viral videos frame by frame</H2>
 
             <Body>
-                Take any video with 10M+ views and deconstruct it layer by layer. Every viral video follows a consistent anatomy.
+                If a video has 10 million views or more, it usually has a repeatable structure hidden inside it. When you break it apart carefully, you will start to see the same pattern over and over again. The topic may change, but the sequence usually does not.
             </Body>
 
             <Code lang="analysis framework">{`Hook     (0–1s)   → Visual shock or something unusual
@@ -68,13 +72,13 @@ Ask yourself:
   • Would I watch this again? Why?`}</Code>
 
             <Body>
-                Do this with 10 videos in a row. Patterns will emerge. You're not looking at content — you're looking at <em>structure</em>.
+                Run this analysis on ten strong videos in a row and the pattern becomes harder to ignore. You are not studying a random collection of clips. You are studying attention design. The content itself matters, but the structure is what makes the content repeatable.
             </Body>
 
-            <H2>Step 3: Adapt to Your Niche</H2>
+            <H2>Step 3: Translate the structure into your own niche</H2>
 
             <Body>
-                Once you understand the emotional structure, translation is straightforward. A web developer can apply the exact same format as a cleaning video:
+                Once you understand the emotional engine, the next step is adaptation. A good format can move across niches surprisingly well if the underlying payoff stays the same. A developer, for example, can use the same transformation logic as a cleaning video.
             </Body>
 
             <Stats>
@@ -84,21 +88,21 @@ Ask yourself:
             </Stats>
 
             <Body>
-                You're not copying the niche. You're <strong>adapting the emotional structure</strong>. The brain doesn't care if it's soap scum or a bad button — it responds to the same satisfaction signal either way.
+                The point is not to copy a niche word for word. The point is to adapt the emotional structure. The audience does not care whether the transformation is soap scum, bad code, or a rough sketch. It responds to the same satisfaction signal.
             </Body>
 
             <Quote>
-                Find what already works on the human brain. Then speak your language through that same structure.
+                Study what already works on the human brain, then express that structure in your own language.
             </Quote>
 
-            <H2>What to Look For in Your Analysis</H2>
+            <H2>What to watch for when you analyze content</H2>
 
             <Body>
-                When reviewing viral videos, track three moments specifically: the <strong>first frame</strong> (what created the pattern interrupt), the <strong>middle peak</strong> (when you felt most engaged), and the <strong>last frame</strong> (how the video resolved). These three moments are the whole game.
+                When you review viral videos, pay attention to three moments in particular: the <strong>first frame</strong>, the <strong>middle peak</strong>, and the <strong>last frame</strong>. The first frame tells you what created the interruption. The middle peak shows where engagement is strongest. The last frame shows how the payoff resolves. Those three moments usually explain most of the video’s performance.
             </Body>
 
-            <Callout type="tip" title="Speed up your research">
-                Watch at 2× speed with no sound. If the visual progression still pulls you in, the format is solid. If it feels flat without audio, the content is relying on narrative — not stimulation.
+            <Callout type="tip" title="A faster way to test formats">
+                Watch at 2× speed with the sound off. If the video still pulls you in visually, the format is doing the heavy lifting. If it falls flat without audio, it is leaning too much on narration instead of visual progression.
             </Callout>
 
             <Divider />

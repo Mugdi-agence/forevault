@@ -725,32 +725,41 @@ function MetaTag({ label, value, highlight, children }) {
 // ─────────────────────────────────────────────────────────────────────────────
 function CalcContent() {
     return (
-        <section className="calc-content" aria-label="About the YouTube revenue calculator">
+        <section className="calc-content" aria-label="About the YouTube RPM calculator by niche">
 
-            {/* ── INTRO ──────────────────────────────────────────────────── */}
             <div className="calc-content__intro">
-                <span className="calc-content__eyebrow">Understanding monetization</span>
+                <span className="calc-content__eyebrow">Understanding YouTube RPM by niche</span>
                 <h2 className="calc-content__h2">
-                    How to estimate YouTube earnings without false shortcuts
+                    Why YouTube RPM changes so much by niche
                 </h2>
                 <p className="calc-content__lead">
-                    Many pages summarize YouTube earnings with a simplistic formula like “views × €2”. In reality, it almost never works like that.
-                    Two videos with the same number of views can generate very different revenues depending on the niche, audience country, video length, retention rate, and format. This calculator is designed to model those differences more realistically, using signals that creators actually find in YouTube Studio.
+                    If you have ever compared two YouTube channels with similar view counts and
+                    wondered why one earns far more than the other, the answer is usually not the
+                    algorithm. It is the niche. YouTube RPM is heavily shaped by the type of
+                    audience a video attracts, the commercial intent behind that audience, and how
+                    valuable advertisers consider that topic.
                 </p>
                 <p className="calc-content__lead">
-                    The point isn’t to promise an exact figure. The point is to provide a useful foundation to help explain why a finance, business or software video can earn much more than an entertainment video with the same volume, and why a well-maintained long video can outperform a shorter format on the same topic.
+                    That is why a finance channel, a software tutorial channel, and a gaming channel
+                    can all sit at very different revenue levels even when their videos perform
+                    similarly in views. A niche is not just a category label. It is often the
+                    clearest signal of how much money a view is worth.
+                </p>
+                <p className="calc-content__lead">
+                    This guide explains how RPM behaves by niche, why the differences exist, and how
+                    to think about earnings in a way that is closer to real creator revenue than a
+                    simple “views × price” shortcut.
                 </p>
             </div>
 
-            {/* ── STATS ROW ──────────────────────────────────────────────── */}
             <div className="calc-content__stats" role="list">
                 <div className="calc-content__stat" role="listitem">
-                    <span className="calc-content__stat-val">80+</span>
-                    <span className="calc-content__stat-label">Countries modeled</span>
+                    <span className="calc-content__stat-val">50+</span>
+                    <span className="calc-content__stat-label">Niches modeled</span>
                 </div>
                 <div className="calc-content__stat" role="listitem">
-                    <span className="calc-content__stat-val">50+</span>
-                    <span className="calc-content__stat-label">Niches with RPM benchmarks</span>
+                    <span className="calc-content__stat-val">80+</span>
+                    <span className="calc-content__stat-label">Countries compared</span>
                 </div>
                 <div className="calc-content__stat" role="listitem">
                     <span className="calc-content__stat-val">12</span>
@@ -758,158 +767,218 @@ function CalcContent() {
                 </div>
                 <div className="calc-content__stat" role="listitem">
                     <span className="calc-content__stat-val">±20%</span>
-                    <span className="calc-content__stat-label">Typical difference vs AdSense</span>
+                    <span className="calc-content__stat-label">Typical estimate range</span>
                 </div>
             </div>
 
-            {/* ── HOW TO USE ─────────────────────────────────────────────── */}
             <div className="calc-content__block">
-                <h2 className="calc-content__h2">How to use the calculator</h2>
+                <h2 className="calc-content__h2">Try the calculator first</h2>
                 <p className="calc-content__p">
-                    The fields in the left panel are not just decoration. Each corresponds to a variable that genuinely influences monetization. The closer your data matches your channel’s reality, the more useful the estimate becomes.
+                    To give you a realistic estimate, you can try the calculator below before
+                    reading further.
                 </p>
-                <ol className="calc-content__steps">
-                    <li>
-                        <strong>Views</strong> — Enter the number of views for the video, or a monthly average if you want to estimate channel revenue over time. Thousand separators are accepted.
-                    </li>
-                    <li>
-                        <strong>Retention (%)</strong> — This is the average percentage of the video actually watched. In YouTube Studio, the closest indicator is in <em>Analytics → Audience Retention</em>. Around 45% is a reasonable baseline for a standard long video, but highly engaging content can go much higher.
-                    </li>
-                    <li>
-                        <strong>Format</strong> — Choose between Long Form and Shorts. Shorts do not use the same monetization mechanism as long videos. Their revenue comes from a separate pool, shared among eligible creators, which typically results in a much lower effective RPM.
-                    </li>
-                    <li>
-                        <strong>Length</strong> — The 8-minute threshold really matters because it opens up the possibility for mid-rolls. On a 7-minute video, you’re often more limited. With a 10- or 12-minute video, you add an extra ad placement opportunity without necessarily changing the topic.
-                    </li>
-                    <li>
-                        <strong>Niche</strong> — The topic of the video heavily affects RPM. Videos about investing, taxes, or software often attract more aggressive advertisers than those in general entertainment. If you hesitate between several categories, compare their RPM benchmarks before relying on instinct.
-                    </li>
-                    <li>
-                        <strong>Geography</strong> — The main country of your audience can change the equation more than you think. An audience primarily from the US, UK, or Canada will monetize at a different level than one with mostly viewers in markets where ad budgets are lower.
-                    </li>
-                </ol>
+                <p className="calc-content__p">
+                    The estimate depends on the inputs that matter most for RPM by niche: views,
+                    retention, niche selection, audience geography, video length, and format. It is
+                    a modeling tool, not a guaranteed payout calculator, because actual YouTube
+                    earnings move with advertiser demand, seasonality, and audience quality.
+                </p>
+
+                <div className="calc-content__embed-placeholder" aria-label="YouTube RPM Calculator Embed">
+                    [YouTube RPM Calculator by Niche Embed]
+                </div>
             </div>
 
-            {/* ── KEY METRICS ────────────────────────────────────────────── */}
             <div className="calc-content__block">
-                <h2 className="calc-content__h2">The metrics that really matter</h2>
+                <h2 className="calc-content__h2">What RPM means in practice</h2>
 
                 <div className="calc-content__metrics">
                     <div className="calc-content__metric-card">
                         <h3 className="calc-content__h3">RPM (Revenue Per Mille)</h3>
                         <p className="calc-content__p">
-                            RPM is what you actually earn per 1,000 views, after YouTube’s share. It’s the most useful metric to judge a channel’s monetization effectiveness because it reflects actual revenue—not just the gross ad value. In practice, a finance or business channel can be much higher than a gaming channel, even with the same traffic, simply because the audience’s commercial intent is not the same.
+                            RPM is the amount a creator earns per 1,000 views after YouTube takes its
+                            share and after monetization conditions are applied. It is the best metric
+                            for comparing niches because it reflects real creator revenue, not just
+                            advertiser pricing. Two niches can have the same traffic and still produce
+                            very different RPM because the audience behind the traffic is not equally
+                            valuable.
                         </p>
                     </div>
 
                     <div className="calc-content__metric-card">
-                        <h3 className="calc-content__h3">CPM (Cost Per Mille)</h3>
+                        <h3 className="calc-content__h3">Why niche changes revenue</h3>
                         <p className="calc-content__p">
-                            CPM is what advertisers pay for 1,000 ad impressions, before YouTube’s share. That’s why CPM is almost always higher than RPM. CPM changes with advertiser demand, seasonality, sector, and sometimes even current events. Q4 is often stronger because brands spend more ahead of holidays and key commercial periods.
+                            Advertisers do not value every topic equally. Finance, investing, software,
+                            business, and legal content usually attract stronger bidding because those
+                            audiences are closer to a buying decision. Gaming, entertainment, and
+                            casual vlog content tend to have weaker advertiser competition. That is why
+                            RPM by niche can vary dramatically even before geography or retention are
+                            taken into account.
                         </p>
                     </div>
 
                     <div className="calc-content__metric-card">
-                        <h3 className="calc-content__h3">Retention</h3>
+                        <h3 className="calc-content__h3">Why geography still matters</h3>
                         <p className="calc-content__p">
-                            Retention isn’t just about “serving the algorithm.” It also increases the number of ad opportunities truly served per view. A viewer who stays longer may see a pre-roll, then a mid-roll, and sometimes more, depending on video length. That’s why a video’s narrative structure matters as much as the topic. A strong hook at the beginning and good pacing often result in more revenue than a longer but less engaging format.
+                            A niche does not exist in a vacuum. The same finance video can earn very
+                            different RPM depending on whether the audience is primarily in the US, UK,
+                            Canada, or in lower-bid regions. Advertiser demand is always tied to the
+                            purchasing power and competition level of the market. Niche explains the
+                            topic, but geography often decides how much that topic is worth.
                         </p>
                     </div>
 
                     <div className="calc-content__metric-card">
-                        <h3 className="calc-content__h3">Mid-rolls</h3>
+                        <h3 className="calc-content__h3">Why retention changes the final number</h3>
                         <p className="calc-content__p">
-                            After 8 minutes, a video becomes eligible for mid-rolls. It’s one of the most important levers for long-form creators, but also one of the most misunderstood. Adding two or three useful minutes can increase earnings without changing the video’s promise. On the flip side, artificially lengthening a video just to “reach 8 minutes” often decreases retention and can cancel out any potential gain.
+                            A niche may have strong theoretical RPM, but if viewers leave early, the
+                            revenue will still underperform. Retention affects how many ad opportunities
+                            are actually served and how valuable a view becomes in practice. A well-paced
+                            niche video that keeps people watching often outperforms a longer but weaker
+                            one, even on the same topic.
                         </p>
                     </div>
 
                     <div className="calc-content__metric-card">
-                        <h3 className="calc-content__h3">Audience Geography</h3>
+                        <h3 className="calc-content__h3">Why video length matters</h3>
                         <p className="calc-content__p">
-                            Advertising budgets aren’t distributed evenly. Countries with higher purchasing power and more ad competition generally generate more value per view. A channel with 30% US audience may have a much higher RPM than a similar channel centered in less lucrative markets. That’s why two “comparable” channels can produce totally different results.
+                            Once a long-form video crosses the 8-minute mark, mid-roll ads become
+                            possible. That can increase revenue inside the same niche without increasing
+                            views. A 10-minute tutorial can therefore monetize better than a 6-minute
+                            version of the same idea, provided the pacing stays strong and the added
+                            length feels useful rather than padded.
                         </p>
                     </div>
 
                     <div className="calc-content__metric-card">
-                        <h3 className="calc-content__h3">Shorts Revenue Pool</h3>
+                        <h3 className="calc-content__h3">Why Shorts behave differently</h3>
                         <p className="calc-content__p">
-                            Shorts are not monetized like long-form videos. They’re funded by a monthly revenue pool shared among eligible creators, based on the share of watch time they capture. This totally changes the reading of revenue. A Short can generate reach, subscribers and discovery traffic, while still being much less profitable per view than a long-form video. Shorts are often a better acquisition lever than direct revenue lever.
+                            Shorts are monetized through a revenue pool rather than the standard
+                            long-form ad model. That means the RPM is usually much lower, even when the
+                            niche itself is strong. Shorts can still be excellent for discovery, but they
+                            often work best as a growth channel that feeds a higher-RPM long-form niche.
                         </p>
                     </div>
                 </div>
             </div>
 
-            {/* ── INTERNAL CTA LINKS ─────────────────────────────────────── */}
-            <div className="calc-content__ctas" aria-label="Discover more resources">
-                <p className="calc-content__ctas-label">Go further</p>
-                <div className="calc-content__cta-grid">
-                    <a href="/niches" className="calc-content__cta-card">
-                        <span className="calc-content__cta-icon">◈</span>
-                        <div>
-                            <strong>Niche Finder</strong>
-                            <span>Compare RPMs across 50+ niches</span>
-                        </div>
-                        <span className="calc-content__cta-arrow">→</span>
-                    </a>
-                    <a href="/blog" className="calc-content__cta-card">
-                        <span className="calc-content__cta-icon">✦</span>
-                        <div>
-                            <strong>Creator Blog</strong>
-                            <span>Editorial guides and monetization analysis</span>
-                        </div>
-                        <span className="calc-content__cta-arrow">→</span>
-                    </a>
-                    <a href="/predictor" className="calc-content__cta-card">
-                        <span className="calc-content__cta-icon">◎</span>
-                        <div>
-                            <strong>Views Predictor</strong>
-                            <span>Project channel growth</span>
-                        </div>
-                        <span className="calc-content__cta-arrow">→</span>
-                    </a>
+            <div className="calc-content__block">
+                <h2 className="calc-content__h2">Real-world niche scenarios</h2>
+                <p className="calc-content__p">
+                    The easiest way to understand RPM by niche is to compare channels with the same
+                    number of views but different topics.
+                </p>
+
+                <div className="calc-content__scenarios">
+                    <div className="calc-content__scenario">
+                        <h3 className="calc-content__h3">100K views on a gaming channel</h3>
+                        <p className="calc-content__p">
+                            Gaming usually sits in a lower RPM range because advertiser competition is
+                            weaker and the audience is less likely to be tied to high-intent buying
+                            behavior. A gaming channel can still build huge reach, but the revenue per
+                            view is often modest compared with more commercially driven niches.
+                        </p>
+                    </div>
+
+                    <div className="calc-content__scenario">
+                        <h3 className="calc-content__h3">100K views on a finance channel</h3>
+                        <p className="calc-content__p">
+                            Finance content often earns substantially more because advertisers are
+                            willing to pay more to reach viewers interested in money, investing, taxes,
+                            credit, or business decisions. Even a simple explainer can outperform a much
+                            larger entertainment video if the audience is more valuable.
+                        </p>
+                    </div>
+
+                    <div className="calc-content__scenario">
+                        <h3 className="calc-content__h3">100K views on an educational channel</h3>
+                        <p className="calc-content__p">
+                            Educational content often lands in the middle, but the exact RPM depends on
+                            the subtopic. A software tutorial or technical how-to video can monetize far
+                            better than a general knowledge channel because the audience may already be
+                            looking for a solution they are willing to pay for.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            {/* ── FAQ ────────────────────────────────────────────────────── */}
+            <div className="calc-content__block">
+                <h2 className="calc-content__h2">Common misconceptions about RPM by niche</h2>
+                <ul className="calc-content__steps">
+                    <li>
+                        <strong>“More views always means more money” is wrong</strong> — the niche can
+                        matter more than the raw traffic number.
+                    </li>
+                    <li>
+                        <strong>“CPM is what creators earn” is wrong</strong> — CPM is advertiser-side
+                        pricing, while RPM is much closer to actual creator income.
+                    </li>
+                    <li>
+                        <strong>“All finance content pays the same” is wrong</strong> — subtopics,
+                        audience country, and viewer intent can change the RPM a lot.
+                    </li>
+                    <li>
+                        <strong>“Shorts behave like long-form” is wrong</strong> — they use a separate
+                        monetization structure and usually earn less per view.
+                    </li>
+                </ul>
+            </div>
+
+            <div className="calc-content__block">
+                <h2 className="calc-content__h2">Use the calculator to compare niches</h2>
+                <p className="calc-content__p">
+                    You can test different scenarios using the calculator above. Try changing the
+                    niche, switching the audience country, or adjusting the video length and
+                    retention rate. It becomes very clear very quickly that the niche is not a small
+                    variable — it is often one of the biggest drivers of RPM.
+                </p>
+                <p className="calc-content__p">
+                    That is what makes RPM by niche such a useful way to think about YouTube
+                    monetization. It helps you move from vague assumptions to a more realistic view
+                    of what a channel can actually earn.
+                </p>
+            </div>
+
             <div className="calc-content__faq" id="faq">
                 <h2 className="calc-content__h2">Frequently Asked Questions</h2>
                 <p className="calc-content__p" style={{ marginBottom: "2rem" }}>
-                    The answers below cover the points that most influence YouTube earnings: RPM, CPM, Shorts, length, retention, and geography.
+                    These answers cover the main factors that influence YouTube RPM by niche:
+                    advertiser demand, geography, retention, length, and format.
                 </p>
 
                 <div className="calc-faq__list">
                     {[
                         {
-                            q: "How accurate is this calculator?",
-                            a: "It provides a working estimate, not a guaranteed number. The model uses observed RPM benchmarks by niche, as well as adjustments for geography, format, length, and retention. In real life, the gap also depends on seasonality, available ad inventory, adblock rates, and audience variations. For creators, the main point is not about getting an exact cent value, but about understanding the order of magnitude and the levers that move revenue."
+                            q: "Why does RPM vary so much by niche?",
+                            a: "Because advertisers value audiences differently. A niche that attracts buyers, business owners, investors, or software users usually has stronger advertiser demand than a niche built around general entertainment. That difference shows up directly in RPM."
                         },
                         {
-                            q: "What’s the difference between RPM and CPM on YouTube?",
-                            a: "CPM is what advertisers pay for 1,000 ad impressions, before YouTube’s share. RPM is what the creator actually gets for 1,000 views, after YouTube’s share and with a closer look at the final revenue. This is why a high CPM doesn’t automatically translate into a great RPM. If retention is low or if views come from a less lucrative country, the final revenue can remain modest."
+                            q: "What is the difference between RPM and CPM?",
+                            a: "CPM is what advertisers pay for 1,000 ad impressions before YouTube’s share. RPM is what the creator actually earns per 1,000 views after YouTube’s share and after monetization conditions are applied. RPM is the better metric for comparing niches."
                         },
                         {
-                            q: "Why do Shorts pay less than long-form videos?",
-                            a: "Because they’re based on a different economic engine. Shorts use a shared revenue pool, distributed among eligible creators according to the share of watch time captured. There isn’t the same logic of individual ad impressions as in long-form. Shorts can be great for reaching a new audience, testing a topic or helping people discover your channel, but they’re often less powerful as a direct revenue source."
+                            q: "Which niche usually has the highest RPM?",
+                            a: "Finance, investing, business, software, and some legal or real estate content often rank near the top because the audience tends to have stronger commercial intent. The exact ranking can shift by country and season, but those niches are usually among the strongest."
                         },
                         {
-                            q: "Which YouTube niche has the best RPM?",
-                            a: "Finance, investing, software, real estate, law and certain business topics often have the highest RPMs. The reason is simple: their audiences have stronger commercial intent, so advertisers compete more for them. On the other hand, gaming, general entertainment, and some vlog formats tend to have lower RPMs, even with many views."
+                            q: "Do Shorts have the same RPM as long-form videos?",
+                            a: "No. Shorts use a different revenue model and are usually much lower in effective RPM. They can still be very useful for reach and discovery, but they are rarely the best format if the goal is direct ad revenue."
                         },
                         {
-                            q: "Does video length really change revenue?",
-                            a: "Yes, because it changes your ad serving options. Below 8 minutes, you’re typically more limited. Above 8 minutes, mid-rolls become possible, which can increase revenue without increasing views. But here’s an important nuance: a longer video doesn’t just earn more because it’s longer—it must maintain good pacing, otherwise retention drops and the potential gain disappears."
+                            q: "Does audience geography affect RPM by niche?",
+                            a: "Yes, very much. The same niche can monetize differently depending on where the audience lives. A US-heavy audience in a finance niche will usually earn more than a similar audience in a lower-ad-spend market."
                         },
                         {
-                            q: "How does audience geography influence revenue?",
-                            a: "Much more than most beginners think. Audiences in very competitive, high-income markets often generate much higher CPMs. The same video can perform very differently if it’s watched mostly in the US, UK, or in countries with smaller ad budgets. This is one of the first things to check when an RPM seems “abnormally” low or high."
+                            q: "Should I choose my niche based only on RPM?",
+                            a: "Not necessarily. High RPM is attractive, but the best niche is usually the one you can publish consistently in. A sustainable niche with slightly lower RPM can outperform a high-RPM niche that you cannot produce for long."
                         },
                         {
-                            q: "What average retention rate should I enter?",
-                            a: "If you don’t have your own data yet, 45% is a healthy baseline for a standard long video. It’s not a universal truth, just a reasonable starting point. The most educational, well-paced videos or those answering a clear intent can easily exceed this. Conversely, videos that are too broad, too slow, or too repetitive will drop quickly."
+                            q: "What retention rate should I enter?",
+                            a: "If you do not have your own analytics yet, 45% is a reasonable starting point for long-form content. Higher-retention videos often monetize better because they keep viewers in the video longer and increase the chance of additional ad delivery."
                         },
                         {
-                            q: "Is the Forevault tool free?",
-                            a: "Yes, the calculator is free and doesn’t require any account. Calculations happen in your browser, so you can use it as a quick working tool without sharing personal data just for a simulation."
+                            q: "Is this calculator free?",
+                            a: "Yes, it is free to use and does not require an account. The estimate runs locally in the browser."
                         }
                     ].map(({ q, a }, i) => (
                         <FaqItem key={i} q={q} a={a} />
@@ -917,9 +986,11 @@ function CalcContent() {
                 </div>
             </div>
 
-            {/* ── DISCLAIMER ─────────────────────────────────────────────── */}
             <p className="calc-content__disclaimer">
-                Forevault estimates rely on aggregated creator benchmarks and market data. Actual AdSense earnings vary by ad demand, seasonality, audience geography, adblock rates, YouTube policies, and individual video performance. This content is for educational and planning purposes only—not financial advice. See our{" "}
+                Forevault estimates rely on aggregated creator benchmarks and market data. Actual
+                AdSense earnings vary by ad demand, seasonality, audience geography, adblock
+                rates, YouTube policies, and individual video performance. This content is for
+                educational and planning purposes only—not financial advice. See our{" "}
                 <a href="/terms" className="calc-content__link">Terms of Use</a>{" "}
                 and our{" "}
                 <a href="/privacy" className="calc-content__link">Privacy Policy</a>.
@@ -928,9 +999,10 @@ function CalcContent() {
         </section>
     );
 }
-// ── Individual FAQ item (open/close on click) ─────────────────────────────────
+
 function FaqItem({ q, a }) {
     const [open, setOpen] = useState(false);
+
     return (
         <div
             className={`calc-faq__item ${open ? "calc-faq__item--open" : ""}`}
@@ -942,10 +1014,14 @@ function FaqItem({ q, a }) {
                 className="calc-faq__q"
                 onClick={() => setOpen(o => !o)}
                 aria-expanded={open}
+                type="button"
             >
                 <span itemProp="name">{q}</span>
-                <span className="calc-faq__chevron" aria-hidden="true">{open ? "−" : "+"}</span>
+                <span className="calc-faq__chevron" aria-hidden="true">
+                    {open ? "−" : "+"}
+                </span>
             </button>
+
             {open && (
                 <div
                     className="calc-faq__a"

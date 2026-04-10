@@ -15,7 +15,7 @@ export const meta = {
     progress: 0,
     seo: {
         title:       "Why Your Hook Is Killing Your Videos — And How to Fix It",
-        description: "You have less than one second to capture attention. If your videos have a high swipe rate, your hook is the problem. Here's the fix.",
+        description: "You have less than one second to earn attention. If your videos are getting swiped away early, the hook is usually the first thing to fix. Here's how to make the opening work.",
         image:       "https://images.unsplash.com/photo-1701724355618-55b0306ff6c6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
 };
@@ -26,7 +26,7 @@ export default function Article({ onRelatedClick }) {
             <ArticleHero
                 category="Production"
                 title="Why Your Hook Is Killing Your Videos (And How to Fix It)"
-                lead="If your videos have a high swipe rate, your content isn't the problem. Your hook is. And there are exactly three rules to fix it."
+                lead="If people are swiping away in the first second, the problem is usually not the idea. It is the opening. A weak hook makes a good video invisible before it has a chance to prove itself."
                 author={{ name: "Qodan", role: "Content Strategy" }}
                 date="March 14, 2026"
                 readTime="3 min read"
@@ -37,17 +37,17 @@ export default function Article({ onRelatedClick }) {
             />
 
             <Lead>
-                You have less than one second. That's the entire window between your video living or dying. Here's what happens in that second — and how to own it.
+                In short-form video, the first second is not a warm-up. It is the entire test. The viewer is deciding, almost instantly, whether the video feels worth their time. That decision is driven less by topic than by what appears on screen first.
             </Lead>
 
-            <Callout type="danger" title="If you fail the hook">
-                The video is dead. Not underperforming — dead. The algorithm gets a swipe signal, reach collapses, and nothing you do afterward matters.
+            <Callout type="danger" title="If the hook fails">
+                The video usually does not get a second chance. The platform reads the swipe as a negative signal, distribution slows down, and even strong content downstream may never be seen.
             </Callout>
 
-            <H2>Rule 1: Start With Action</H2>
+            <H2>Rule 1: Open With Something Happening</H2>
 
             <Body>
-                No intro. No "hey guys." No logo animation. <strong>Show something.</strong> The first frame must be shocking, broken, or unexpected. The viewer's brain needs an immediate reason to pause the scroll — give it one before they decide to move.
+                Do not spend the opening on pleasantries, branding, or setup. Viewers are not waiting for permission to care. They need to see movement, tension, or change immediately. A static intro gives the brain nothing to process, which is exactly why it gets skipped.
             </Body>
 
             <Stats>
@@ -55,38 +55,42 @@ export default function Article({ onRelatedClick }) {
                 <Stat value="✅" label="Instant action" sub="Show the problem immediately" accent />
             </Stats>
 
-            <H2>Rule 2: Pattern Interrupt</H2>
+            <H2>Rule 2: Break the Pattern Fast</H2>
 
             <Body>
-                You must break expectations <strong>instantly</strong>. The feed is a stream of familiar patterns. The moment something looks different — weird colors, a glitch, a broken UI, an unusual perspective — the brain stops to process it. That pause is your hook working.
+                Attention is selective. People are scrolling through familiar shapes, familiar pacing, and familiar thumbnails. The hook has to interrupt that pattern right away. A strange angle, a broken interface, an exaggerated scale shift, or a visual contradiction can all work because they create a pause in recognition.
             </Body>
 
             <Body>
-                Use deliberate visual dissonance: something that looks intentionally wrong, off-balance, or surprising. The key word is <em>intentional</em> — random chaos doesn't work. Purposeful surprise does.
+                The important part is intention. Random noise is not the same as a pattern interrupt. The viewer should feel that something is off in a deliberate, meaningful way. That small moment of confusion is often enough to stop the swipe.
             </Body>
 
             <Quote>
-                The brain doesn't stop for the expected. It stops for the anomaly.
+                The brain ignores what it can predict. It pauses for what it has to explain.
             </Quote>
 
-            <H2>Rule 3: Instant Recognition</H2>
+            <H2>Rule 3: Make It Instantly Understandable</H2>
 
             <Body>
-                The viewer must immediately recognize <em>what they're looking at</em>. This sounds contradictory — but it's not. You want something <strong>familiar enough to recognize, but surprising enough to stop for</strong>.
+                A strong hook does two things at once: it surprises the viewer and it tells them what they are looking at. If the opening is too abstract, people disengage. If it is too ordinary, they keep scrolling. The sweet spot is recognition with a twist.
             </Body>
 
             <Body>
-                A YouTube UI, a like button, a browser window — these are instantly recognizable. When they look broken or extreme, the brain is forced to reconcile the familiar with the unexpected. That tension is the hook.
+                That is why familiar objects work so well. A browser window, a YouTube interface, a dashboard, a button, a chart — these are easy to recognize. When one of those familiar elements is made extreme, broken, or visually “wrong,” the viewer instantly wants to understand why.
             </Body>
 
-            <Callout type="tip" title="The formula in one line">
-                Recognizable subject + unexpected state = irresistible hook. A giant, ugly YouTube button paired with "This is why your UI sucks" — instant impact.
+            <Callout type="tip" title="The hook in one sentence">
+                Familiar subject + surprising condition = a hook people stop for. A normal interface with one absurd detail is often enough to hold attention.
             </Callout>
 
-            <H2>The Hook Is Not Optional</H2>
+            <H2>The Hook Is the Gatekeeper</H2>
 
             <Body>
-                Every creative decision you make about pacing, transformation, and payoff only matters if people are still watching at second two. <strong>The hook determines everything.</strong> Nail it first, optimize the rest second.
+                Everything else in the video depends on this first decision. Editing, pacing, structure, payoff — all of it matters only after the viewer has stayed long enough to experience it. That is why hook quality is not just a creative detail. It is a distribution issue.
+            </Body>
+
+            <Body>
+                If the first frame fails, the rest of the video may as well not exist. If the first frame works, the rest of the video has a chance to earn trust.
             </Body>
 
             <Divider />
