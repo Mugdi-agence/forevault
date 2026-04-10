@@ -15,7 +15,7 @@ const HERO = {
     badge: "Free · No signup · Updated monthly",
     headline: ["Know exactly", "what your", "channel earns."],
     sub: "The most accurate YouTube RPM calculator. Estimate AdSense revenue by niche, geography, video format and retention — in under 5 seconds.",
-    cta_primary:   { label: "Calculate my earnings", href: "/calculator" },
+    cta_primary:   { label: "Calculate my earnings", href: "/youtube-revenue-calculator" },
     cta_secondary: { label: "Browse niches",         href: "/niches"     },
     stats: [
         { value: "21",   label: "Niches analysed"  },
@@ -51,7 +51,7 @@ const NICHE_PREVIEWS = [
 const CTA_SECTION = {
     headline: "Ready to know what your channel is really worth?",
     sub:      "Thousands of YouTube creators use Forevault to plan content strategy around real revenue data — not guesswork.",
-    cta_primary:   { label: "Calculate for free", href: "/calculator" },
+    cta_primary:   { label: "Calculate for free", href: "/youtube-revenue-calculator" },
     cta_secondary: { label: "Browse all niches",  href: "/niches"     },
     trust: ["No sign-up required", "100% free", "Updated monthly"],
 };
@@ -118,7 +118,7 @@ function CalcMockup({ compact = false }) {
                 </div>
                 <div className="calc-mockup__url">
                     <span className="calc-mockup__lock">⊕</span>
-                    forevault.mugdi.com/calculator
+                    forevault.ink/youtube-revenue-calculator
                 </div>
             </div>
  
@@ -363,7 +363,7 @@ export default function Landing() {
                         ))}
                     </StaggerGrid>
                     <RevealBlock className="lp__section-cta" delay={0.12}>
-                        <Link href="/calculator" className="lp-btn lp-btn--primary lp-btn--lg">
+                        <Link href="/youtube-revenue-calculator" className="lp-btn lp-btn--primary lp-btn--lg">
                             Open the calculator <span className="lp-btn__arrow">→</span>
                         </Link>
                     </RevealBlock>
@@ -398,7 +398,7 @@ export default function Landing() {
                             ))}
                         </StaggerGrid>
                         <RevealBlock delay={0.15}>
-                            <Link href="/calculator" className="lp-btn lp-btn--primary" style={{ marginTop: "1.5rem" }}>
+                            <Link href="/youtube-revenue-calculator" className="lp-btn lp-btn--primary" style={{ marginTop: "1.5rem" }}>
                                 Try it now <span className="lp-btn__arrow">→</span>
                             </Link>
                         </RevealBlock>
@@ -436,7 +436,7 @@ export default function Landing() {
  
                     <StaggerGrid className="niches__grid" stagger={0.07}>
                         {NICHE_PREVIEWS.map((n, i) => (
-                            <Link href={`/calculator?niche=${encodeURIComponent(n.name)}`} key={i}
+                            <Link href={`/youtube-revenue-calculator?niche=${encodeURIComponent(n.name)}`} key={i}
                                   className="niche-card" aria-label={`${n.name}: $${n.rpm} RPM`}>
                                 <div className="niche-card__top">
                                     <span className="niche-card__name">{n.name}</span>

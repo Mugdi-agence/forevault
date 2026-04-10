@@ -126,7 +126,7 @@ function NicheCard({ niche, index, openId, setOpenId }) {
 
         const fmt   = niche.format === "Shorts" ? "shorts" : "long";
         const query = `?niche=${niche.id}&format=${fmt}`;
-        router.push(`/calculator${query}`);
+        router.push(`/youtube-revenue-calculator${query}`);
     }
 
     const rpmColor = niche.rpm >= 12 ? "high" : niche.rpm >= 6 ? "mid" : "low";
@@ -579,7 +579,7 @@ function NicheContent() {
                     </li>
                     <li>
                         <strong>Test before you commit.</strong> Use the Forevault{" "}
-                        <a href="/calculator" className="nf-content__link">Revenue Calculator</a>{" "}
+                        <a href="/youtube-revenue-calculator" className="nf-content__link">Revenue Calculator</a>{" "}
                         to model what your target view count would earn in different niches. Run
                         the numbers on 3–5 candidate niches before you decide. Small RPM
                         differences compound dramatically at scale.
@@ -591,7 +591,7 @@ function NicheContent() {
             <div className="nf-content__ctas">
                 <p className="nf-content__ctas-label">Explore more tools</p>
                 <div className="nf-content__cta-grid">
-                    <a href="/calculator" className="nf-content__cta-card">
+                    <a href="/youtube-revenue-calculator" className="nf-content__cta-card">
                         <span className="nf-content__cta-icon">⊞</span>
                         <div>
                             <strong>Revenue Calculator</strong>
@@ -607,7 +607,7 @@ function NicheContent() {
                         </div>
                         <span className="nf-content__cta-arrow">→</span>
                     </a>
-                    <a href="/predictor" className="nf-content__cta-card">
+                    <a href="/youtube-views-predictor" className="nf-content__cta-card">
                         <span className="nf-content__cta-icon">◎</span>
                         <div>
                             <strong>Views Predictor</strong>
