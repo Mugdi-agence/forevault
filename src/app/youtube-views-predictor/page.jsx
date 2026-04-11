@@ -281,13 +281,12 @@ function getDayFactor(format, algoScore) {
         }
     };
 }
-
-// ── Core prediction engine ─────────────────────────────────────────────────────
 function buildPrediction({ format, currentViews, ctr, retention, impressions, swipeRate,
-    likes, comments, shares, subsGained, avgPrevViews, videoAge, language, niche }) {
+    likes, comments, shares, subsGained, avgPrevViews, videoAge, language, niche, subscribers }) {
 
     const rv   = Number(currentViews) || 0;
     const avgV = Number(avgPrevViews) || 0;
+    const subs = Number(subscribers)  || 0;
 
     // 1. Engagement score
     const engScore =
@@ -296,10 +295,14 @@ function buildPrediction({ format, currentViews, ctr, retention, impressions, sw
         (Number(subsGained) || 0) * 5 +
         (Number(shares)     || 0) * 8;
 
-    // 2. Authority multiplier
-    const authorityMult = avgV > 0
-        ? Math.max(0.7, Math.min(2.0, Math.sqrt(rv / avgV)))
+    // 2. Authority multiplier — deux composantes :
+    //    a) perfRatio     : cette vidéo sur/sous-performe vs la moyenne de la chaîne
+    //    b) channelWeight : poids absolu de la chaîne (plus la moyenne est haute, plus l'algo fait confiance)
+    const perfRatio     = avgV > 0 ? Math.sqrt(rv / avgV) : 1.0;
+    const channelWeight = avgV > 0
+        ? Math.max(0.65, Math.min(1.80, 0.28 * Math.log10(avgV + 1) - 0.15))
         : 1.0;
+    const authorityMult = Math.max(0.60, Math.min(2.80, perfRatio * channelWeight));
 
     // 3. AlgoScore
     let algoScore;
@@ -342,6 +345,15 @@ function buildPrediction({ format, currentViews, ctr, retention, impressions, sw
     // Impression-based floor for longform
     if (format === "longform" && impressions && ctr) {
         peakDaily = Math.max(peakDaily, (Number(impressions) * (Number(ctr) / 100)) * 0.5);
+    }
+
+    if (subs > 0) {
+        const notifCtr   = format === "longform"
+            ? Math.min(1, (Number(ctr)       || 4)  / 100)
+            : Math.min(1, (1 - (Number(swipeRate) || 40) / 100));
+        const burstViews = subs * 0.015 * notifCtr;
+        // Spread on ~2 days → daily floor
+        peakDaily = Math.max(peakDaily, burstViews / 2);
     }
 
     // 6. Build raw 90-day data
@@ -581,6 +593,7 @@ export default function Yt_views_predictor() {
             likes: parseFloat(likes)||0, comments: parseFloat(comments)||0,
             shares: parseFloat(shares)||0, subsGained: parseFloat(subsGained)||0,
             avgPrevViews: parseFloat((avgPrevViews + "").replace(/,/g, ""))||0,
+            subscribers: parseFloat((subscribers + "").replace(/,/g, ""))||0,  // ← ajout
             videoAge: parseInt(videoAge)||3,
             language: selectedLanguage, niche: selectedNiche,
         }));
