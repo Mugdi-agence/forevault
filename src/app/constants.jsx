@@ -25,50 +25,49 @@ export const languages = [
 
 export const countryRPM = [
   // TIER 1 - Premium ad markets
-  { id: 'us', name: 'États-Unis',          tier: 1, multiplier: 2.20 },
-  { id: 'ch', name: 'Suisse',              tier: 1, multiplier: 2.00 },
-  { id: 'au', name: 'Australie',           tier: 1, multiplier: 1.80 },
-  { id: 'sg', name: 'Singapour',           tier: 1, multiplier: 1.80 },
-  { id: 'uk', name: 'Royaume-Uni',         tier: 1, multiplier: 1.70 },
+  { id: 'us', name: 'United States',        tier: 1, multiplier: 2.20 },
+  { id: 'ch', name: 'Switzerland',         tier: 1, multiplier: 2.00 },
+  { id: 'au', name: 'Australia',           tier: 1, multiplier: 1.80 },
+  { id: 'sg', name: 'Singapore',           tier: 1, multiplier: 1.80 },
+  { id: 'uk', name: 'United Kingdom',      tier: 1, multiplier: 1.70 },
   { id: 'ca', name: 'Canada',              tier: 1, multiplier: 1.65 },
-  { id: 'jp', name: 'Japon',              tier: 1, multiplier: 1.60 },
-  { id: 'no', name: 'Norvège',             tier: 1, multiplier: 1.55 },
-  { id: 'dk', name: 'Danemark',            tier: 1, multiplier: 1.50 },
-  { id: 'se', name: 'Suède',              tier: 1, multiplier: 1.45 },
-  { id: 'de', name: 'Allemagne',           tier: 1, multiplier: 1.40 },
-  { id: 'ie', name: 'Irlande',             tier: 1, multiplier: 1.35 },
+  { id: 'jp', name: 'Japan',               tier: 1, multiplier: 1.60 },
+  { id: 'no', name: 'Norway',              tier: 1, multiplier: 1.55 },
+  { id: 'dk', name: 'Denmark',             tier: 1, multiplier: 1.50 },
+  { id: 'se', name: 'Sweden',              tier: 1, multiplier: 1.45 },
+  { id: 'de', name: 'Germany',             tier: 1, multiplier: 1.40 },
+  { id: 'ie', name: 'Ireland',             tier: 1, multiplier: 1.35 },
   { id: 'fr', name: 'France',              tier: 1, multiplier: 1.00 },
 
   // TIER 2 - Good advertising markets
-  { id: 'nl', name: 'Pays-Bas',            tier: 2, multiplier: 1.10 },
-  { id: 'kr', name: 'Corée du Sud',        tier: 2, multiplier: 1.10 },
-  { id: 'ae', name: 'Émirats Arabes Unis', tier: 2, multiplier: 1.25 },
+  { id: 'nl', name: 'Netherlands',         tier: 2, multiplier: 1.10 },
+  { id: 'kr', name: 'South Korea',         tier: 2, multiplier: 1.10 },
+  { id: 'ae', name: 'United Arab Emirates',tier: 2, multiplier: 1.25 },
   { id: 'qa', name: 'Qatar',               tier: 2, multiplier: 1.20 },
-  { id: 'il', name: 'Israël',              tier: 2, multiplier: 1.10 },
-  { id: 'be', name: 'Belgique',            tier: 2, multiplier: 1.05 },
-  { id: 'at', name: 'Autriche',            tier: 2, multiplier: 1.00 },
-  { id: 'es', name: 'Espagne',             tier: 2, multiplier: 0.90 },
-  { id: 'it', name: 'Italie',              tier: 2, multiplier: 0.85 },
-  { id: 'nz', name: 'Nouvelle-Zélande',   tier: 2, multiplier: 1.20 },
+  { id: 'be', name: 'Belgium',             tier: 2, multiplier: 1.05 },
+  { id: 'at', name: 'Austria',             tier: 2, multiplier: 1.00 },
+  { id: 'es', name: 'Spain',               tier: 2, multiplier: 0.90 },
+  { id: 'it', name: 'Italy',               tier: 2, multiplier: 0.85 },
+  { id: 'nz', name: 'New Zealand',         tier: 2, multiplier: 1.20 },
 
   // TIER 3 - Emerging markets
-  { id: 'pl', name: 'Pologne',             tier: 3, multiplier: 0.65 },
-  { id: 'br', name: 'Brésil',             tier: 3, multiplier: 0.50 },
-  { id: 'mx', name: 'Mexique',             tier: 3, multiplier: 0.50 },
-  { id: 'tr', name: 'Turquie',             tier: 3, multiplier: 0.45 },
-  { id: 'za', name: 'Afrique du Sud',      tier: 3, multiplier: 0.55 },
-  { id: 'ar', name: 'Argentine',           tier: 3, multiplier: 0.40 },
-  { id: 'co', name: 'Colombie',            tier: 3, multiplier: 0.35 },
-  { id: 'ma', name: 'Maroc',               tier: 3, multiplier: 0.30 },
-  { id: 'dz', name: 'Algérie',             tier: 3, multiplier: 0.25 },
-  { id: 'tn', name: 'Tunisie',             tier: 3, multiplier: 0.25 },
-  { id: 'in', name: 'Inde',                tier: 3, multiplier: 0.30 },
-  { id: 'id', name: 'Indonésie',           tier: 3, multiplier: 0.30 },
-  { id: 'th', name: 'Thaïlande',           tier: 3, multiplier: 0.35 },
+  { id: 'pl', name: 'Poland',              tier: 3, multiplier: 0.65 },
+  { id: 'br', name: 'Brazil',              tier: 3, multiplier: 0.50 },
+  { id: 'mx', name: 'Mexico',              tier: 3, multiplier: 0.50 },
+  { id: 'tr', name: 'Turkey',              tier: 3, multiplier: 0.45 },
+  { id: 'za', name: 'South Africa',        tier: 3, multiplier: 0.55 },
+  { id: 'ar', name: 'Argentina',           tier: 3, multiplier: 0.40 },
+  { id: 'co', name: 'Colombia',            tier: 3, multiplier: 0.35 },
+  { id: 'ma', name: 'Morocco',             tier: 3, multiplier: 0.30 },
+  { id: 'dz', name: 'Algeria',             tier: 3, multiplier: 0.25 },
+  { id: 'tn', name: 'Tunisia',             tier: 3, multiplier: 0.25 },
+  { id: 'in', name: 'India',               tier: 3, multiplier: 0.30 },
+  { id: 'id', name: 'Indonesia',           tier: 3, multiplier: 0.30 },
+  { id: 'th', name: 'Thailand',            tier: 3, multiplier: 0.35 },
   { id: 'ph', name: 'Philippines',         tier: 3, multiplier: 0.25 },
   { id: 'vn', name: 'Vietnam',             tier: 3, multiplier: 0.20 },
-  { id: 'eg', name: 'Égypte',              tier: 3, multiplier: 0.20 },
-  { id: 'ng', name: 'Nigéria',             tier: 3, multiplier: 0.20 },
+  { id: 'eg', name: 'Egypt',               tier: 3, multiplier: 0.20 },
+  { id: 'ng', name: 'Nigeria',             tier: 3, multiplier: 0.20 },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -78,9 +77,7 @@ export const countryRPM = [
 // Total platform: ~2 100B views/month
 // ─────────────────────────────────────────────────────────────────────────────
 export const niches = [
-
   // ── LONG FORM ────────────────────────────────────────────────────────────────
-
   {
     id: "finance",
     niche: "Finance & Investment",
