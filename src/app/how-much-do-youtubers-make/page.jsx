@@ -39,7 +39,7 @@ function CalcContent() {
 
             <div className="calc-content__intro">
                 <span className="calc-content__eyebrow">Understanding monetization</span>
-                <h2 className="calc-content__h2">How much does YouTube pay for 1,000,000 views?</h2>
+                <h1 className="calc-content__h2">How much does YouTube pay for 1,000,000 views?</h1>
                 <p className="calc-content__lead">
                     If you have ever looked at a viral video and wondered how much money it actually made, you are not alone. It is one of the most common questions around creator monetization on YouTube.
                 </p>

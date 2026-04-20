@@ -39,7 +39,7 @@ function CalcContent() {
 
             <div className="calc-content__intro">
                 <span className="calc-content__eyebrow">Understanding YouTube earnings</span>
-                <h2 className="calc-content__h2">How much do 100K YouTube views pay?</h2>
+                <h1 className="calc-content__h2">How much do 100K YouTube views pay?</h1>
                 <p className="calc-content__lead">
                     One of the most common questions creators ask is simple: how much money does 100K views actually make on YouTube? The honest answer is that there is no single payout number. The revenue attached to 100,000 views can swing a lot depending on the niche, the audience country, the length of the video, the retention rate, and whether the views come from long-form content or Shorts.
                 </p>

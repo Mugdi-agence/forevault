@@ -106,9 +106,9 @@ function CalcContent() {
 
             <div className="calc-content__intro">
                 <span className="calc-content__eyebrow">Understanding monetization</span>
-                <h2 className="calc-content__h2">
+                <h1 className="calc-content__h2">
                     How to estimate YouTube earnings without false shortcuts
-                </h2>
+                </h1>
                 <p className="calc-content__lead">
                     Many pages summarize YouTube earnings with a simplistic formula like "views × €2". In reality, it almost never works like that.
                     Two videos with the same number of views can generate very different revenues depending on the niche, audience country, video length, retention rate, and format. This calculator is designed to model those differences more realistically, using signals that creators actually find in YouTube Studio.

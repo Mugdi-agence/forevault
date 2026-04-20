@@ -39,7 +39,7 @@ function CalcContent() {
 
             <div className="calc-content__intro">
                 <span className="calc-content__eyebrow">Understanding YouTube monetization</span>
-                <h2 className="calc-content__h2">YouTube earnings by country: why location changes everything</h2>
+                <h1 className="calc-content__h2">YouTube earnings by country: why location changes everything</h1>
                 <p className="calc-content__lead">
                     Geography is one of the most underestimated parts of YouTube monetization. Two channels can publish the same video, hit the same view count, and still earn very different amounts depending on where those viewers are located.
                 </p>

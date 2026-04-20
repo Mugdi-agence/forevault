@@ -39,7 +39,8 @@ function CalcContent() {
 
             <div className="calc-content__intro">
                 <span className="calc-content__eyebrow">Understanding YouTube RPM by niche</span>
-                <h2 className="calc-content__h2">Why YouTube RPM changes so much by niche</h2>
+                <h1 className="calc-content__h2">Why YouTube RPM changes so much by niche</h1>
+           
                 <p className="calc-content__lead">
                     If you have ever compared two YouTube channels with similar view counts and wondered why one earns far more than the other, the answer is usually not the algorithm. It is the niche. YouTube RPM is heavily shaped by the type of audience a video attracts, the commercial intent behind that audience, and how valuable advertisers consider that topic.
                 </p>
