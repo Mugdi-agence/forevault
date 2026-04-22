@@ -38,82 +38,151 @@ function CalcContent() {
         <section className="calc-content" aria-label="About the YouTube revenue calculator">
 
             <div className="calc-content__intro">
-                <span className="calc-content__eyebrow">Understanding monetization</span>
-                <h1 className="calc-content__h2">How much does YouTube pay for 1,000,000 views?</h1>
+                <span className="calc-content__eyebrow">Understanding creator earnings</span>
+                <h1 className="calc-content__h2">How much do YouTubers actually make?</h1>
                 <p className="calc-content__lead">
-                    If you have ever looked at a viral video and wondered how much money it actually made, you are not alone. It is one of the most common questions around creator monetization on YouTube.
+                    The question gets asked constantly, partly because YouTube income looks like a simple relationship — more views, more money. But that model breaks almost immediately once you look at how the revenue actually gets calculated. Two creators with comparable monthly numbers can end up in genuinely different financial situations, and neither of them is doing anything wrong.
                 </p>
                 <p className="calc-content__lead">
-                    The tricky part is that there is no fixed payout per view. Two videos with the same number of views can earn completely different amounts of money because YouTube revenue depends on several moving factors at the same time: audience location, topic, watch time, ad demand, and even video structure.
+                    What makes creator income hard to generalize is that multiple variables compound each other: niche affects advertiser demand, geography affects bid rates, retention affects how much inventory gets served, format determines which monetization model applies. Change one variable significantly and the whole output shifts.
                 </p>
                 <p className="calc-content__lead">
-                    So instead of thinking in terms of a fixed "price per view," it is more accurate to think in ranges and scenarios. That is exactly what this guide is about: understanding what actually drives revenue so you can estimate earnings more realistically.
+                    This page is an attempt to explain that structure clearly — including where the estimates on this topic (including ours) tend to be unreliable, and what the realistic spread of outcomes looks like for different kinds of channels.
+                </p>
+                <p className="calc-content__lead">
+                    <em>Note on sourcing: the ranges below draw from creator-reported benchmarks and ad market observations. They are not official YouTube figures and do not represent any individual channel's guaranteed outcome.</em>
                 </p>
             </div>
 
             <div className="calc-content__stats" role="list">
-                <div className="calc-content__stat" role="listitem"><span className="calc-content__stat-val">80+</span><span className="calc-content__stat-label">Countries modeled</span></div>
-                <div className="calc-content__stat" role="listitem"><span className="calc-content__stat-val">50+</span><span className="calc-content__stat-label">Niches with RPM benchmarks</span></div>
+                <div className="calc-content__stat" role="listitem"><span className="calc-content__stat-val">80+</span><span className="calc-content__stat-label">Countries in the model</span></div>
+                <div className="calc-content__stat" role="listitem"><span className="calc-content__stat-val">50+</span><span className="calc-content__stat-label">Niches with RPM ranges</span></div>
                 <div className="calc-content__stat" role="listitem"><span className="calc-content__stat-val">12</span><span className="calc-content__stat-label">Display currencies</span></div>
-                <div className="calc-content__stat" role="listitem"><span className="calc-content__stat-val">±20%</span><span className="calc-content__stat-label">Typical difference vs AdSense</span></div>
+                <div className="calc-content__stat" role="listitem"><span className="calc-content__stat-val">±20%</span><span className="calc-content__stat-label">Typical estimate range</span></div>
             </div>
 
             <div className="calc-content__block">
-                <h2 className="calc-content__h2">What RPM and CPM actually mean</h2>
+                <h2 className="calc-content__h2">The variables behind the income gap</h2>
+                <p className="calc-content__p">These are not minor adjustments to a base rate. Each one can substantially change what a creator earns from the same number of views.</p>
                 <div className="calc-content__metrics">
-                    <div className="calc-content__metric-card"><h3 className="calc-content__h3">RPM (Revenue Per Mille)</h3><p className="calc-content__p">RPM is what creators actually earn per 1,000 views after YouTube takes its share. This is the number that matters most because it reflects real income, not advertiser-side pricing. A channel can have high views and still have a low RPM if the audience is in a weaker market or if not many views are actually monetized.</p></div>
-                    <div className="calc-content__metric-card"><h3 className="calc-content__h3">CPM (Cost Per Mille)</h3><p className="calc-content__p">CPM is what advertisers pay for 1,000 ad impressions before YouTube's cut. It is usually higher than RPM. A common mistake is to treat CPM as if it were creator earnings, but it is not. CPM is useful because it shows advertiser demand, especially in high-value niches and during strong seasonal periods like Q4.</p></div>
-                    <div className="calc-content__metric-card"><h3 className="calc-content__h3">Why niche matters</h3><p className="calc-content__p">The topic of the video changes the value of the audience. Finance, investing, software, business, and legal content usually attract stronger advertiser competition than gaming, vlogs, or broad entertainment. Two videos with identical views can earn very different amounts because the audience intent is not the same.</p></div>
-                    <div className="calc-content__metric-card"><h3 className="calc-content__h3">Why geography changes revenue</h3><p className="calc-content__p">Audience location has a major impact on earnings. Viewers from the US, UK, Canada, and Australia generally generate more ad value because advertisers spend more in those markets.</p></div>
-                    <div className="calc-content__metric-card"><h3 className="calc-content__h3">Why retention affects ads shown</h3><p className="calc-content__p">Retention does more than help the algorithm. It also affects how many ad opportunities are actually served. A video that holds attention well often earns more than a longer video with weak pacing.</p></div>
-                    <div className="calc-content__metric-card"><h3 className="calc-content__h3">Why video length matters</h3><p className="calc-content__p">Video length matters because it unlocks mid-roll ads. Under 8 minutes, you are usually limited. Past that threshold, mid-rolls become possible and that can raise revenue noticeably.</p></div>
-                    <div className="calc-content__metric-card"><h3 className="calc-content__h3">Why Shorts earn differently</h3><p className="calc-content__p">Shorts do not use the same monetization model as long-form content. They are paid through a shared revenue pool rather than the normal ad impression system, which is why Shorts usually earn less per view.</p></div>
+                    <div className="calc-content__metric-card">
+                        <h3 className="calc-content__h3">RPM — the real income metric</h3>
+                        <p className="calc-content__p">RPM is what creators actually keep per 1,000 views after YouTube takes its share. Understanding this number is more important than views for income planning. A channel can have impressive view counts and still have a weak RPM if the audience geography is unfavorable or if not many views convert into monetized impressions. Views and income are correlated but not proportional.</p>
+                    </div>
+                    <div className="calc-content__metric-card">
+                        <h3 className="calc-content__h3">CPM — advertiser cost, not creator payout</h3>
+                        <p className="calc-content__p">CPM is what advertisers pay before YouTube takes its cut. It reflects advertiser demand in a given niche and market. A high CPM screenshot does not tell you a creator's income — it tells you what the advertisers were bidding. The creator receives RPM, which is always lower, sometimes substantially so depending on fill rate and audience behavior.</p>
+                    </div>
+                    <div className="calc-content__metric-card">
+                        <h3 className="calc-content__h3">Why niche drives the spread</h3>
+                        <p className="calc-content__p">The topic creates a specific audience, and advertisers value those audiences differently. Finance, business, software, and legal content attracts bids from advertisers with large customer acquisition budgets. Gaming and lifestyle content can still build large audiences, but the advertiser competition for those viewers tends to be lower. The result is a wide RPM spread that has nothing to do with production quality.</p>
+                    </div>
+                    <div className="calc-content__metric-card">
+                        <h3 className="calc-content__h3">Why geography changes outcomes</h3>
+                        <p className="calc-content__p">Audience location is one of the variables most income comparisons omit. Views from the US, UK, Canada, or Australia typically generate higher RPM because advertiser budgets and competition in those markets are stronger. The same view count from a globally distributed audience will usually produce different revenue than the same count from a primarily US audience. The numbers look identical in analytics; the revenue does not.</p>
+                    </div>
+                    <div className="calc-content__metric-card">
+                        <h3 className="calc-content__h3">How retention affects ad delivery</h3>
+                        <p className="calc-content__p">Retention's most discussed role is algorithmic — better watch time helps with distribution. Its effect on direct revenue is mentioned less: more watch time means more ad placements can realistically be served per view. A video that most people complete has more monetization potential per viewer than one with a high dropout rate, even if the views are identical.</p>
+                    </div>
+                    <div className="calc-content__metric-card">
+                        <h3 className="calc-content__h3">Video length and the 8-minute threshold</h3>
+                        <p className="calc-content__p">Once a long-form video crosses 8 minutes, mid-roll placements become an option. That one variable can shift revenue notably on a video with solid retention. It does not automatically mean longer is better — videos padded to hit a duration threshold with weak content typically see retention suffer, which cancels the potential gain. The threshold matters; the quality of the content past it matters more.</p>
+                    </div>
+                    <div className="calc-content__metric-card">
+                        <h3 className="calc-content__h3">Shorts — a separate monetization structure</h3>
+                        <p className="calc-content__p">Shorts do not use the standard ad auction model. They draw from a pooled revenue fund distributed by watch time proportion. The effective RPM is typically far below long-form, which means creators who primarily publish Shorts and creators who primarily publish long-form videos are operating in different monetization systems, even if their total view numbers look comparable.</p>
+                    </div>
                 </div>
             </div>
 
             <div className="calc-content__block">
-                <h2 className="calc-content__h2">Real-world scenarios</h2>
+                <h2 className="calc-content__h2">Where income estimates go wrong — including this one</h2>
+                <p className="calc-content__p">
+                    Most income numbers online are incomplete in ways that are hard to spot unless you know what to look for.
+                </p>
+                <p className="calc-content__p">
+                    A common problem is that CPM gets presented as if it were RPM. Someone posts a screenshot of their CPM — the advertiser-side number — and implies or directly states that is what they earned. It is not. CPM is always higher than RPM because it is pre-cut. When you see income reveal content, it is worth asking which number is actually being shown.
+                </p>
+                <p className="calc-content__p">
+                    Geography gets omitted constantly. A creator with 90% US traffic showing their RPM is not providing a benchmark that generalizes to someone with 60% international traffic. Those are different channels in different monetization environments, even if the view counts match.
+                </p>
+                <p className="calc-content__p">
+                    Screenshot culture compounds this. One excellent month circulates widely. The months below or above it do not. The result is that a large portion of income reference points in creator communities are from outlier periods rather than typical performance — which is why so many people feel like they are underperforming compared to what they read online.
+                </p>
+                <p className="calc-content__p">
+                    Our own estimates carry similar limitations. They reflect observed patterns, not individual channel guarantees. Ad market shifts, policy changes, and audience behavior changes can all move results in ways a benchmark model cannot anticipate.
+                </p>
+            </div>
+
+            <div className="calc-content__block">
+                <h2 className="calc-content__h2">What the income spread actually looks like</h2>
+                <p className="calc-content__p">These scenarios are not perfectly comparable by design — real channels never are. They illustrate how the same view count produces very different revenue under different conditions.</p>
                 <div className="calc-content__scenarios">
-                    <div className="calc-content__scenario"><h3 className="calc-content__h3">1M views on a gaming channel</h3><p className="calc-content__p">Gaming often sits in a lower RPM range because advertiser competition is weaker and the audience is less likely to be in high-value buyer segments. A video can still perform well in views, but the revenue per view is usually modest.</p></div>
-                    <div className="calc-content__scenario"><h3 className="calc-content__h3">1M views on a finance channel</h3><p className="calc-content__p">Finance content usually earns much more because advertisers pay more to reach viewers with strong commercial intent. Even at the same view count, the difference can be dramatic.</p></div>
-                    <div className="calc-content__scenario"><h3 className="calc-content__h3">1M views on an educational channel</h3><p className="calc-content__p">Educational and how-to content often lands between gaming and finance. A well-paced tutorial can outperform a much more "popular" format because the audience is more valuable to advertisers.</p></div>
+                    <div className="calc-content__scenario">
+                        <h3 className="calc-content__h3">US finance channel — 100K views, 9-minute video</h3>
+                        <p className="calc-content__p">Around 52% retention, mostly US traffic. A realistic RPM range in this configuration is roughly $8 to $18. Revenue: approximately <strong>$800 to $1,800</strong>, potentially higher during Q4 when ad spending intensifies. That upper range is not guaranteed — it reflects a favorable combination of variables held simultaneously.</p>
+                    </div>
+                    <div className="calc-content__scenario">
+                        <h3 className="calc-content__h3">Gaming channel — 100K views, geographically distributed</h3>
+                        <p className="calc-content__p">Lower advertiser competition in the gaming space plus a broader geographic mix typically pushes RPM to around $1.50–$4.00. Revenue: roughly <strong>$150 to $400</strong>. Identical headline number. The underlying monetization story is entirely different.</p>
+                    </div>
+                    <div className="calc-content__scenario">
+                        <h3 className="calc-content__h3">Education / software tutorial — 100K views, mixed Tier-1 audience</h3>
+                        <p className="calc-content__p">An 11-minute tutorial with about 48% retention and audience split across US, UK, Canada, and elsewhere. RPM in this range can vary more than most expect — anywhere from $4 to $10 is plausible depending heavily on subtopic and audience behavior. Revenue: <strong>$400 to $1,000</strong>. The word "education" covers a wide spectrum of advertiser demand.</p>
+                    </div>
                 </div>
             </div>
 
             <div className="calc-content__block">
-                <h2 className="calc-content__h2">Common misconceptions</h2>
+                <h2 className="calc-content__h2">The practical errors behind bad income estimates</h2>
                 <ul className="calc-content__steps">
-                    <li><strong>"Views equal money" is wrong</strong> — the same view count can produce very different revenue depending on niche, geography, retention, and length.</li>
-                    <li><strong>CPM is not what creators earn</strong> — CPM is the advertiser-side rate. RPM is closer to the creator's actual payout.</li>
-                    <li><strong>Shorts revenue is pooled</strong> — Shorts are paid from a shared fund, not the same ad system used by long-form videos.</li>
-                    <li><strong>Longer is not always better</strong> — more minutes only help when those minutes keep people watching.</li>
+                    <li><strong>Estimating from view count alone</strong> — views are the output, not the driver. The variables that shape RPM are what actually determine income.</li>
+                    <li><strong>Confusing CPM with RPM</strong> — one is advertiser cost, the other is creator payout. They are related but not equivalent.</li>
+                    <li><strong>Ignoring traffic geography</strong> — country mix can swing revenue by several multiples at identical view counts.</li>
+                    <li><strong>Treating a single screenshot as a typical outcome</strong> — short-term performance spikes do not describe a channel's actual earning pattern.</li>
                 </ul>
             </div>
 
             <div className="calc-content__block">
-                <h2 className="calc-content__h2">Use the calculator to test scenarios</h2>
-                <p className="calc-content__p">Try changing the niche, switching the audience country, or adjusting the video length and retention rate. The numbers will show quickly how sensitive YouTube earnings are to those variables — and why "1M views" means very different things depending on context.</p>
+                <h2 className="calc-content__h2">Common misconceptions about what YouTubers make</h2>
+                <ul className="calc-content__steps">
+                    <li><strong>"More views always means more money" is an oversimplification</strong> — niche, geography, retention, and format can each change the value of those views substantially.</li>
+                    <li><strong>CPM is not what creators earn</strong> — CPM is advertiser-side pricing. RPM is much closer to the creator payout, and the gap between them is real and consistent.</li>
+                    <li><strong>Shorts revenue works differently</strong> — Shorts use a pooled fund model, not the ad auction that applies to long-form. They typically earn less per view.</li>
+                    <li><strong>Longer videos are not automatically better for revenue</strong> — extra duration only improves earnings when retention holds and the additional runtime creates real ad inventory.</li>
+                </ul>
+            </div>
+
+            <div className="calc-content__block">
+                <h2 className="calc-content__h2">Methodology and realistic limits</h2>
+                <p className="calc-content__p">
+                    The ranges on this page combine market-side pricing patterns with creator-reported performance data, then translated into scenario ranges that reflect actual variation rather than tidy averages. They are most useful as comparative tools — understanding why different channel types perform differently — rather than as precise forecasts.
+                </p>
+                <p className="calc-content__p">
+                    Ad demand, seasonality, and YouTube policy changes can all shift outcomes faster than any benchmark model can track. If you have your own YouTube Studio data, those numbers will always be more accurate than these estimates for your specific channel.
+                </p>
             </div>
 
             <div className="calc-content__faq" id="faq">
-                <h2 className="calc-content__h2">Frequently Asked Questions</h2>
-                <p className="calc-content__p" style={{ marginBottom: "2rem" }}>These answers cover the main factors that influence YouTube revenue: RPM, CPM, Shorts, length, retention, and geography.</p>
+                <h2 className="calc-content__h2">Frequently asked questions</h2>
+                <p className="calc-content__p" style={{ marginBottom: "2rem" }}>These answers cover the biggest variables behind creator income on YouTube.</p>
                 <div className="calc-faq__list">
                     {[
-                        { q: "How accurate is this calculator?", a: "It provides a working estimate, not a guaranteed number. The model uses observed RPM benchmarks by niche, as well as adjustments for geography, format, length, and retention." },
-                        { q: "What is the difference between RPM and CPM on YouTube?", a: "CPM is what advertisers pay for 1,000 ad impressions before YouTube's share. RPM is what the creator actually earns per 1,000 views after YouTube's share." },
-                        { q: "Why do Shorts pay less than long-form videos?", a: "Shorts are based on a different economic model — a shared revenue pool distributed by watch time rather than the standard ad impression structure." },
-                        { q: "Which YouTube niche has the best RPM?", a: "Finance, investing, software, real estate, law, and certain business topics often have the highest RPMs because their audiences have stronger commercial intent." },
-                        { q: "Does video length really change revenue?", a: "Yes, because it changes ad serving opportunities. Past 8 minutes, mid-roll ads become possible — but only if the video keeps viewers engaged." },
-                        { q: "How does audience geography influence revenue?", a: "Viewers from the US, UK, Canada, and other high-value markets often generate more revenue because advertisers bid more aggressively there." },
-                        { q: "What retention rate should I enter?", a: "If you do not have your own data yet, 45% is a reasonable baseline for a standard long-form video." },
-                        { q: "Is the calculator free?", a: "Yes, it is free to use and does not require an account. The estimate runs locally in the browser." },
+                        { q: "How accurate is this calculator?", a: "It gives a planning range, not a guaranteed payout. The model uses observed RPM ranges by niche with adjustments for geography, format, length, and retention. It is most useful for direction and comparison. Your real Studio numbers, once you have them, will always outperform this model for your specific channel." },
+                        { q: "What is the difference between RPM and CPM on YouTube?", a: "CPM is what advertisers pay before YouTube takes its cut. RPM is what the creator actually keeps per 1,000 views. If you want the more realistic income metric, use RPM. When you see income screenshots online, it is worth checking which number is being shown — the two are often conflated." },
+                        { q: "Why do Shorts pay less than long-form videos?", a: "Because Shorts use a different economic model built around a shared revenue pool, not individual ad auctions. Reach can be excellent with Shorts; direct ad revenue per view is usually much lower than long-form. Many creators use them primarily for audience growth rather than direct monetization." },
+                        { q: "Which YouTube niche has the best RPM?", a: "Finance, investing, software, real estate, law, and some business topics often sit near the top because those audiences are more commercially valuable to advertisers. But 'finance' is not a monolith — RPM can vary considerably within a single broad niche depending on subtopic, audience demographics, and geography." },
+                        { q: "Does video length really change revenue?", a: "Yes. Once a video passes 8 minutes, mid-roll ads become possible. That can help revenue materially, assuming viewers stay engaged. Adding length purely to cross the threshold tends to hurt retention, which often cancels the benefit. The length has to be earned by the content." },
+                        { q: "How does audience geography influence revenue?", a: "Significantly. Viewers from the US, UK, Canada, and similar high-value markets often generate stronger RPM because advertisers bid more aggressively there. The same video with a different geographic distribution of views can produce materially different revenue." },
+                        { q: "What retention rate should I enter?", a: "If you do not have your own analytics yet, 45% is a solid long-form starting point. Then update it with your real Studio numbers. Your channel's actual audience behavior — shaped by your specific topic, format, and editing style — will always be more informative than a generic benchmark." },
+                        { q: "Is the calculator free?", a: "Yes. It is free, no account required, and the estimate runs locally in the browser." },
                     ].map(({ q, a }, i) => <FaqItem key={i} q={q} a={a} />)}
                 </div>
             </div>
 
             <p className="calc-content__disclaimer">
-                Forevault estimates rely on aggregated creator benchmarks and market data. Actual AdSense earnings vary by ad demand, seasonality, audience geography, adblock rates, YouTube policies, and individual video performance. This content is for educational and planning purposes only—not financial advice. See our <a href="/terms" className="calc-content__link">Terms of Use</a> and our <a href="/privacy" className="calc-content__link">Privacy Policy</a>.
+                Forevault estimates rely on aggregated creator benchmarks and market data. Real AdSense earnings still vary with ad demand, seasonality, geography, ad blockers, YouTube policy changes, and individual video performance. This content is for education and planning only, not financial advice. See our <a href="/terms" className="calc-content__link">Terms of Use</a> and our <a href="/privacy" className="calc-content__link">Privacy Policy</a>.
             </p>
         </section>
     );

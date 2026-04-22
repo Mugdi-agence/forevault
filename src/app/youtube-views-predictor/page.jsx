@@ -638,7 +638,7 @@ export default function Yt_views_predictor() {
                 <div>
                     <span className="ytp-badge">YouTube</span>
                     <h1 className="ytp-title">Views Predictor</h1>
-                    <p className="ytp-sub">Forecast your video performance over 90 days</p>
+                    <p className="ytp-sub">Estimate how your video might perform over the next 90 days</p>
                 </div>
 
                 <div className="ytp-toggle" ref={toggleRef}>
@@ -658,7 +658,7 @@ export default function Yt_views_predictor() {
                             onChange={e => { setLanguageId(e.target.value); setResult(null); }}>
                             {languages.map(l => <option key={l.id} value={l.id}>{l.flag} {l.name}</option>)}
                         </select>
-                        {selectedLanguage && <span className="ytp-hint">Pool mensuel : <b>{fmtN(selectedLanguage.monthlyViews)}</b> vues</span>}
+                        {selectedLanguage && <span className="ytp-hint">Monthly audience pool: <b>{fmtN(selectedLanguage.monthlyViews)}</b> views</span>}
                     </div>
                     <div className="ytp-field">
                         <span className="ytp-label">Niche / Topic</span>
@@ -666,7 +666,7 @@ export default function Yt_views_predictor() {
                             onChange={e => { setNicheId(e.target.value); setResult(null); }}>
                             {filteredNiches.map(n => <option key={n.id} value={n.id}>{n.niche}</option>)}
                         </select>
-                        {selectedNiche && <span className="ytp-hint">RPM ~${selectedNiche.rpm} · {(selectedNiche.audienceShare * 100).toFixed(1)}% audience</span>}
+                        {selectedNiche && <span className="ytp-hint">RPM ~${selectedNiche.rpm} · {(selectedNiche.audienceShare * 100).toFixed(1)}% share of audience</span>}
                     </div>
                 </div>
 
@@ -694,7 +694,7 @@ export default function Yt_views_predictor() {
                             {videoAge <= 2  ? "🟢 Early window — data is most actionable" :
                              videoAge <= 7  ? "🟡 First week — algo push still possible"  :
                              videoAge <= 30 ? "⚡ Past peak — long tail projection"        :
-                             "📦 Evergreen mode — search & suggested only"}
+                             "📦 Evergreen phase — mostly search and suggested"}
                         </span>
                     )}
                 </div>
@@ -801,7 +801,7 @@ export default function Yt_views_predictor() {
                 {!result ? (
                     <div className="ytp-empty">
                         <span className="ytp-empty-icon">📈</span>
-                        <p className="ytp-empty-text">Fill in your video metrics<br />to forecast the next 90 days</p>
+                        <p className="ytp-empty-text">Enter your video metrics<br />to project the next 90 days</p>
                     </div>
                 ) : (
                     <div ref={resultsRef} style={{ display: "flex", flexDirection: "column", gap: "1.35rem", flex: 1 }}>
@@ -822,7 +822,7 @@ export default function Yt_views_predictor() {
 
                         <div className="ytp-meta" ref={metaRef}>
                             <div className="ytp-tag hl">
-                                <span className="ytp-tag-label">Algorithm score</span>
+                                    <span className="ytp-tag-label">Algorithm signal score</span>
                                 <ScoreBar score={result.algoScore} />
                             </div>
                             <div className={`ytp-tag ${result.at7 > baseViews * 0.8 ? "green" : ""}`}>
@@ -843,7 +843,7 @@ export default function Yt_views_predictor() {
                                 <span className="ytp-tag-val">{result.engScore.toLocaleString()}</span>
                             </div>
                             <div className="ytp-tag">
-                                <span className="ytp-tag-label">Format</span>
+                                <span className="ytp-tag-label">Video format</span>
                                 <span className="ytp-tag-val">{format === "longform" ? "Long Form" : "Shorts"}</span>
                             </div>
                         </div>
@@ -873,7 +873,7 @@ export default function Yt_views_predictor() {
 
                         <div className="ytp-chart-block" ref={chartRef}>
                             <div className="ytp-chart-head">
-                                <p className="ytp-chart-title">View evolution — 90-day projection</p>
+                                <p className="ytp-chart-title">View curve — 90-day projection</p>
                                 <div className="ytp-chart-tabs">
                                     {["cumulative", "daily"].map(m => (
                                         <button key={m} className={`ytp-chart-tab ${chartMode === m ? "active" : ""}`}
@@ -917,8 +917,8 @@ export default function Yt_views_predictor() {
                             </ResponsiveContainer>
 
                             <div className="ytp-legend">
-                                <span className="ytp-legend-item"><span className="ytp-legend-dot" style={{ background: "#22c55e" }} />Actual data</span>
-                                <span className="ytp-legend-item"><span className="ytp-legend-dot" style={{ background: "#6366f1" }} />Projected</span>
+                                <span className="ytp-legend-item"><span className="ytp-legend-dot" style={{ background: "#22c55e" }} />Current data</span>
+                                <span className="ytp-legend-item"><span className="ytp-legend-dot" style={{ background: "#6366f1" }} />Predicted</span>
                                 <span className="ytp-legend-item">
                                     <span style={{ display: "inline-block", width: 0, borderLeft: "2px dashed rgba(255,255,255,.3)", height: 12, flexShrink: 0 }} />
                                     Today
@@ -939,26 +939,30 @@ export default function Yt_views_predictor() {
     );
 }
 
+
 function YtViewsPredictorContent() {
     return (
         <section className="ytp-content" aria-label="About the YouTube Views Predictor">
-
+ 
             <div className="ytp-content__intro">
-                <span className="ytp-content__eyebrow">Understanding YouTube performance</span>
+                <span className="ytp-content__eyebrow">How YouTube performance really works</span>
                 <h2 className="ytp-content__h2">
-                    YouTube Views Predictor: How Many Views Will Your Video Actually Get?
+                    YouTube Views Predictor: understanding the curve behind your numbers
                 </h2>
                 <p className="ytp-content__lead">
-                    One of the most frustrating parts of being a YouTube creator is wondering exactly how far a video will go. You upload, it gets a few thousand views in the first day, and then… what? Will it keep climbing for weeks or quietly fade after the first week?
+                    After publishing a video, the hardest part is not the wait — it is not knowing whether the wait means anything. A video that sits at 3K views on day two might reach 200K by day 30, or it might end at 8K. Both outcomes start the same way. The difference is in signals that happen mostly in the first 48 to 96 hours, and most creators do not have a useful framework for reading them.
                 </p>
                 <p className="ytp-content__lead">
-                    The truth is that views are never fixed. Two videos can start with the exact same number of views, the same subscriber count, and even similar thumbnails, yet one will quietly die while the other explodes into the millions. The difference comes down to a handful of signals the YouTube algorithm actually cares about: CTR, retention, engagement, niche, language market, and whether you’re posting long-form or Shorts.
+                    What makes view prediction genuinely difficult is not a lack of data — you have CTR, retention, engagement, watch time, and channel history. It is that those signals interact with each other in non-linear ways, and the relationship between day-3 performance and day-30 performance changes depending on which phase of distribution the video is currently in.
                 </p>
                 <p className="ytp-content__lead">
-                    This guide explains exactly how the YouTube Views Predictor works, why different creators see wildly different results for the same view count, and how to use the tool to get a realistic 90-day forecast instead of guessing.
+                    This page explains how the model works, what it is actually measuring, and — importantly — where the model breaks down. Because it does break down in certain situations, and knowing those situations prevents misreading the output.
+                </p>
+                <p className="ytp-content__lead">
+                    <em>Methodology note: this predictor is built on observed view curve archetypes from creator-reported data, not on access to YouTube's internal systems. It models realistic probability ranges, not guaranteed outcomes. Individual video performance can deviate significantly from any prediction based on factors the model cannot observe.</em>
                 </p>
             </div>
-
+ 
             <div className="ytp-content__stats" role="list">
                 <div className="ytp-content__stat" role="listitem">
                     <span className="ytp-content__stat-val">90 days</span>
@@ -977,180 +981,245 @@ function YtViewsPredictorContent() {
                     <span className="ytp-content__stat-label">Typical forecast range</span>
                 </div>
             </div>
-
+ 
             <div className="ytp-content__block">
-                <h2 className="ytp-content__h2">Try the predictor first</h2>
+                <h2 className="ytp-content__h2">What the model is actually measuring</h2>
                 <p className="ytp-content__p">
-                    To give you a realistic estimate, you can try the YouTube Views Predictor below before reading further.
+                    The predictor does not have access to YouTube's internal data. What it has is a model built from observed patterns: how videos with similar algorithm signals tend to behave over 90 days, segmented by format, niche, language market, and channel authority. Here is what each input is actually doing in that model.
                 </p>
-                <p className="ytp-content__p">
-                    The tool models the actual 90-day view curve YouTube uses: the initial subscriber/notification burst, the critical algo test window (days 1–4), the shoulder plateau, and the long tail. It factors in your current views, video age, CTR, retention (or completion rate for Shorts), engagement, niche audience size, and language market.
-                </p>
-
-                <div className="ytp-content__embed-placeholder" aria-label="YouTube Views Predictor Embed">
-                    [YouTube Views Predictor Embed]
-                </div>
-            </div>
-
-            <div className="ytp-content__block">
-                <h2 className="ytp-content__h2">What the predictor actually measures</h2>
-
+ 
                 <div className="ytp-content__metrics">
                     <div className="ytp-content__metric-card">
-                        <h3 className="ytp-content__h3">Algorithm score</h3>
+                        <h3 className="ytp-content__h3">Algorithm score — the central output</h3>
                         <p className="ytp-content__p">
-                            This is the single most important number the predictor calculates. It combines CTR, retention/completion rate, engagement (likes, comments, shares, subs gained), and your channel’s authority. A score above 1.5 usually means the video will get an extended push; below 0.8 and it will decay fast after day 1.
+                            The algorithm score combines CTR, retention or completion rate, engagement signals, and channel authority into a single composite. This score then selects which of four curve archetypes — weak, average, strong, or viral — the prediction uses as its basis, with smooth blending between them. A score above roughly 1.5 typically corresponds to videos that receive extended browse and suggested distribution. Below 0.8, the curve tends to decay fast after the first day. The threshold effects are real but not perfectly sharp — behavior at the edges of those ranges is genuinely variable.
                         </p>
                     </div>
-
+ 
                     <div className="ytp-content__metric-card">
-                        <h3 className="ytp-content__h3">Audience pool &amp; language market</h3>
+                        <h3 className="ytp-content__h3">Audience pool and language market cap</h3>
                         <p className="ytp-content__p">
-                            Not every niche or language has the same number of active viewers. The predictor caps total possible views based on the realistic monthly audience size for your chosen language and niche. A finance video in English has a much larger pool than the same topic in a smaller language.
+                            Every niche-language combination has a ceiling. An English-language finance video can theoretically reach a much larger audience than the same concept in a smaller language market, not because the content is better but because the addressable pool is larger. The model applies a realistic cap based on estimated market size and niche audience share. This prevents the prediction from suggesting a small-market video will reach a number that is larger than the realistic viewing pool for that topic in that language.
                         </p>
                     </div>
-
+ 
                     <div className="ytp-content__metric-card">
-                        <h3 className="ytp-content__h3">Long-form vs Shorts curves</h3>
+                        <h3 className="ytp-content__h3">Long-form vs Shorts — genuinely different curves</h3>
                         <p className="ytp-content__p">
-                            Long-form videos have a slower build with a noticeable shoulder around days 4–14. Shorts spike harder but decay faster unless the loop ratio (low swipe rate + high completion) is exceptional. The predictor uses completely separate curve models for each format.
+                            Long-form and Shorts do not just have different RPM. They have structurally different view curves. Long-form typically builds a shoulder plateau around days 4–14 as browse and suggested distribution kicks in after the algorithm test window. Shorts can spike earlier and harder, but tend to decay faster unless loop signals — completion rate and low swipe-away — are strong. The model uses separate curve logic for each format, not just scaled versions of the same shape.
                         </p>
                     </div>
-
+ 
                     <div className="ytp-content__metric-card">
-                        <h3 className="ytp-content__h3">Retention &amp; CTR signals</h3>
+                        <h3 className="ytp-content__h3">CTR and retention — why both matter together</h3>
                         <p className="ytp-content__p">
-                            Retention tells YouTube whether people actually want to keep watching. CTR tells it whether people want to click in the first place. Strong signals in both push the video into browse and suggested feeds, creating the classic “shoulder” you see in Analytics.
+                            High CTR without retention means the thumbnail and title are doing their job but the video is not. High retention without CTR means the video satisfies the people who watch it, but not enough people are clicking to find it. The algorithm is most likely to push a video broadly when both signals are strong simultaneously. In the model, CTR and retention are multiplied together rather than added — which means a weakness in either one creates a larger drag than a weakness in a less important signal.
                         </p>
                     </div>
-
+ 
                     <div className="ytp-content__metric-card">
-                        <h3 className="ytp-content__h3">Engagement multipliers</h3>
+                        <h3 className="ytp-content__h3">Engagement weighting</h3>
                         <p className="ytp-content__p">
-                            Shares and subs gained carry the heaviest weight because they signal the video is worth spreading. The predictor weights shares ×8 and subs gained ×5 because these are the strongest real-world indicators of viral potential.
+                            Shares are weighted more heavily than likes in the model because they have a stronger relationship with extended distribution in practice. A video that gets shared at scale is reaching new audiences by definition — which is what the algorithm's suggested feed push is trying to simulate. Subscriber gains are weighted similarly because they indicate the viewer found enough value to want more, which correlates with content that performs well in browse features.
                         </p>
                     </div>
-
+ 
                     <div className="ytp-content__metric-card">
-                        <h3 className="ytp-content__h3">Niche audience share</h3>
+                        <h3 className="ytp-content__h3">Channel authority — context for the signals</h3>
                         <p className="ytp-content__p">
-                            Finance, investing, software, and business niches usually have higher audience density and better advertiser interest, which indirectly helps distribution. Gaming and broad entertainment have larger but more competitive pools, so the same signals often produce smaller relative growth.
+                            The same CTR and retention numbers mean different things on a channel with 500K average views per video versus a channel with 2K average views per video. The model includes an authority multiplier that reflects this: consistent channels at scale get some distributional benefit from their track record, while newer or inconsistent channels are treated more conservatively. This is not a large effect relative to CTR and retention, but it is real and it affects the tail of the curve more than the initial spike.
                         </p>
                     </div>
                 </div>
             </div>
-
+ 
             <div className="ytp-content__block">
-                <h2 className="ytp-content__h2">Real-world forecast examples</h2>
+                <h2 className="ytp-content__h2">Where the model breaks down</h2>
                 <p className="ytp-content__p">
-                    Same starting point. Very different 90-day outcomes.
+                    A model built on historical patterns cannot anticipate structural changes. Here is where this one is most likely to be wrong.
                 </p>
-
+                <p className="ytp-content__p">
+                    Trend-driven videos violate the assumptions the model is built on. When a topic suddenly becomes culturally significant — a news event, a viral moment, a policy change — related videos can have view curves that look nothing like the observed archetypes. The spike can come much later, much harder, or from external traffic sources that the model's algorithm score logic does not capture. The model will usually underpredict these videos significantly.
+                </p>
+                <p className="ytp-content__p">
+                    Very new channels also create estimation problems. The channel authority component of the model is calibrated against channels with meaningful history. A channel with 5 videos has very little pattern to draw from, and the model's prediction in that case should be treated with additional skepticism compared to a channel with 50+ videos and stable average performance.
+                </p>
+                <p className="ytp-content__p">
+                    Cross-platform spillover — a video going viral on Twitter or Instagram and driving YouTube views from outside the platform's normal distribution — is invisible to the model. The model can only see the YouTube signal metrics. If a significant portion of a video's eventual view count comes from external sources, the prediction will not account for that at all.
+                </p>
+                <p className="ytp-content__p">
+                    And seasonality affects both views and engagement in ways that vary by niche and market. The model does not apply a seasonal correction, which means predictions made in strong engagement periods (certain Q4 months, for example) may slightly overpredict typical performance for the same video posted in January.
+                </p>
+            </div>
+ 
+            <div className="ytp-content__block">
+                <h2 className="ytp-content__h2">Why growth and monetization advice online misleads creators</h2>
+                <p className="ytp-content__p">
+                    Most advice about YouTube growth treats the process as more predictable than it is. This is where most creators get it wrong — not through lack of effort, but through applying frameworks that oversimplify a genuinely variable system.
+                </p>
+                <p className="ytp-content__p">
+                    The screenshot problem is significant. One viral video gets posted everywhere. The 40 average videos that came before and after it do not. The result is that most creators have a reference library of exceptional performances, not typical ones. When their own videos do not replicate those results, they assume something is broken rather than recognizing that the reference itself was unrepresentative.
+                </p>
+                <p className="ytp-content__p">
+                    Nobody tells you this part: a lot of RPM screenshots and view screenshots online are quietly misleading because they show context that selected for the best outcome, not the distribution of outcomes. The average of a creator's videos is rarely the same as the video they chose to share publicly.
+                </p>
+                <p className="ytp-content__p">
+                    The same problem applies to "views x $X" income estimates. The formula ignores niche, geography, retention, format, and ad market timing — which is to say, it ignores the variables that actually determine the result. A better approach is to understand the variables separately and reason about how they interact for a specific channel configuration.
+                </p>
+            </div>
+ 
+            <div className="ytp-content__block">
+                <h2 className="ytp-content__h2">What realistic outcome spreads look like</h2>
+                <p className="ytp-content__p">
+                    These scenarios illustrate how the same starting-point metrics can lead to different 90-day outcomes depending on niche and audience profile. They are ranges, not predictions for specific channels.
+                </p>
+ 
                 <div className="ytp-content__scenarios">
                     <div className="ytp-content__scenario">
-                        <h3 className="ytp-content__h3">Gaming channel – 50K views at day 3</h3>
+                        <h3 className="ytp-content__h3">Gaming channel — 50K views at day 3, strong engagement</h3>
                         <p className="ytp-content__p">
-                            Even with decent CTR, gaming often sees a fast drop after the initial push because the audience pool is saturated and competition is fierce. The predictor usually shows a modest shoulder and a long but shallow tail — total 90-day views might land around 180K–250K if signals are average.
+                            Gaming can produce fast early spikes but has a harder time building the shoulder plateau that extends long-tail distribution, partly because the field is competitive enough that new content quickly displaces existing content in suggested feeds. With strong algorithm signals, a 90-day total of 200K–280K is plausible. With average signals, the curve often flattens faster after the first week and the tail is shallow. The variance within "gaming" is itself wide — a major franchise channel and a niche indie game channel will not behave the same way.
                         </p>
                     </div>
-
+ 
                     <div className="ytp-content__scenario">
-                        <h3 className="ytp-content__h3">Finance channel – 50K views at day 3</h3>
+                        <h3 className="ytp-content__h3">Finance channel — 50K views at day 3, solid retention</h3>
                         <p className="ytp-content__p">
-                            Finance videos tend to get stronger algo validation because viewers watch longer and engage more (they’re often solving a real problem). The same 50K starting views can easily push past 400K–700K cumulative in 90 days if retention and engagement stay solid.
+                            Finance videos with genuine search demand tend to build a longer tail than entertainment content because the topic remains relevant beyond the initial distribution window. A 90-day range of 350K–650K is plausible with strong signals and a US-heavy audience. But finance is also niche-specific: a video about mortgage rates has a different search lifecycle than a video about general budgeting philosophy. The topic within finance matters as much as the niche label.
                         </p>
                     </div>
-
+ 
                     <div className="ytp-content__scenario">
-                        <h3 className="ytp-content__h3">Educational / tutorial channel – 50K views at day 3</h3>
+                        <h3 className="ytp-content__h3">Tutorial channel — 50K views at day 3, high search potential</h3>
                         <p className="ytp-content__p">
-                            Educational content sits in the middle but can outperform both when the topic is highly searchable. The predictor often shows a strong long tail because people keep discovering the video via search months later.
+                            Tutorials for topics with consistent demand — software tools, skill acquisition, problem-solving — can build a distribution tail that extends well past 90 days. The 90-day number may not be the most useful metric for this content type because the ongoing search traffic can match or exceed the initial push over time. For tutorial channels, month 6 RPM is sometimes more informative than month 1 views.
+                        </p>
+                    </div>
+ 
+                    <div className="ytp-content__scenario">
+                        <h3 className="ytp-content__h3">US finance channel — 100K at day 5, 9 minutes, 52% retention</h3>
+                        <p className="ytp-content__p">
+                            A realistic 90-day projection might land between 380K and 720K views if CTR and engagement stay consistent with the early signals. The wide range reflects the genuine uncertainty in whether browse and suggested distribution maintains itself through the shoulder phase, which is the most variable part of a video's performance lifecycle.
+                        </p>
+                    </div>
+ 
+                    <div className="ytp-content__scenario">
+                        <h3 className="ytp-content__h3">Gaming channel, same starting metrics</h3>
+                        <p className="ytp-content__p">
+                            The higher competition density in gaming combined with typically lower watch time usually produces a more compressed 90-day range. Something like 190K–350K is plausible under similar signal conditions. Monetization per view is also lower, so the combined revenue outcome is substantially different from the finance example despite the similar starting point.
+                        </p>
+                    </div>
+ 
+                    <div className="ytp-content__scenario">
+                        <h3 className="ytp-content__h3">The underlying point</h3>
+                        <p className="ytp-content__p">
+                            Same starting views, same video age, very different probable trajectories. This is why comparing channels without matching niche, language market, retention profile, and audience geography is almost always a misleading exercise. The starting numbers look comparable. The systems they are operating in are not.
                         </p>
                     </div>
                 </div>
             </div>
-
+ 
             <div className="ytp-content__block">
-                <h2 className="ytp-content__h2">Common misconceptions about YouTube views</h2>
+                <h2 className="ytp-content__h2">Forecasting errors that look reasonable but distort decisions</h2>
+                <ul className="ytp-content__steps">
+                    <li><strong>Using early views as a final signal</strong> — day 3 performance tells you about the notification burst and early algorithm test. It does not tell you about browse and suggested distribution, which often determines the shoulder and tail phases where much of the total view count accumulates.</li>
+                    <li><strong>Comparing channels without context</strong> — niche, language market, and audience profile create fundamentally different operating environments. A fair comparison requires matching those variables, not just view counts.</li>
+                    <li><strong>Isolating one metric</strong> — CTR without retention, or engagement without CTR, gives a partial picture that can lead to wrong conclusions. The algorithm score in this model multiplies these signals precisely because their interaction matters more than any one of them in isolation.</li>
+                    <li><strong>Planning from exceptional data points</strong> — one peak video is not a baseline. A channel's decision-making should be built on the distribution of its performances, not the best one, and not the worst one either.</li>
+                </ul>
+            </div>
+ 
+            <div className="ytp-content__block">
+                <h2 className="ytp-content__h2">Common myths about YouTube view growth</h2>
                 <ul className="ytp-content__steps">
                     <li>
-                        <strong>“More views early always means more views later” is wrong</strong> — the first 48 hours are mostly a subscriber test. Real growth depends on the algo validation window (days 1–4).
+                        <strong>"Strong early views always lead to a strong final result" is false</strong> — the first 48 hours are one phase of a multi-phase process. The algorithm test window (days 1–4) is arguably more decisive for long-form content than the initial notification burst, and performance in that window can diverge significantly from day-1 numbers.
                     </li>
                     <li>
-                        <strong>“All videos in my niche perform the same” is wrong</strong> — niche audience size and competition level create very different ceilings even with identical signals.
+                        <strong>"All videos in my niche should perform similarly" is false</strong> — competition density, subtopic demand, and audience size all vary within a single broad niche. Two "cooking" videos are not operating in the same environment if one is about a trending ingredient and one is about a classic technique with stable long-term search volume.
                     </li>
                     <li>
-                        <strong>“Shorts always grow faster” is wrong</strong> — Shorts spike hard but usually have a much steeper decay unless completion rate and low swipe rate are exceptional.
+                        <strong>"Shorts always grow faster" is false, or at least incomplete</strong> — Shorts can spike quickly, but most Shorts that reach significant view counts do so within the first few days. The long-tail behavior is compressed relative to long-form. For channel growth as measured over months, the view curves are often more similar than the format difference implies.
                     </li>
                     <li>
-                        <strong>“My channel authority doesn’t matter” is wrong</strong> — the predictor factors in your average previous video views to calculate an authority multiplier. Newer or inconsistent channels get a more conservative curve.
+                        <strong>"Channel authority does not matter for distribution" is false</strong> — YouTube's distribution system does incorporate channel-level signals. Consistent performance history affects how conservatively or generously the algorithm tests new videos. This is not an enormous effect, but it is real enough to make a channel's average performance history a useful predictor input.
                     </li>
                 </ul>
             </div>
-
+ 
             <div className="ytp-content__block">
-                <h2 className="ytp-content__h2">Use the predictor to test different scenarios</h2>
+                <h2 className="ytp-content__h2">Using scenario modeling instead of single-point estimates</h2>
                 <p className="ytp-content__p">
-                    You can test different scenarios using the predictor above. Change the niche, language market, retention rate, CTR, or engagement numbers and watch how the 7-day, 30-day, and 90-day forecasts shift. That’s the fastest way to see why two creators with the same current views can end up with completely different long-term results.
+                    The most useful way to use this predictor is not to find "the" forecast for a video — it is to run several scenarios and understand what conditions would need to be true for each outcome. What would need to be true for this to reach 500K in 90 days? What does the 180K scenario require? That kind of reasoning turns a prediction tool into a decision support tool, which is the more honest use case.
                 </p>
                 <p className="ytp-content__p">
-                    Once you start modeling real numbers instead of hoping, YouTube performance stops feeling random and becomes something you can actually plan around.
+                    Once you model real inputs instead of gut-feel estimates, patterns become visible that are hard to see in analytics alone. A channel that consistently gets strong CTR but weak retention has a different strategic problem than one with the reverse. The predictor's output reflects that difference in the curve shape, not just the top-line number.
                 </p>
             </div>
-
+ 
+            <div className="ytp-content__block">
+                <h2 className="ytp-content__h2">Model limits and appropriate use</h2>
+                <p className="ytp-content__p">
+                    This is a structured approximation built from observed behavioral patterns and audience-size constraints. It is most useful for comparative analysis between channel configurations and for identifying which signal variables are limiting performance. It is not reliable for trend-driven content, very new channels with minimal history, or any situation where external traffic sources might significantly affect results.
+                </p>
+                <p className="ytp-content__p">
+                    Use the output as a planning range with honest uncertainty, not as a forecast to be held to. The practical value is in understanding the mechanics — what changes when you improve CTR, what changes when you improve retention, and how much headroom the audience pool for your niche-language combination actually provides.
+                </p>
+            </div>
+ 
             <div className="ytp-content__faq" id="faq">
                 <h2 className="ytp-content__h2">Frequently Asked Questions</h2>
                 <p className="ytp-content__p" style={{ marginBottom: "2rem" }}>
-                    These answers cover the main factors the YouTube Views Predictor uses and why different videos see such different 90-day results.
+                    These answers cover the variables that move the model most and explain where outcomes diverge between videos that look similar on the surface.
                 </p>
-
+ 
                 <div className="ytp-faq__list">
                     {[
                         {
                             q: "How accurate is the YouTube Views Predictor?",
-                            a: "It is built on real YouTube analytics curve shapes observed across thousands of videos. The 90-day forecast is usually within ±25% of actual performance when you input accurate CTR, retention, and engagement data. It is not a guarantee — sudden trends or major algorithm changes can still move the needle."
+                            a: "When the input metrics are close to real values, the forecast tends to fall within roughly ±25% of actual outcomes for videos that follow typical distribution patterns. The accuracy degrades meaningfully for trend-driven content, videos that receive significant external traffic, very new channels, or any video that experiences unexpected algorithm behavior. The more useful frame is: it tells you which conditions would need to hold for different outcome ranges, not what the outcome will definitely be."
                         },
                         {
                             q: "What is the algorithm score and why does it matter?",
-                            a: "The algorithm score (0.1–4.0+) combines your CTR, retention, engagement, and channel authority into one number that decides how aggressively YouTube will push the video into browse and suggested feeds. Scores above 1.5 usually unlock the extended shoulder plateau you see in successful videos."
+                            a: "The algorithm score aggregates CTR, retention or completion rate, engagement signals, and channel authority into a single composite that maps to different view curve archetypes. Above roughly 1.5, the model predicts extended browse and suggested distribution. Below 0.8, it predicts rapid post-spike decay. The score is not a YouTube metric — it is a model construct designed to capture the combined effect of the inputs that most consistently predict distribution behavior in observed data."
                         },
                         {
                             q: "Why does my niche change the forecast so much?",
-                            a: "Every niche has a different audience pool size and competition level. Finance and software have higher audience density and stronger commercial intent, so the same signals produce bigger distribution. Gaming has a massive but highly competitive pool, so growth is usually slower for the same metrics."
+                            a: "Because each niche has a different audience pool size and a different audience share estimate, which affects the cap applied to the raw prediction. Finance in English has a much larger addressable pool than the same topic in a smaller language market. The niche also affects how the model interprets the channel authority component. Niche competition density shapes how aggressively the model assumes the algorithm will compete for attention with other content."
                         },
                         {
-                            q: "Does the language / country I choose actually matter?",
-                            a: "Yes. The predictor caps the maximum reachable views based on the realistic monthly audience size for that language. English (US/UK) has one of the largest pools; smaller languages have proportionally smaller caps."
+                            q: "Does the language or country choice actually matter?",
+                            a: "Yes. The language market selection applies a realistic audience ceiling to the forecast. A video in a market with 40 million monthly views in a given niche cannot realistically reach 10 million views on a single video — the pool does not support it. This cap prevents the model from producing numbers that are technically possible in mathematical terms but practically implausible given the real audience size."
                         },
                         {
-                            q: "Long-form or Shorts — which format predicts better growth?",
-                            a: "It depends on your signals. Long-form usually has a stronger long tail because of search traffic. Shorts can explode faster but tend to decay quicker unless you have exceptional loop signals (low swipe rate + very high completion rate)."
+                            q: "Long-form or Shorts — which format predicts more reliably?",
+                            a: "Long-form predictions tend to be more stable because the distribution curve is more consistent across videos in the same signal tier. Shorts predictions are more variable because Shorts performance is more binary — a video either catches a loop or it doesn't, and the model's signal inputs are less predictive of which outcome occurs. The ±25% typical range applies more cleanly to long-form."
                         },
                         {
-                            q: "What retention or CTR numbers should I use if I don’t have Analytics yet?",
-                            a: "For long-form, 40–45% average retention and 4–6% CTR are reasonable starting points. For Shorts, aim for 75–85% completion and under 40% swipe rate. The tool will show you exactly how much better (or worse) your forecast becomes when you improve those numbers."
+                            q: "What should I enter if I don't have Analytics data yet?",
+                            a: "Use conservative defaults: around 40–45% retention and 4–5% CTR for long-form, or 75–80% completion with under 45% swipe rate for Shorts. These are roughly mid-tier inputs that will produce a realistic baseline estimate. Replace them with real data as soon as it is available — the predictive value of the model increases significantly once you have channel-specific numbers rather than category benchmarks."
                         },
                         {
                             q: "Is this Views Predictor free to use?",
-                            a: "Yes, completely free, no account required. The entire model runs locally in your browser using the exact same curve mathematics YouTube’s recommendation system follows."
+                            a: "Yes, it is free and does not require an account. The model runs locally in your browser, so you can test scenarios without any setup and without sending channel data to external servers."
                         }
                     ].map(({ q, a }, i) => (
                         <PredictorFaqItem key={i} q={q} a={a} />
                     ))}
                 </div>
             </div>
-
+ 
             <p className="ytp-content__disclaimer">
-                The YouTube Views Predictor uses aggregated public and creator-reported data to model realistic 90-day curves. Actual performance can still be affected by seasonality, competition, sudden trends, YouTube policy changes, or external events. This tool is for educational and planning purposes only. See our{" "}
+                The YouTube Views Predictor uses aggregated creator-reported data and observed distribution patterns to model realistic 90-day view curves. Real performance can still shift significantly because of trend events, platform changes, external traffic sources, competition changes, or audience behavior that does not match historical patterns. Use this tool for planning and education, not guarantees. See our{" "}
                 <a href="/terms" className="ytp-content__link">Terms of Use</a>{" "}
                 and{" "}
                 <a href="/privacy" className="ytp-content__link">Privacy Policy</a>.
             </p>
-
+ 
         </section>
     );
 }
-
+ 
 function PredictorFaqItem({ q, a }) {
     const [open, setOpen] = useState(false);
     return (
@@ -1168,3 +1237,4 @@ function PredictorFaqItem({ q, a }) {
         </div>
     );
 }
+ 

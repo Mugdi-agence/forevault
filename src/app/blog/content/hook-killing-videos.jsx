@@ -26,7 +26,7 @@ export default function Article({ onRelatedClick }) {
             <ArticleHero
                 category="Production"
                 title="Why Your Hook Is Killing Your Videos (And How to Fix It)"
-                lead="If people are swiping away in the first second, the problem is usually not the idea. It is the opening. A weak hook makes a good video invisible before it has a chance to prove itself."
+                lead="If people swipe in the first second, your idea is not always the issue. The opening is. A weak hook can kill a good video before it starts."
                 author={{ name: "Qodan", role: "Content Strategy" }}
                 date="March 14, 2026"
                 readTime="3 min read"
@@ -37,17 +37,17 @@ export default function Article({ onRelatedClick }) {
             />
 
             <Lead>
-                In short-form video, the first second is not a warm-up. It is the entire test. The viewer is deciding, almost instantly, whether the video feels worth their time. That decision is driven less by topic than by what appears on screen first.
+                In short-form, second one is the audition. Viewers decide fast. Usually based on what they see first, not what your topic is.
             </Lead>
 
             <Callout type="danger" title="If the hook fails">
-                The video usually does not get a second chance. The platform reads the swipe as a negative signal, distribution slows down, and even strong content downstream may never be seen.
+                Most videos do not get a second chance after a weak opening. Early swipes send a bad signal, and distribution cools down quickly.
             </Callout>
 
             <H2>Rule 1: Open With Something Happening</H2>
 
             <Body>
-                Do not spend the opening on pleasantries, branding, or setup. Viewers are not waiting for permission to care. They need to see movement, tension, or change immediately. A static intro gives the brain nothing to process, which is exactly why it gets skipped.
+                Skip greetings and slow setup. Start with motion, tension, or a visible problem. Static intros are easy to ignore.
             </Body>
 
             <Stats>
@@ -58,11 +58,11 @@ export default function Article({ onRelatedClick }) {
             <H2>Rule 2: Break the Pattern Fast</H2>
 
             <Body>
-                Attention is selective. People are scrolling through familiar shapes, familiar pacing, and familiar thumbnails. The hook has to interrupt that pattern right away. A strange angle, a broken interface, an exaggerated scale shift, or a visual contradiction can all work because they create a pause in recognition.
+                Feeds are full of familiar patterns. Your opening has to interrupt that pattern fast. Weird angle, broken UI, visual contradiction, surprising scale. Anything intentional that makes someone pause.
             </Body>
 
             <Body>
-                The important part is intention. Random noise is not the same as a pattern interrupt. The viewer should feel that something is off in a deliberate, meaningful way. That small moment of confusion is often enough to stop the swipe.
+                Random chaos is not a hook. The interruption should still feel deliberate. Confusing for one beat, then clear.
             </Body>
 
             <Quote>
@@ -72,25 +72,30 @@ export default function Article({ onRelatedClick }) {
             <H2>Rule 3: Make It Instantly Understandable</H2>
 
             <Body>
-                A strong hook does two things at once: it surprises the viewer and it tells them what they are looking at. If the opening is too abstract, people disengage. If it is too ordinary, they keep scrolling. The sweet spot is recognition with a twist.
+                Great hooks do two jobs at once: surprise and clarity. Too abstract and people leave. Too normal and they keep scrolling.
             </Body>
 
             <Body>
-                That is why familiar objects work so well. A browser window, a YouTube interface, a dashboard, a button, a chart — these are easy to recognize. When one of those familiar elements is made extreme, broken, or visually “wrong,” the viewer instantly wants to understand why.
+                Familiar objects help. A dashboard, a browser, a chart, a button. Then twist one detail so it feels wrong and worth understanding.
             </Body>
 
             <Callout type="tip" title="The hook in one sentence">
-                Familiar subject + surprising condition = a hook people stop for. A normal interface with one absurd detail is often enough to hold attention.
+                Familiar base + surprising condition = strong hook. Often that is enough.
             </Callout>
 
             <H2>The Hook Is the Gatekeeper</H2>
 
             <Body>
-                Everything else in the video depends on this first decision. Editing, pacing, structure, payoff — all of it matters only after the viewer has stayed long enough to experience it. That is why hook quality is not just a creative detail. It is a distribution issue.
+                Everything else depends on this first decision. Pacing, edit, payoff. None of it matters if people never make it past second one.
             </Body>
 
             <Body>
-                If the first frame fails, the rest of the video may as well not exist. If the first frame works, the rest of the video has a chance to earn trust.
+                If frame one fails, the rest might as well not exist. If frame one works, now you can earn trust.
+            </Body>
+
+            <H2>What creators underestimate here</H2>
+            <Body>
+                Hook quality is not just a creative preference. It changes the economics of the whole video. If early drop-off is high, even strong mid-video value will rarely matter because distribution cools early. This is where most creators get it wrong: they optimize the middle while the first second is leaking performance.
             </Body>
 
             <Divider />

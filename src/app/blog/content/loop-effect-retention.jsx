@@ -26,7 +26,7 @@ export default function Article({ onRelatedClick }) {
             <ArticleHero
                 category="Retention"
                 title="The Loop Effect: How to Boost Retention Beyond 100%"
-                lead="Retention is one of the strongest signals a video can send. A good loop turns that signal into something even more powerful: a replay that happens almost automatically because the ending feels like the beginning."
+                lead="Retention is already powerful. A good loop pushes it further by creating replays that happen almost automatically."
                 author={{ name: "Qodan", role: "Content Strategy" }}
                 date="March 10, 2026"
                 readTime="3 min read"
@@ -37,17 +37,17 @@ export default function Article({ onRelatedClick }) {
             />
 
             <Lead>
-                When the final frame flows back into the first one, the viewer does not always register that the video ended. That is the loop effect. It creates accidental replays, pushes retention above 100%, and gives the platform a strong engagement signal that the content is worth watching again.
+                When the last frame blends into the first, viewers often do not notice the ending. That is the loop effect. It increases replays and can push retention beyond 100%.
             </Lead>
 
             <H2>Why loops work so well</H2>
 
             <Body>
-                The brain is built to look for completion. When a visual sequence reaches its end and then immediately resolves into the beginning again, it does not feel like a hard stop. It feels continuous. That continuity is what makes a loop so effective: the viewer often keeps watching before they consciously decide to restart the video.
+                The brain likes continuity. If the end resolves back into the start, it does not feel like a stop. It feels continuous, so rewatching happens naturally.
             </Body>
 
             <Body>
-                This is not just a trick for vanity metrics. A loop creates a stronger sense of flow, and flow keeps attention alive. The cleaner the transition, the more natural the replay feels.
+                This is not just for vanity metrics. A clean loop improves flow, and flow keeps attention alive.
             </Body>
 
             <Stats>
@@ -59,39 +59,44 @@ export default function Article({ onRelatedClick }) {
             <H2>How to build an effective loop</H2>
 
             <Body>
-                The most important part of a loop is <strong>visual continuity between the last and first frame</strong>. If the transition feels like a cut, the illusion breaks. If it feels like the video could keep going forever, the viewer is more likely to replay it without noticing.
+                The key is <strong>visual continuity between the end and the beginning</strong>. If it feels like a hard cut, the illusion breaks.
             </Body>
 
             <Callout type="tip" title="Circular transformation">
-                Design the piece so the final state gradually returns to the starting state. For example, a UI can move from broken to polished, then slowly drift back to the original broken state. The viewer sees movement, but not a clear ending.
+                Build the ending so it naturally circles back to the first state. For example, a polished UI can transition back to the original broken screen in a way that feels intentional.
             </Callout>
 
             <Body>
-                Other strong approaches include <strong>continuous motion loops</strong>, where a repeating animation never fully settles, and <strong>infinite transformation sequences</strong>, where each step naturally leads back into the first frame. The best loops do not feel engineered. They feel inevitable.
+                Other options: continuous motion loops, or transformation chains that naturally reconnect to frame one. The best loops feel effortless.
             </Body>
 
             <H2>A simple test before you publish</H2>
 
             <Body>
-                Before posting, ask yourself one question: <em>“Would I watch this again right now?”</em> If the answer is yes, and you cannot immediately explain why, that is usually a good sign. The loop is doing its job. It is creating a small pull that encourages rewatching without asking for it directly.
+                Before publishing, ask: <em>"Would I watch this again right now?"</em> If yes, and you can feel the pull, the loop is probably working.
             </Body>
 
             <Quote>
-                A loop turns a good video into a rewatchable one. The difference is subtle, but the effect on retention is not.
+                A loop can turn a decent video into a rewatchable one. Small creative change, big retention impact.
             </Quote>
 
             <H2>Where the loop belongs in the structure</H2>
 
             <Body>
-                A loop belongs at the end of the payoff phase. First you show the transformation or the result, then you guide the visual back toward the opening state. That way, the return feels like part of the experience rather than a separate edit. If the viewer is already emotionally satisfied, they are more likely to let the video play again.
+                Place the loop after the payoff. Show the result first, then glide back toward the opening state so the return feels intentional.
             </Body>
 
             <Callout type="info" title="Pair it with a strong hook">
-                A loop only works if the opening is worth returning to. If the first frame is weak, the loop just gives the viewer a second chance to leave. The opening and the ending should work as a pair.
+                Loops only work when the opening is strong. If frame one is weak, you are just replaying weak.
             </Callout>
 
             <Body>
-                In practice, the strongest videos often use the same principle twice: a hook that interrupts attention at the start, and a loop that makes the ending feel unfinished in the best possible way. That combination can quietly lift performance more than a more aggressive edit ever could.
+                The best videos pair a sharp hook with a clean loop. Hook wins the first second, loop wins the replay.
+            </Body>
+
+            <H2>Creator note: replay quality beats vanity replay</H2>
+            <Body>
+                Not all replay is equal. Forced confusion loops can inflate replay while hurting trust. The better version is clarity plus flow: people rewatch because the sequence feels satisfying, not because they are confused. That difference matters if you care about long-term channel health.
             </Body>
 
             <Divider />

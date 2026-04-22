@@ -47,79 +47,83 @@ export default function AboutPage() {
     return (
         
         <div className="lg-root">
-            <Navbar/>
-            {/* ── back link ───────────────────────────────────────────────── */}
-            <a href="/" className="lg-back">
-                <span className="lg-back__arrow">←</span>
-                Back to Forevault
-            </a>
+        <Navbar/>
 
-            {/* ── about box ───────────────────────────────────────────────── */}
-            <div className="about-box" ref={boxRef}>
+        <a href="/" className="lg-back">
+            <span className="lg-back__arrow">←</span>
+            Back to Forevault
+        </a>
 
-                {/* decorative giant quote mark top-left */}
-                <span className="about-deco-quote" aria-hidden="true">"</span>
+        <div className="about-box" ref={boxRef}>
 
-                <div className="about-inner">
+            <span className="about-deco-quote" aria-hidden="true">"</span>
 
-                    <span className="about-eyebrow">About the creator</span>
+            <div className="about-inner">
 
-                    <h1 className="about-name">Hey, I'm Qodan.</h1>
-                    <p className="about-age">17 years old · High school student · Builder</p>
+                <span className="about-eyebrow">About Forevault</span>
 
-                    <div className="about-rule" />
+                <h1 className="about-name">Understanding YouTube Monetization, Clearly.</h1>
+                <p className="about-age">Independent analytics project by Qodan</p>
 
-                    <p className="about-p">
-                        I'm a high school student passionate about{" "}
-                        <strong>web development</strong> and{" "}
-                        <strong>YouTube content creation</strong>. While exploring the
-                        creator economy, I kept running into the same frustrating
-                        problem — there was no reliable way to forecast real YouTube
-                        earnings, especially after Shorts completely changed the
-                        monetisation landscape.
-                    </p>
+                <div className="about-rule" />
 
-                    <p className="about-p">
-                        So I built{" "}
-                        <strong className="about-hl">Forevault.ink</strong>
-                        {" "}to fix that. The goal is simple: give every creator
-                        — from 100 subscribers to 10 million — a transparent,
-                        data-driven tool to estimate revenue based on real RPM
-                        benchmarks, niche specifics, geography, and video format.
-                    </p>
+                <p className="about-p">
+                    Forevault is an independent YouTube monetization analytics project
+                    created and maintained by Qodan, a student developer and YouTube
+                    creator focused on understanding how real AdSense revenue works
+                    behind the scenes.
+                </p>
 
-                    <p className="about-p">
-                        The entire site is built by me, usually squeezed in between
-                        math classes and exam prep. What started as a weekend side
-                        project has grown into something I'm genuinely proud of — and
-                        it's still evolving every week.
-                    </p>
+                <p className="about-p">
+                    The project started after a simple observation: most online advice
+                    about YouTube earnings is either oversimplified, outdated, or based
+                    on isolated screenshots with no context. After Shorts, geography
+                    shifts, and changes in advertiser demand, the old “views × number”
+                    logic simply stopped making sense.
+                </p>
 
-                    <p className="about-p">
-                        Every piece of user feedback I receive directly shapes the
-                        algorithm. My goal for <strong>2026</strong> is to make the
-                        revenue predictor as close to real-world AdSense figures as
-                        possible — no fluff, no vague ranges, just honest estimates
-                        you can actually plan around.
-                    </p>
+                <p className="about-p">
+                    Forevault was built to solve that problem.
+                </p>
 
-                    <p className="about-p" style={{ marginTop: ".4rem", fontStyle: "italic", opacity: .6 }}>
-                        Thanks for being here. This one's for every creator who's ever
-                        wondered whether the numbers will ever make sense.
-                    </p>
+                <p className="about-p">
+                    Instead of guessing income from views alone, the platform models
+                    revenue using the variables that actually affect monetization in
+                    practice: niche, audience geography, retention behavior, video
+                    format, and length. The goal is not to predict exact payouts, but
+                    to give creators realistic planning ranges grounded in observed
+                    creator benchmarks and market patterns.
+                </p>
 
-                </div>
+                <p className="about-p">
+                    Everything on this site — from the tools to the educational guides —
+                    is built and updated directly by Qodan. User feedback, creator
+                    reports, and ongoing research continuously shape the estimation
+                    model.
+                </p>
 
-                {/* ── footer strip ────────────────────────────────────────── */}
-                <div className="about-footer">
-                    <span className="about-footer__label">Forevault.ink</span>
-                    <span className="about-footer__dot" />
-                    <span className="about-footer__version">v1.0 · Live 2026</span>
-                    <span className="about-footer__dot" />
-                    <span className="about-footer__label">Built with fun !</span>
-                </div>
+                <p className="about-p">
+                    This project is developed independently alongside school studies,
+                    and evolves weekly as new insights about YouTube monetization
+                    emerge.
+                </p>
+
+                <p className="about-p" style={{ marginTop: ".4rem", fontStyle: "italic", opacity: .6 }}>
+                    Forevault exists for creators who want to understand how the
+                    monetization system really works, not how it is usually simplified online.
+                </p>
 
             </div>
+
+            <div className="about-footer">
+                <span className="about-footer__label">Forevault.ink</span>
+                <span className="about-footer__dot" />
+                <span className="about-footer__version">Version 1.0 — Live 2026</span>
+                <span className="about-footer__dot" />
+                <span className="about-footer__label">Independent project</span>
+            </div>
+
         </div>
+    </div>
     );
 }

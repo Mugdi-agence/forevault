@@ -134,9 +134,9 @@ export default function BlogPage() {
                     <aside className="sidebar" aria-label="Article list">
                         <div className="sidebar__head">
                             <span className="panel__badge">Blog</span>
-                            <h2 className="sidebar__title">Creator Insights</h2>
+                            <h2 className="sidebar__title">Creator Notes</h2>
                             <p className="sidebar__sub">
-                                Strategy, analytics & growth for YouTube creators
+                                Straight talk on YouTube strategy, monetization, and growth
                             </p>
 
                             {/* Search */}
@@ -144,7 +144,7 @@ export default function BlogPage() {
                                 <span className="sidebar__search-icon" aria-hidden="true">⌕</span>
                                 <input
                                     type="search"
-                                    placeholder="Search articles…"
+                                    placeholder="Search posts..."
                                     value={search}
                                     onChange={e => setSearch(e.target.value)}
                                     aria-label="Search articles"
@@ -175,7 +175,7 @@ export default function BlogPage() {
                                     color: "rgba(255,255,255,0.25)",
                                     textAlign: "center",
                                 }}>
-                                    No articles found.
+                                    No posts found.
                                 </p>
                             )}
                             {filtered.map(a => (
@@ -230,8 +230,8 @@ export default function BlogPage() {
                                 <div className="reader__empty">
                                     <span className="reader__empty-icon" aria-hidden="true">📖</span>
                                     <p className="reader__empty-text">
-                                        Select an article on the left<br />
-                                        to start reading
+                                        Pick a post on the left<br />
+                                        and start reading
                                     </p>
                                 </div>
                             ) : (

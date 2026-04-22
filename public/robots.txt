@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Example of hiding a directory from search engines:
+# Disallow: /private/
+# Disallow: /admin/
+
+Sitemap: https://forevault.ink/sitemap.xml

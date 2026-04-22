@@ -12,7 +12,8 @@ const LINKS = {
     Services: [
         { label: "Terms Of Service", href: "./terms" },
         { label: "Privacy Policy", href: "./privacy" },
-        { label: "About", href: "./about" }
+        { label: "About", href: "./about" },
+        { label: "Contact", href: "./contact" }
     ],
 
     Product: [
