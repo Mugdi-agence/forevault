@@ -25,7 +25,7 @@ const LINKS = {
 };
 
 const SOCIALS = [
-    { label: "𝕏", href: "" },
+    { label: "𝕏", href: "https://x.com/Mugdi_studio" },
 ];
 
 export default function Footer() {
