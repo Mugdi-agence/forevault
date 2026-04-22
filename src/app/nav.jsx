@@ -6,31 +6,30 @@ import Image from 'next/image';
 import logo from './logo.png';
 
 const NAV_LINKS = [
-    { label: "Calculator",  href: "./youtube-revenue-calculator" },
-    { label: "Predictor",   href: "./youtube-views-predictor" },
+    { label: "Calculator",  href: "/youtube-revenue-calculator" },
+    { label: "Predictor",   href: "/youtube-views-predictor" },
     { 
         label: "Guide", 
         href: "#", 
         subLinks: [
-            { label: "How much do YouTubers actually make?", href: "./how-much-do-youtubers-make" },
-            { label: "YouTube earnings by country", href: "./youtube-earnings-by-country-calculator" },
-            { label: "How much does 100k views pay you?", href: "./how-much-do-100k-youtube-views-pay" },
-            { label: "YouTube RPM by niche", href: "./youtube-rpm-calculator-by-niche" }
-       
+            { label: "How much do YouTubers actually make?", href: "/how-much-do-youtubers-make" },
+            { label: "YouTube earnings by country",          href: "/youtube-earnings-by-country-calculator" },
+            { label: "How much does 100k views pay you?",   href: "/how-much-do-100k-youtube-views-pay" },
+            { label: "YouTube RPM by niche",                 href: "/youtube-rpm-calculator-by-niche" },
         ] 
     },
-    { label: "Niches",      href: "./niches" },
-    { label: "Blog",        href: "./blog" },
+    { label: "Niches", href: "/niches" },
+    { label: "Blog",   href: "/blog" },
 ];
 
 export default function Navbar() {
-    const navRef     = useRef();
-    const burgerRef  = useRef();
-    const mobileRef  = useRef();
-    const overlayRef = useRef();
+    const navRef      = useRef();
+    const burgerRef   = useRef();
+    const mobileRef   = useRef();
+    const overlayRef  = useRef();
     const dropdownRef = useRef();
 
-    const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpen,  setMenuOpen]  = useState(false);
     const [guideOpen, setGuideOpen] = useState(false);
     const menuTlRef = useRef(null);
 
@@ -64,8 +63,8 @@ export default function Navbar() {
 
     // ── Scroll Logic ───────────────────────────────────────────────
     useEffect(() => {
-        let lastY    = 0;
-        let hidden   = false;
+        let lastY   = 0;
+        let hidden  = false;
         const NAV_H  = navRef.current?.offsetHeight ?? 76;
         const THRESH = 80;
 
@@ -80,7 +79,7 @@ export default function Navbar() {
                 }
             } else if (diff > 4 && !hidden) {
                 gsap.to(navRef.current, { y: -(NAV_H + 8), duration: 0.4, ease: "power2.inOut" });
-                setGuideOpen(false); // Ferme le dropdown au scroll
+                setGuideOpen(false);
                 hidden = true;
             } else if (diff < -4 && hidden) {
                 gsap.to(navRef.current, { y: 0, duration: 0.45, ease: "power3.out" });
@@ -96,11 +95,7 @@ export default function Navbar() {
     // ── Mobile Menu Timeline ───────────────────────────────────────
     useEffect(() => {
         menuTlRef.current = gsap.timeline({ paused: true, defaults: { ease: "expo.out" } })
-            .to(overlayRef.current, {
-                opacity: 1,
-                pointerEvents: "all",
-                duration: 0.3,
-            })
+            .to(overlayRef.current, { opacity: 1, pointerEvents: "all", duration: 0.3 })
             .fromTo(mobileRef.current,
                 { filter: "blur(10px)", opacity: 0, y: -20 },
                 { filter: "blur(0px)",  opacity: 1, y: 0, duration: 0.45 },
@@ -134,22 +129,19 @@ export default function Navbar() {
     // ── Dropdown Hover Handlers ────────────────────────────────────
     function handleGuideEnter() {
         setGuideOpen(true);
-        gsap.fromTo(dropdownRef.current, 
+        gsap.fromTo(dropdownRef.current,
             { opacity: 0, y: 10, filter: "blur(5px)" },
             { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, display: "block", ease: "expo.out" }
         );
     }
 
     function handleGuideLeave() {
-        gsap.to(dropdownRef.current, { 
-            opacity: 0, 
-            y: 10, 
-            filter: "blur(5px)", 
-            duration: 0.3, 
+        gsap.to(dropdownRef.current, {
+            opacity: 0, y: 10, filter: "blur(5px)", duration: 0.3,
             onComplete: () => {
                 setGuideOpen(false);
                 gsap.set(dropdownRef.current, { display: "none" });
-            }
+            },
         });
     }
 
@@ -171,15 +163,15 @@ export default function Navbar() {
 
                     <ul className="nav__links">
                         {NAV_LINKS.map(l => (
-                            <li 
-                                key={l.label} 
+                            <li
+                                key={l.label}
                                 className="nav__item-container"
                                 onMouseEnter={l.subLinks ? handleGuideEnter : null}
                                 onMouseLeave={l.subLinks ? handleGuideLeave : null}
                             >
                                 <a
                                     href={l.href}
-                                    className={`nav__link ${l.subLinks ? 'nav__link--has-sub' : ''}`}
+                                    className={`nav__link ${l.subLinks ? "nav__link--has-sub" : ""}`}
                                     onMouseEnter={!l.subLinks ? handleLinkEnter : null}
                                     onMouseLeave={!l.subLinks ? handleLinkLeave : null}
                                 >
@@ -188,7 +180,7 @@ export default function Navbar() {
                                 </a>
 
                                 {l.subLinks && (
-                                    <div ref={dropdownRef} className="nav__dropdown" style={{ display: 'none' }}>
+                                    <div ref={dropdownRef} className="nav__dropdown" style={{ display: "none" }}>
                                         <div className="nav__dropdown-inner">
                                             {l.subLinks.map(sub => (
                                                 <a key={sub.label} href={sub.href} className="nav__dropdown-item">
@@ -203,7 +195,7 @@ export default function Navbar() {
                     </ul>
 
                     <div className="nav__actions">
-                        <a href="./niches" className="nav__btn nav__btn--solid">Get started</a>
+                        <a href="/niches" className="nav__btn nav__btn--solid">Get started</a>
                     </div>
 
                     <button
@@ -255,7 +247,7 @@ export default function Navbar() {
                         ))}
                     </ul>
                     <div className="mobile-nav__cta">
-                        <a href="./niches" className="nav__btn nav__btn--solid">Get started</a>
+                        <a href="/niches" className="nav__btn nav__btn--solid">Get started</a>
                     </div>
                 </div>
             )}

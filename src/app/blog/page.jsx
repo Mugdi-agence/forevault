@@ -1,14 +1,8 @@
-// blog-page.jsx  —  "use client"
-// ── Drop-in Next.js page component ──────────────────────────────────────────
-// Place at:  app/blog/page.jsx   (or pages/blog.jsx)
-// Imports:   ./blog-styles.scss  +  ./blog-components.jsx
-//
-// SEO:       generateMetadata() exported below (App Router)
-//            Falls back to <Head> pattern for Pages Router
-// ─────────────────────────────────────────────────────────────────────────────
+// src/app/blog/page.jsx
 "use client";
 
 import { useRef, useState, useEffect, useMemo, useCallback } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import gsap from "gsap";
 import "./blog-styles.scss";
 import {
@@ -23,26 +17,26 @@ import {
 import Navbar  from "../nav";
 import Footer  from "../footer";
 
-import { ARTICLES } from './content/index';
+import { ARTICLES, CATEGORIES } from "./content/index";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// ── Sample article data ───────────────────────────────────────────────────────
-// Replace with your CMS / MDX source.
+// BlogPage
+//   initialArticleId : string | null
+//     → passé par [slug]/page.jsx pour pré-ouvrir un article (SSG)
+//     → null sur /blog (SPA normale)
 // ─────────────────────────────────────────────────────────────────────────────
-const CATEGORIES = ["All", "Strategy", "Production"];
+export default function BlogPage({ initialArticleId = null }) {
+    const router   = useRouter();
+    const pathname = usePathname();
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ── Blog Page ─────────────────────────────────────────────────────────────────
-// ─────────────────────────────────────────────────────────────────────────────
-export default function BlogPage() {
-    const [activeId,    setActiveId]    = useState(null);
-    const [activeFilter, setActiveFilter] = useState("All");
-    const [search,      setSearch]      = useState("");
-    const [progress,    setProgress]    = useState(0);   // 0–100 reading progress
-    const [articles,    setArticles]    = useState(ARTICLES);
+    const [activeId,      setActiveId]      = useState(initialArticleId);
+    const [activeFilter,  setActiveFilter]  = useState("All");
+    const [search,        setSearch]        = useState("");
+    const [progress,      setProgress]      = useState(0);
+    const [articles,      setArticles]      = useState(ARTICLES);
 
     const layoutRef = useRef();
-    const scrollRef = useRef();   // reader scroll area
+    const scrollRef = useRef();
 
     // ── Initial GSAP entrance ────────────────────────────────────────────────
     useEffect(() => {
@@ -87,7 +81,6 @@ export default function BlogPage() {
         const pct      = total > 0 ? (scrolled / total) * 100 : 0;
         setProgress(pct);
 
-        // Persist per-article reading progress to articles state
         setArticles(prev =>
             prev.map(a =>
                 a.id === activeId
@@ -107,15 +100,21 @@ export default function BlogPage() {
         });
     }, [articles, activeFilter, search]);
 
-    const activeArticle = articles.find(a => a.id === activeId);
+    const activeArticle  = articles.find(a => a.id === activeId);
     const ArticleContent = activeArticle?.component;
 
+    // ── Sélection d'un article — met à jour le state ET l'URL sans rechargement
     function handleSelectArticle(id) {
         setActiveId(id);
-        // Animate selected card
+
+        // Animation carte
         gsap.to(`.article-card[data-id="${id}"]`, {
             x: 4, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.inOut",
         });
+
+        // Met à jour l'URL dans la barre du navigateur SANS recharger la page
+        // → history.pushState natif pour éviter tout re-render Next.js
+        window.history.pushState(null, "", `/blog/${id}`);
     }
 
     function handleRelatedClick(id) {
@@ -220,7 +219,6 @@ export default function BlogPage() {
                     {/* ── Right — reader ──────────────────────────────────── */}
                     <section className="reader" aria-label="Article reader">
 
-                        {/* Scrollable content */}
                         <div
                             className="reader__scroll"
                             ref={scrollRef}
@@ -237,9 +235,7 @@ export default function BlogPage() {
                             ) : (
                                 <div className="reader__content">
                                     {ArticleContent && (
-                                        <ArticleContent
-                                            onRelatedClick={handleRelatedClick}
-                                        />
+                                        <ArticleContent onRelatedClick={handleRelatedClick} />
                                     )}
                                 </div>
                             )}

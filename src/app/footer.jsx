@@ -10,36 +10,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 const LINKS = {
     Services: [
-        { label: "Terms Of Service", href: "./terms" },
-        { label: "Privacy Policy", href: "./privacy" },
-        { label: "About", href: "./about" },
-        { label: "Contact", href: "./contact" }
+        { label: "Terms Of Service", href: "/terms" },
+        { label: "Privacy Policy",   href: "/privacy" },
+        { label: "About",            href: "/about" },
+        { label: "Contact",          href: "/contact" },
     ],
-
     Product: [
-        { label: "Calculator", href: "./youtube-revenue-calculator" },
-        { label: "Predictor", href: "./youtube-views-predictor" },
-        { label: "how it works", href: "../#how-it-works" },
-        { label: "Niches", href: "./niches" },
-        { label: "Blog", href: "./blog" }
+        { label: "Calculator", href: "/youtube-revenue-calculator" },
+        { label: "Predictor",  href: "/youtube-views-predictor" },
+        { label: "How it works", href: "/#how-it-works" },
+        { label: "Niches",     href: "/niches" },
+        { label: "Blog",       href: "/blog" },
     ],
 };
 
-// const SOCIALS = [
-//     { label: "𝕏", href: "#" },
-//     { label: "▶", href: "#" },
-//     { label: "◎", href: "#" },
-//     { label: "⌥", href: "#" },
-// ];
+const SOCIALS = [
+    { label: "𝕏", href: "" },
+];
 
-// Namespacing pour éviter les conflits : footer2
 export default function Footer() {
-    const footerRef  = useRef();
-    const topRef     = useRef();
-    const colsRef    = useRef();
-    const bottomRef  = useRef();
+    const footerRef = useRef();
+    const topRef    = useRef();
+    const colsRef   = useRef();
+    const bottomRef = useRef();
 
-    // ── Link hover ──
     function onLinkEnter(e) {
         gsap.to(e.currentTarget, { x: 4, duration: 0.2, ease: "power2.out" });
     }
@@ -80,8 +74,8 @@ export default function Footer() {
                             <div key={group} className="footer2-col">
                                 <p className="footer2-col__title">{group}</p>
                                 <ul className="footer2-col__list">
-                                    {links.map(link =>
-                                        <li key={link.label ?? link.text ?? link.href}>
+                                    {links.map(link => (
+                                        <li key={link.label ?? link.href}>
                                             <a
                                                 href={link.href}
                                                 className="footer2-col__link"
@@ -89,10 +83,10 @@ export default function Footer() {
                                                 onMouseLeave={onLinkLeave}
                                                 {...(link.target ? { target: link.target, rel: "noopener noreferrer" } : {})}
                                             >
-                                                {link.label ?? link.text ?? link.href}
+                                                {link.label ?? link.href}
                                             </a>
                                         </li>
-                                    )}
+                                    ))}
                                 </ul>
                             </div>
                         ))}

@@ -1,3 +1,4 @@
+"use client";
 // blog-components.jsx
 // ── Ready-made components for creating blog content quickly ──────────────────
 // Usage: import { Body, H2, H3, Quote, Callout, Stat, Stats, Img, ImgGrid,
