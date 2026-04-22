@@ -8,6 +8,9 @@ import logo from './logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const social_linked = {
+    twitter: "https://x.com/Mugdi_studio",
+}
 const LINKS = {
     Services: [
         { label: "Terms Of Service", href: "/terms" },
@@ -25,7 +28,7 @@ const LINKS = {
 };
 
 const SOCIALS = [
-    { label: "𝕏", href: "https://x.com/Mugdi_studio" },
+    { label: "𝕏", href: social_linked.twitter },
 ];
 
 export default function Footer() {
@@ -55,7 +58,7 @@ export default function Footer() {
                             Estimate, compare and optimise<br />your YouTube revenue.
                         </p>
                         <div className="footer2__socials">
-                            {/* {SOCIALS.map(s => (
+                            {SOCIALS.map(s => (
                                 <a
                                     key={s.label}
                                     href={s.href}
@@ -64,7 +67,7 @@ export default function Footer() {
                                 >
                                     {s.label}
                                 </a>
-                            ))} */}
+                            ))}
                         </div>
                     </div>
 

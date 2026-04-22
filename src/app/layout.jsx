@@ -2,6 +2,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import ClientWrapper from './clientWrapper';
 import { Analytics } from "@vercel/analytics/next"
 import Script from 'next/script';
+import CookieConsent from './CookieConsent';
 
 export default function RootLayout({ children }) {
   // Données structurées pour que Google affiche les étoiles ou les snippets d'outils
@@ -79,6 +80,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning={true}>
         <ClientWrapper>
           {children}
+          <CookieConsent />
         </ClientWrapper>
         <GoogleAnalytics gaId="G-N2X7Y2KNGF" />
         <Analytics/>
