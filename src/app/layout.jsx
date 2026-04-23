@@ -71,25 +71,62 @@ export default function RootLayout({ children }) {
         />
 
         <Script
-          id="consent-default"
-          strategy="beforeInteractive"
+          id="org-json-ld"
+          type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              window.gtag = window.gtag || function () {
-                window.dataLayer.push(arguments);
-              };
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Forevault",
+              "url": "https://forevault.ink",
+              "logo": "https://forevault.ink/main.png",
+              "sameAs": ["https://x.com/forevault"],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "contact@forevault.ink"
+              }
+            }),
+          }}
+        />
 
-              window.gtag('consent', 'default', {
-                'ad_storage': 'denied',
-                'analytics_storage': 'denied',
-                'ad_user_data': 'denied',
-                'ad_personalization': 'denied',
-                'functionality_storage': 'granted',
-                'security_storage': 'granted',
-                'wait_for_update': 500
-              });
-            `,
+        <Script
+          id="website-json-ld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Forevault",
+              "url": "https://forevault.ink",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://forevault.ink/blog?search={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            }),
+          }}
+        />
+
+        <Script
+          id="app-json-ld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "Forevault YouTube Revenue Engine",
+              "operatingSystem": "Web",
+              "applicationCategory": "BusinessApplication",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            }),
           }}
         />
 
@@ -99,29 +136,6 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-
-      <Script
-        id="org-json-ld"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Forevault",
-            "url": "https://forevault.ink",
-            "logo": "https://forevault.ink/main.png",
-            "sameAs": [
-              "https://x.com/forevault"
-            ],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "contactType": "customer support",
-              "email": "contact@forevault.ink"
-            }
-          }),
-        }}
-      />
 
       </head>
 
