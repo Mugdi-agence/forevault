@@ -70,10 +70,8 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
-        <Script
-          id="org-json-ld"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -91,12 +89,10 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        <Script
-          id="website-json-ld"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: `{
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Forevault",
@@ -106,14 +102,12 @@ export default function RootLayout({ children }) {
                 "target": "https://forevault.ink/blog?search={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
-            }),
+            }`
           }}
         />
 
-        <Script
-          id="app-json-ld"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -130,6 +124,7 @@ export default function RootLayout({ children }) {
           }}
         />
 
+
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2975418958939959"
@@ -140,6 +135,20 @@ export default function RootLayout({ children }) {
       </head>
 
       <body suppressHydrationWarning>
+        <div
+          id="cookie-consent-placeholder"
+          style={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            fontSize: 12,
+            opacity: 0,
+            pointerEvents: "none"
+          }}
+        >
+          We use cookies to personalize content, analytics and ads.
+        </div>
+
         <ClientWrapper>
           {children}
           <CookieConsent />
