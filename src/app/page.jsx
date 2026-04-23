@@ -33,7 +33,7 @@ const FEATURES = [
 ];
  
 const HOW_IT_WORKS = [
-    { num: "01", title: "Enter your metrics",         desc: "View count, retention rate, and video duration — all factored in." },
+    { num: "01", title: "Enter your metrics on the fields",         desc: "View count, retention rate, and video duration — all factored in." },
     { num: "02", title: "Pick your niche & country",  desc: "21 niches and 38 country tiers, each with calibrated RPM multipliers." },
     { num: "03", title: "Get your earnings estimate", desc: "Mid-roll bonuses, retention bonuses and country multipliers applied automatically." },
     { num: "04", title: "Compare across all niches",  desc: "See exactly how your niche ranks against every alternative — instantly." },
@@ -50,7 +50,7 @@ const NICHE_PREVIEWS = [
  
 const CTA_SECTION = {
     headline: "Ready to know what your channel is really worth?",
-    sub:      "Thousands of YouTube creators use Forevault to plan content strategy around real revenue data — not guesswork.",
+    sub:      "Thousands of YouTube creators use Forevault to plan content strategy around real, actionable revenue data — not guesswork. Join them and grow smarter.",
     cta_primary:   { label: "Calculate for free", href: "/youtube-revenue-calculator" },
     cta_secondary: { label: "Browse all niches",  href: "/niches"     },
     trust: ["No sign-up required", "100% free", "Updated monthly"],

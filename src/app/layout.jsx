@@ -99,6 +99,30 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+
+      <Script
+        id="org-json-ld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Forevault",
+            "url": "https://forevault.ink",
+            "logo": "https://forevault.ink/main.png",
+            "sameAs": [
+              "https://x.com/forevault"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "contact@forevault.ink"
+            }
+          }),
+        }}
+      />
+
       </head>
 
       <body suppressHydrationWarning>
