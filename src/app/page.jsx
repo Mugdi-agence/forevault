@@ -33,7 +33,7 @@ const FEATURES = [
 ];
  
 const HOW_IT_WORKS = [
-    { num: "01", title: "Enter your metrics on the fields",         desc: "View count, retention rate, and video duration — all factored in." },
+    { num: "01", title: "Enter your metrics on the fields",         desc: "View count, retention rate, and video duration — all factored in Forevault." },
     { num: "02", title: "Pick your niche & country",  desc: "21 niches and 38 country tiers, each with calibrated RPM multipliers." },
     { num: "03", title: "Get your earnings estimate", desc: "Mid-roll bonuses, retention bonuses and country multipliers applied automatically." },
     { num: "04", title: "Compare across all niches",  desc: "See exactly how your niche ranks against every alternative — instantly." },
