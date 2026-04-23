@@ -3,189 +3,303 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// CookieConsent
-//
-// Usage : importer dans app/layout.jsx et placer avant </body>
-//   import CookieConsent from "../components/CookieConsent";
-//   <CookieConsent />
-//
-// Stockage : localStorage "cookie_consent" = "all" | "essential"
-// Expose  : window.__cookieConsent  (pour AdSense / Analytics)
-// ─────────────────────────────────────────────────────────────────────────────
-
 const STORAGE_KEY = "cookie_consent";
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 180; // 180 days
 
-export default function CookieConsent() {
-    const [visible,  setVisible]  = useState(false);
-    const [expanded, setExpanded] = useState(false);
-    const [prefs, setPrefs] = useState({ analytics: true, marketing: true });
+function safeReadConsent() {
+  if (typeof window === "undefined") return null;
 
-    const bannerRef   = useRef();
-    const detailsRef  = useRef();
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
 
-    // ── Check si déjà consenti ────────────────────────────────────────────────
-    useEffect(() => {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (!saved) {
-            // Petit délai avant d'apparaître
-            const t = setTimeout(() => setVisible(true), 800);
-            return () => clearTimeout(t);
-        } else {
-            window.__cookieConsent = saved;
-        }
-    }, []);
+    // New format: JSON
+    if (raw.startsWith("{")) {
+      const parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== "object") return null;
 
-    // ── Entrance animation ────────────────────────────────────────────────────
-    useEffect(() => {
-        if (!visible || !bannerRef.current) return;
-
-        gsap.fromTo(bannerRef.current,
-            { y: 120, opacity: 0, filter: "blur(8px)" },
-            { y: 0,   opacity: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }
-        );
-    }, [visible]);
-
-    // ── Animation panneau détails ─────────────────────────────────────────────
-    useEffect(() => {
-        if (!detailsRef.current) return;
-        if (expanded) {
-            gsap.fromTo(detailsRef.current,
-                { height: 0, opacity: 0 },
-                { height: "auto", opacity: 1, duration: 0.4, ease: "power3.out" }
-            );
-        } else {
-            gsap.to(detailsRef.current, { height: 0, opacity: 0, duration: 0.3, ease: "power2.in" });
-        }
-    }, [expanded]);
-
-    function dismiss(type) {
-        gsap.to(bannerRef.current, {
-            y: 120, opacity: 0, filter: "blur(8px)",
-            duration: 0.45, ease: "power2.in",
-            onComplete: () => setVisible(false),
-        });
-        localStorage.setItem(STORAGE_KEY, type);
-        window.__cookieConsent = type;
-
-        // Déclenche GTM / AdSense selon le choix
-        if (type === "all" && typeof window.gtag === "function") {
-            window.gtag("consent", "update", {
-                analytics_storage:    "granted",
-                ad_storage:           "granted",
-                ad_personalization:   "granted",
-                ad_user_data:         "granted",
-            });
-        }
+      return {
+        choice: parsed.choice || "essential",
+        prefs: {
+          analytics: Boolean(parsed.prefs?.analytics),
+          marketing: Boolean(parsed.prefs?.marketing),
+        },
+      };
     }
 
-    function acceptAll()       { dismiss("all"); }
-    function acceptEssential() { dismiss("essential"); }
-    function saveCustom() {
-        dismiss(prefs.analytics || prefs.marketing ? "all" : "essential");
+    // Legacy format: "all" | "essential"
+    if (raw === "all" || raw === "essential") {
+      return {
+        choice: raw,
+        prefs: {
+          analytics: raw === "all",
+          marketing: raw === "all",
+        },
+      };
     }
 
-    if (!visible) return null;
-
-    return (
-        <>
-            <style>{styles}</style>
-
-            <div ref={bannerRef} className="cc-banner" role="dialog" aria-label="Cookie consent">
-
-                {/* ── Ligne déco top ── */}
-                <div className="cc-banner__bar" />
-
-                <div className="cc-banner__inner">
-
-                    {/* ── Icône + texte ── */}
-                    <div className="cc-banner__left">
-                        <span className="cc-banner__icon" aria-hidden="true">🍪</span>
-                        <div>
-                            <p className="cc-banner__title">We use cookies</p>
-                            <p className="cc-banner__desc">
-                                We use cookies to personalize content, analyze traffic and serve relevant ads.{" "}
-                                <a href="/privacy" className="cc-banner__link">Privacy Policy</a>
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* ── Actions ── */}
-                    <div className="cc-banner__actions">
-                        <button className="cc-btn cc-btn--ghost" onClick={() => setExpanded(v => !v)}>
-                            {expanded ? "Hide options" : "Customize"}
-                        </button>
-                        <button className="cc-btn cc-btn--outline" onClick={acceptEssential}>
-                            Essential only
-                        </button>
-                        <button className="cc-btn cc-btn--solid" onClick={acceptAll}>
-                            Accept all
-                        </button>
-                    </div>
-                </div>
-
-                {/* ── Panneau personnalisation ── */}
-                <div ref={detailsRef} className="cc-details" style={{ height: 0, overflow: "hidden", opacity: 0 }}>
-                    <div className="cc-details__inner">
-
-                        {/* Toujours actif */}
-                        <div className="cc-toggle">
-                            <div className="cc-toggle__info">
-                                <p className="cc-toggle__name">Essential cookies</p>
-                                <p className="cc-toggle__desc">Required for the site to function. Cannot be disabled.</p>
-                            </div>
-                            <div className="cc-toggle__switch cc-toggle__switch--locked" aria-label="Always active">
-                                <span>Always on</span>
-                            </div>
-                        </div>
-
-                        {/* Analytics */}
-                        <div className="cc-toggle">
-                            <div className="cc-toggle__info">
-                                <p className="cc-toggle__name">Analytics cookies</p>
-                                <p className="cc-toggle__desc">Help us understand how visitors interact with the site (Google Analytics).</p>
-                            </div>
-                            <label className="cc-toggle__switch">
-                                <input
-                                    type="checkbox"
-                                    checked={prefs.analytics}
-                                    onChange={e => setPrefs(p => ({ ...p, analytics: e.target.checked }))}
-                                />
-                                <span className="cc-toggle__track">
-                                    <span className="cc-toggle__thumb" />
-                                </span>
-                            </label>
-                        </div>
-
-                        {/* Marketing */}
-                        <div className="cc-toggle">
-                            <div className="cc-toggle__info">
-                                <p className="cc-toggle__name">Advertising cookies</p>
-                                <p className="cc-toggle__desc">Used to show relevant ads and measure ad performance (Google AdSense).</p>
-                            </div>
-                            <label className="cc-toggle__switch">
-                                <input
-                                    type="checkbox"
-                                    checked={prefs.marketing}
-                                    onChange={e => setPrefs(p => ({ ...p, marketing: e.target.checked }))}
-                                />
-                                <span className="cc-toggle__track">
-                                    <span className="cc-toggle__thumb" />
-                                </span>
-                            </label>
-                        </div>
-
-                        <button className="cc-btn cc-btn--solid cc-btn--save" onClick={saveCustom}>
-                            Save preferences
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </>
-    );
+    return null;
+  } catch {
+    return null;
+  }
 }
 
+function persistConsent(payload) {
+  const value = JSON.stringify(payload);
+  localStorage.setItem(STORAGE_KEY, value);
+  window.__cookieConsent = payload.choice;
+  window.__cookieConsentPrefs = payload.prefs;
+  document.documentElement.dataset.cookieConsent = payload.choice;
+
+  // First-party cookie so the choice exists outside localStorage too
+  document.cookie = `${STORAGE_KEY}=${encodeURIComponent(value)}; path=/; max-age=${COOKIE_MAX_AGE}; samesite=lax`;
+}
+
+function applyGoogleConsent(payload) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+
+  const analyticsGranted = payload.choice === "all" || Boolean(payload.prefs?.analytics);
+  const marketingGranted = payload.choice === "all" || Boolean(payload.prefs?.marketing);
+
+  window.gtag("consent", "update", {
+    analytics_storage: analyticsGranted ? "granted" : "denied",
+    ad_storage: marketingGranted ? "granted" : "denied",
+    ad_user_data: marketingGranted ? "granted" : "denied",
+    ad_personalization: marketingGranted ? "granted" : "denied",
+    functionality_storage: "granted",
+    security_storage: "granted",
+  });
+}
+
+function closeWithAnimation(ref, onDone) {
+  if (!ref?.current) {
+    onDone?.();
+    return;
+  }
+
+  gsap.to(ref.current, {
+    y: 120,
+    opacity: 0,
+    filter: "blur(8px)",
+    duration: 0.45,
+    ease: "power2.in",
+    onComplete: onDone,
+  });
+}
+
+export default function CookieConsent() {
+  const [visible, setVisible] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [prefs, setPrefs] = useState({ analytics: true, marketing: true });
+
+  const bannerRef = useRef(null);
+  const detailsRef = useRef(null);
+
+  useEffect(() => {
+    const saved = safeReadConsent();
+
+    if (saved) {
+      window.__cookieConsent = saved.choice;
+      window.__cookieConsentPrefs = saved.prefs;
+      document.documentElement.dataset.cookieConsent = saved.choice;
+
+      // Keep Google consent in sync on repeat visits
+      applyGoogleConsent(saved);
+      return;
+    }
+
+    const t = window.setTimeout(() => setVisible(true), 800);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    if (!visible || !bannerRef.current) return;
+
+    gsap.fromTo(
+      bannerRef.current,
+      { y: 120, opacity: 0, filter: "blur(8px)" },
+      { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }
+    );
+  }, [visible]);
+
+  useEffect(() => {
+    if (!detailsRef.current) return;
+
+    if (expanded) {
+      gsap.fromTo(
+        detailsRef.current,
+        { height: 0, opacity: 0 },
+        { height: "auto", opacity: 1, duration: 0.4, ease: "power3.out" }
+      );
+    } else {
+      gsap.to(detailsRef.current, {
+        height: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.in",
+      });
+    }
+  }, [expanded]);
+
+  function dismiss(payload) {
+    persistConsent(payload);
+    applyGoogleConsent(payload);
+
+    closeWithAnimation(bannerRef, () => {
+      setVisible(false);
+    });
+  }
+
+  function acceptAll() {
+    dismiss({
+      choice: "all",
+      prefs: { analytics: true, marketing: true },
+    });
+  }
+
+  function acceptEssential() {
+    dismiss({
+      choice: "essential",
+      prefs: { analytics: false, marketing: false },
+    });
+  }
+
+  function saveCustom() {
+    const choice = prefs.analytics || prefs.marketing ? "custom" : "essential";
+
+    dismiss({
+      choice,
+      prefs: {
+        analytics: Boolean(prefs.analytics),
+        marketing: Boolean(prefs.marketing),
+      },
+    });
+  }
+
+  if (!visible) return null;
+
+  return (
+    <div
+      ref={bannerRef}
+      className="cc-banner"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Cookie consent"
+    >
+      <div className="cc-banner__bar" />
+
+      <div className="cc-banner__inner">
+        <div className="cc-banner__left">
+          <span className="cc-banner__icon" aria-hidden="true">
+            🍪
+          </span>
+          <div>
+            <p className="cc-banner__title">We use cookies</p>
+            <p className="cc-banner__desc">
+              We use cookies to personalize content, analyze traffic and serve
+              relevant ads.{" "}
+              <a href="/privacy" className="cc-banner__link">
+                Privacy Policy
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div className="cc-banner__actions">
+          <button
+            className="cc-btn cc-btn--ghost"
+            onClick={() => setExpanded((v) => !v)}
+            type="button"
+          >
+            {expanded ? "Hide options" : "Customize"}
+          </button>
+
+          <button
+            className="cc-btn cc-btn--outline"
+            onClick={acceptEssential}
+            type="button"
+          >
+            Essential only
+          </button>
+
+          <button className="cc-btn cc-btn--solid" onClick={acceptAll} type="button">
+            Accept all
+          </button>
+        </div>
+      </div>
+
+      <div
+        ref={detailsRef}
+        className="cc-details"
+        style={{ height: 0, overflow: "hidden", opacity: 0 }}
+      >
+        <div className="cc-details__inner">
+          <div className="cc-toggle">
+            <div className="cc-toggle__info">
+              <p className="cc-toggle__name">Essential cookies</p>
+              <p className="cc-toggle__desc">
+                Required for the site to function. Cannot be disabled.
+              </p>
+            </div>
+            <div className="cc-toggle__switch cc-toggle__switch--locked" aria-label="Always active">
+              <span>Always on</span>
+            </div>
+          </div>
+
+          <div className="cc-toggle">
+            <div className="cc-toggle__info">
+              <p className="cc-toggle__name">Analytics cookies</p>
+              <p className="cc-toggle__desc">
+                Help us understand how visitors interact with the site (Google Analytics).
+              </p>
+            </div>
+            <label className="cc-toggle__switch">
+              <input
+                type="checkbox"
+                checked={prefs.analytics}
+                onChange={(e) =>
+                  setPrefs((p) => ({ ...p, analytics: e.target.checked }))
+                }
+              />
+              <span className="cc-toggle__track">
+                <span className="cc-toggle__thumb" />
+              </span>
+            </label>
+          </div>
+
+          <div className="cc-toggle">
+            <div className="cc-toggle__info">
+              <p className="cc-toggle__name">Advertising cookies</p>
+              <p className="cc-toggle__desc">
+                Used to show relevant ads and measure ad performance (Google AdSense).
+              </p>
+            </div>
+            <label className="cc-toggle__switch">
+              <input
+                type="checkbox"
+                checked={prefs.marketing}
+                onChange={(e) =>
+                  setPrefs((p) => ({ ...p, marketing: e.target.checked }))
+                }
+              />
+              <span className="cc-toggle__track">
+                <span className="cc-toggle__thumb" />
+              </span>
+            </label>
+          </div>
+
+          <button
+            className="cc-btn cc-btn--solid cc-btn--save"
+            onClick={saveCustom}
+            type="button"
+          >
+            Save preferences
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 // ─────────────────────────────────────────────────────────────────────────────
 // Styles — dark theme cohérent avec le reste du projet
 // ─────────────────────────────────────────────────────────────────────────────
