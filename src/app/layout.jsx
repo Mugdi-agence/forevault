@@ -1,5 +1,4 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import ClientWrapper from "./clientWrapper";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import CookieConsent from "./CookieConsent";
@@ -148,12 +147,8 @@ export default function RootLayout({ children }) {
         >
           We use cookies to personalize content, analytics and ads.
         </div>
-
-        <ClientWrapper>
           {children}
           <CookieConsent />
-        </ClientWrapper>
-
         <GoogleAnalytics gaId="G-N2X7Y2KNGF" />
         <Analytics />
       </body>
