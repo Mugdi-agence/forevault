@@ -1,9 +1,11 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import "../legal.scss";
 import Navbar from "../nav";
+import LegalAnimator from "../LegalAnimator";
+import "../legal.scss";
+
+export const metadata = {
+    title: "Privacy Policy — Forevault.ink",
+    description: "Learn how Forevault.ink handles your data, what we collect, and your rights as a user.",
+};
 
 const SECTIONS = [
     {
@@ -167,8 +169,8 @@ const SECTIONS = [
                 <div className="legal-warn">
                     <span className="legal-warn__icon">ℹ️</span>
                     <span>
-                        Forevault.ink is an independent tool. While the core calculator is free to use, 
-                        the standalone website includes third-party advertising (Google AdSense) to 
+                        Forevault.ink is an independent tool. While the core calculator is free to use,
+                        the standalone website includes third-party advertising (Google AdSense) to
                         support development, hosting costs, and future updates.
                     </span>
                 </div>
@@ -262,34 +264,15 @@ const SECTIONS = [
 ];
 
 export default function PrivacyPage() {
-    const boxRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(boxRef.current, {
-                opacity: 0, y: 38, scale: .97,
-                duration: .85, ease: "expo.out",
-            });
-            gsap.from(".legal-section", {
-                opacity: 0, y: 12,
-                duration: .45, stagger: .05, delay: .35,
-                ease: "power2.out",
-            });
-        }, boxRef);
-        return () => ctx.revert();
-    }, []);
-
     return (
         <div className="lg-root">
-            <Navbar/>
+            <Navbar />
             <a href="/" className="lg-back">
                 <span className="lg-back__arrow">←</span>
                 Back to Forevault
             </a>
 
-            <div className="legal-box" ref={boxRef}>
-
-                {/* ── hero band ───────────────────────────────────────────── */}
+            <LegalAnimator>
                 <div className="legal-hero">
                     <span className="legal-hero__badge">Legal</span>
                     <h1 className="legal-hero__title">Privacy Policy</h1>
@@ -298,7 +281,6 @@ export default function PrivacyPage() {
                     </p>
                 </div>
 
-                {/* ── sections ────────────────────────────────────────────── */}
                 <div className="legal-body">
                     {SECTIONS.map((s, i) => (
                         <div key={s.num}>
@@ -316,7 +298,6 @@ export default function PrivacyPage() {
                     ))}
                 </div>
 
-                {/* ── footer ──────────────────────────────────────────────── */}
                 <div className="legal-foot">
                     <span className="legal-foot__copy">© 2026 Forevault.ink — All rights reserved</span>
                     <span className="legal-foot__updated">
@@ -324,8 +305,7 @@ export default function PrivacyPage() {
                         Last updated March 2026
                     </span>
                 </div>
-
-            </div>
+            </LegalAnimator>
         </div>
     );
 }

@@ -1,9 +1,11 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import "../legal.scss";
 import Navbar from "../nav";
+import LegalAnimator from "../LegalAnimator";
+import "../legal.scss";
+
+export const metadata = {
+    title: "Terms of Use — Forevault.ink",
+    description: "Read the Terms of Use for Forevault.ink, including accuracy disclaimers, liability limitations, and intellectual property rights.",
+};
 
 const SECTIONS = [
     {
@@ -182,34 +184,15 @@ const SECTIONS = [
 ];
 
 export default function TermsPage() {
-    const boxRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(boxRef.current, {
-                opacity: 0, y: 38, scale: .97,
-                duration: .85, ease: "expo.out",
-            });
-            gsap.from(".legal-section", {
-                opacity: 0, y: 12,
-                duration: .45, stagger: .06, delay: .4,
-                ease: "power2.out",
-            });
-        }, boxRef);
-        return () => ctx.revert();
-    }, []);
-
     return (
         <div className="lg-root">
-            <Navbar/>
+            <Navbar />
             <a href="/" className="lg-back">
                 <span className="lg-back__arrow">←</span>
                 Back to Forevault
             </a>
 
-            <div className="legal-box" ref={boxRef}>
-
-                {/* ── hero band ───────────────────────────────────────────── */}
+            <LegalAnimator>
                 <div className="legal-hero">
                     <span className="legal-hero__badge">Legal</span>
                     <h1 className="legal-hero__title">Terms of Use</h1>
@@ -218,7 +201,6 @@ export default function TermsPage() {
                     </p>
                 </div>
 
-                {/* ── sections ────────────────────────────────────────────── */}
                 <div className="legal-body">
                     {SECTIONS.map((s, i) => (
                         <div key={s.num}>
@@ -229,7 +211,9 @@ export default function TermsPage() {
                                 </div>
                                 {s.content}
                             </section>
-                            {i < SECTIONS.length - 1 && <div className="legal-sep" style={{ marginTop: "2rem" }} />}
+                            {i < SECTIONS.length - 1 && (
+                                <div className="legal-sep" style={{ marginTop: "2rem" }} />
+                            )}
                         </div>
                     ))}
                 </div>
@@ -241,8 +225,7 @@ export default function TermsPage() {
                         Last updated March 2026
                     </span>
                 </div>
-
-            </div>
+            </LegalAnimator>
         </div>
     );
 }
