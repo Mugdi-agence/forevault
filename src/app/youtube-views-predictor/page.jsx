@@ -27,9 +27,12 @@ const PredictorEngine = dynamic(
 
 export default function YtViewsPredictorPage() {
     return (
+        <>
         <div className="containering">
+            
             <Navbar />
-
+            
+            
             <div className="ytp-root">
                 <PredictorEngine />
             </div>
@@ -38,5 +41,8 @@ export default function YtViewsPredictorPage() {
 
             <Footer />
         </div>
+        <div className="fonds"/>
+        </>
+        
     );
 }
