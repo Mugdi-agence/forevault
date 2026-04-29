@@ -317,6 +317,21 @@ export const niches = [
     format: "Long-form"
   },
 
+  {
+    id: "clip_song",
+    niche: "Music & Clip Song",
+    topic: "Lyric videos, music clips, and song compilations",
+    rpm: 1.5,
+    audienceShare: 0.21,    // ~21% → massive audience base
+    faceless: "faceless",
+    saturation: 5,
+    economic_potential: 1,
+    creation_ease: 3,
+    popularity: "high-intent",
+    trending: false,
+    format: "Long-form"
+  },
+
   // ── SHORTS ────────────────────────────────────────────────────────────────────
   // Les Shorts ont des audienceShare légèrement plus élevés (feed algorithmique agressif)
 
