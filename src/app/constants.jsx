@@ -332,6 +332,21 @@ export const niches = [
     format: "Long-form"
   },
 
+  {
+    id: "animation",
+    niche: "Animation (2D & 3D)",
+    topic: "Animated stories, explainers, and character-driven series",
+    rpm: 4.5,
+    audienceShare: 0.045,   // ~4.5% → large but competitive segment
+    faceless: "faceless",
+    saturation: 3,
+    economic_potential: 3,
+    creation_ease: 1,
+    popularity: "high-intent",
+    trending: true,
+    format: "Long-form"
+  },
+
   // ── SHORTS ────────────────────────────────────────────────────────────────────
   // Les Shorts ont des audienceShare légèrement plus élevés (feed algorithmique agressif)
 
