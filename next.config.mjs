@@ -2,7 +2,7 @@
 
 const securityHeaders = [
   {
-    key: "Content-Security-Policy",
+    key: "y-Policy",
     value: `
       default-src 'self';
       script-src 'self' 'unsafe-inline' 'unsafe-eval'

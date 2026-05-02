@@ -22,7 +22,7 @@ import {
 } from "recharts";
 import gsap from "gsap";
 import html2canvas from "html2canvas";
-import "./styles.scss";
+import "./[lang]/styles.scss";
 import { useSearchParams } from "next/navigation";
 import AlignVerticalBottomIcon from "@mui/icons-material/AlignVerticalBottom";
 

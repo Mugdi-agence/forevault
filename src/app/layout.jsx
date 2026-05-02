@@ -91,23 +91,6 @@ export default function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `{
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "Forevault",
-              "url": "https://forevault.ink",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://forevault.ink/blog?search={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            }`
-          }}
-        />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",

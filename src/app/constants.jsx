@@ -337,7 +337,7 @@ export const niches = [
     niche: "Animation (2D & 3D)",
     topic: "Animated stories, explainers, and character-driven series",
     rpm: 4.5,
-    audienceShare: 0.045,   // ~4.5% → large but competitive segment
+    audienceShare: 0.045,
     faceless: "faceless",
     saturation: 3,
     economic_potential: 3,

@@ -1,69 +1,1081 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://forevault.ink/</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/about</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/fr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/blog</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/contact</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/de</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/how-much-do-100k-youtube-views-pay</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/pt</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/how-much-do-youtubers-make</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/ja</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/niches</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/ko</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/privacy</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/about" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/terms</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/fr/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/about" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/youtube-earnings-by-country-calculator</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/es/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/about" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/youtube-revenue-calculator</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/de/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/about" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/youtube-rpm-calculator-by-niche</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/pt/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/about" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://forevault.ink/youtube-views-predictor</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://forevault.ink/ja/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/about" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://forevault.ink/ko/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/about" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/privacy" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/privacy" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/privacy" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/fr/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/privacy" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/privacy" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/privacy" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/es/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/privacy" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/privacy" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/privacy" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/de/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/privacy" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/privacy" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/privacy" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/pt/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/privacy" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/privacy" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/privacy" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ja/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/privacy" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/privacy" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/privacy" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ko/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/privacy" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/privacy" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/privacy" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/en/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/terms" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/terms" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/terms" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/terms" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/terms" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/fr/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/terms" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/terms" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/terms" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/terms" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/terms" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/es/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/terms" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/terms" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/terms" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/terms" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/terms" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/de/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/terms" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/terms" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/terms" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/terms" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/terms" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/pt/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/terms" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/terms" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/terms" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/terms" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/terms" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ja/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/terms" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/terms" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/terms" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/terms" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/terms" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ko/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/terms" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/terms" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/terms" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/terms" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/terms" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/contact" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/fr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/contact" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/es/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/contact" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/de/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/contact" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/pt/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/contact" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ja/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/contact" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ko/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/contact" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/en/youtube/rpm-calculator-by-niche</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/fr/youtube/rpm-calculator-by-niche</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/es/youtube/rpm-calculator-by-niche</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/de/youtube/rpm-calculator-by-niche</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/pt/youtube/rpm-calculator-by-niche</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ja/youtube/rpm-calculator-by-niche</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ko/youtube/rpm-calculator-by-niche</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/rpm-calculator-by-niche" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/rpm-calculator-by-niche" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/en/youtube/revenue-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/fr/youtube/revenue-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/es/youtube/revenue-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/de/youtube/revenue-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/pt/youtube/revenue-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ja/youtube/revenue-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ko/youtube/revenue-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/revenue-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/revenue-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/en/youtube/how-much-do-youtubers-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/fr/youtube/how-much-do-youtubers-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/es/youtube/how-much-do-youtubers-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/de/youtube/how-much-do-youtubers-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/pt/youtube/how-much-do-youtubers-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ja/youtube/how-much-do-youtubers-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ko/youtube/how-much-do-youtubers-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-youtubers-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-youtubers-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/fr/youtube/how-much-do-100k-youtube-views-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/es/youtube/how-much-do-100k-youtube-views-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/de/youtube/how-much-do-100k-youtube-views-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/pt/youtube/how-much-do-100k-youtube-views-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ja/youtube/how-much-do-100k-youtube-views-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ko/youtube/how-much-do-100k-youtube-views-make</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/how-much-do-100k-youtube-views-make" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/how-much-do-100k-youtube-views-make" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/fr/youtube/youtube-earnings-by-country-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/es/youtube/youtube-earnings-by-country-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/de/youtube/youtube-earnings-by-country-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/pt/youtube/youtube-earnings-by-country-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ja/youtube/youtube-earnings-by-country-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ko/youtube/youtube-earnings-by-country-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/youtube/youtube-earnings-by-country-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/youtube/youtube-earnings-by-country-calculator" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/en/estimator/youtube-views-predictor</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/fr/estimator/youtube-views-predictor</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/es/estimator/youtube-views-predictor</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/de/estimator/youtube-views-predictor</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/pt/estimator/youtube-views-predictor</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ja/estimator/youtube-views-predictor</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://forevault.ink/ko/estimator/youtube-views-predictor</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://forevault.ink/es/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://forevault.ink/pt/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://forevault.ink/ko/estimator/youtube-views-predictor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/estimator/youtube-views-predictor" />
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

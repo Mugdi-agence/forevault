@@ -202,7 +202,7 @@ export default function CookieConsent() {
                 <p className="cc-banner__desc">
                   We use cookies to personalize content, analyze traffic and serve
                   relevant ads.{" "}
-                  <a href="/privacy" className="cc-banner__link">
+                  <a href="/en/privacy" className="cc-banner__link">
                     Privacy Policy
                   </a>
                 </p>
