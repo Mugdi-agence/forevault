@@ -23,7 +23,7 @@ function detectLang(request: NextRequest): string {
     return DEFAULT_LANG;
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     if (BYPASS_PREFIXES.some((p) => pathname.startsWith(p))) return NextResponse.next();
