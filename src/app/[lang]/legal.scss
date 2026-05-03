@@ -3,7 +3,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 // ─── Tokens (mirror du calculateur) ──────────────────────────────────────────
-$bg:    url(/vertical.png);
+$bg:    url(vertical.png);
 $surf:  rgba(16,16,16,.98);
 $surf2: rgba(22,22,22,.95);
 $b:     #1e1e1e;

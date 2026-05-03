@@ -9,7 +9,7 @@ import Footer       from "../footer";
 import NicheFinder  from "./NicheFinder";
 import NicheContent from "./NicheContent";
 import nicheContent from "./niche-content";
-import './niche-finder.scss';
+import '../niche-finder.scss';
 
 // ── Métadonnées dynamiques par langue ────────────────────────────────────────
 export async function generateMetadata({ params }) {
