@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 
 import Navbar from "../nav";
 import LegalAnimator from "../LegalAnimator";
-import { supportedLangs, normalizeLang } from "@/app/i18n";
-import { getTermsPageContent } from "@/app/content/terms";
+import { supportedLangs, normalizeLang } from "../../i18n";
+import { getTermsPageContent } from "../../content/terms";
 
 import "../legal.scss";
 

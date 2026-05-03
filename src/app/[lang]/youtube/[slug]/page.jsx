@@ -6,8 +6,8 @@ import Footer from "../../footer";
 import RevenueEngine from "../../../Revenue-Engine";
 import CalcContent from "./Calccontent";
 
-import { supportedLangs, normalizeLang } from "@/app/i18n";
-import { getYouTubePageContent, youtubePageRegistry } from "@/app/data/youtube";
+import { supportedLangs, normalizeLang } from "../../i18n";
+import { getYouTubePageContent, youtubePageRegistry } from "../../../data/youtube";
 
 import "../../styles.scss";
 

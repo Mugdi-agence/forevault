@@ -3,8 +3,8 @@ import Script from "next/script";
 
 import Navbar from "../nav";
 import AboutAnimator from "./../AboutAnimator";
-import { supportedLangs, normalizeLang } from "@/app/i18n";
-import { getAboutPageContent, aboutPageRegistry } from "@/app/content/about";
+import { supportedLangs, normalizeLang } from "../../i18n";
+import { getAboutPageContent, aboutPageRegistry } from "../../content/about";
 
 import "../legal.scss";
 

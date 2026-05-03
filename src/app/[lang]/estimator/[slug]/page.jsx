@@ -7,8 +7,8 @@ import YtViewsPredictorContent from "./Ytviewpredictorcontent";
 import "../../../yt_views_predictor.scss";
 import "../../styles.scss";
 
-import { supportedLangs, normalizeLang } from "@/app/i18n";
-import { getEstimatorPageContent } from "@/app/data/estimator/index";
+import { supportedLangs, normalizeLang } from "../../../i18n";
+import { getEstimatorPageContent } from "../../../data/estimator";
 
 const PredictorEngine = dynamic(
   () => import("../../../Predictor-Engine"),

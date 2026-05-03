@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Navbar from "../nav";
 import AboutAnimator from "../AboutAnimator";
-import { supportedLangs, normalizeLang } from "@/app/i18n";
-import { getContactPageContent } from "@/app/content/contact";
+import { supportedLangs, normalizeLang } from "../../i18n";
+import { getContactPageContent } from "../../content/contact";
 
 import "../legal.scss";
 
