@@ -39,15 +39,12 @@ export default function Navbar({ lang = "en" }) {
 
     const currentLang = LANGUAGES.find(l => l.code === lang) ?? LANGUAGES[0];
 
-    function switchLang() {
-        // Pose le cookie côté client (1 an, SameSite=Lax)
+    // ── FIX : code en paramètre ────────────────────────────────────
+    function switchLang(code) {
         document.cookie = `preferred_lang=${code}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
-     
-        // Remplace le segment [lang] dans le pathname courant
         const segments = pathname.split("/").filter(Boolean);
         if (LANGUAGES.some((l) => l.code === segments[0])) segments[0] = code;
         else segments.unshift(code);
-     
         router.push("/" + segments.join("/"));
         closeLang(true);
     }
@@ -163,7 +160,6 @@ export default function Navbar({ lang = "en" }) {
         <>
             <nav ref={navRef} className="nav">
                 <div className="nav__inner">
-
                     <a href={`/${lang}`} className="nav__logo">
                         <Image src={logo} alt="Logo" className="nav__logo-image" />
                     </a>
@@ -194,8 +190,6 @@ export default function Navbar({ lang = "en" }) {
                     </ul>
 
                     <div className="nav__actions">
-
-                        {/* ── Lang selector ── */}
                         <div
                             className={`nav__lang ${langOpen ? "nav__lang--open" : ""}`}
                             onMouseEnter={openLang}
@@ -282,7 +276,6 @@ export default function Navbar({ lang = "en" }) {
                         ))}
                     </ul>
 
-                    {/* ── Lang mobile ── */}
                     <div className="mobile-nav__langs">
                         <p className="mobile-nav__langs-label">Language</p>
                         <div className="mobile-nav__langs-grid">
