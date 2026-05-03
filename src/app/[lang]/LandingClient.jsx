@@ -8,8 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "./nav";
 import Footer from "./footer";
 import "./landing.scss";
-import { normalizeLang } from "@/app/i18n";
-import { getHomeContent } from "@/app/content/home";
+import { normalizeLang } from "../i18n";
+import { getHomeContent } from "../content/home";
 
 gsap.registerPlugin(ScrollTrigger);
 

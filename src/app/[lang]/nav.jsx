@@ -39,10 +39,15 @@ export default function Navbar({ lang = "en" }) {
 
     const currentLang = LANGUAGES.find(l => l.code === lang) ?? LANGUAGES[0];
 
-    function switchLang(code) {
+    function switchLang() {
+        // Pose le cookie côté client (1 an, SameSite=Lax)
+        document.cookie = `preferred_lang=${code}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
+     
+        // Remplace le segment [lang] dans le pathname courant
         const segments = pathname.split("/").filter(Boolean);
-        if (LANGUAGES.some(l => l.code === segments[0])) segments[0] = code;
+        if (LANGUAGES.some((l) => l.code === segments[0])) segments[0] = code;
         else segments.unshift(code);
+     
         router.push("/" + segments.join("/"));
         closeLang(true);
     }
