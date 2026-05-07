@@ -47,6 +47,39 @@ export const CURRENCIES = [
 const BASE_COUNTRY_MULT = 2.2;
 
 // ─────────────────────────────────────────────────────────────────────────────
+// AVD RPM Factor
+// AVD is absolute (not relative to video length).
+// Base reference: 10 min AVD = factor 1.0
+// 20 min AVD = factor 2.0 (doubles RPM)
+// 30 min AVD = factor 3.0, etc. (linear scale on AVD minutes)
+// ─────────────────────────────────────────────────────────────────────────────
+export function getAvdFactor(avdMin) {
+  // Linear: every 10 min of AVD = +1x multiplier, anchored at 10min = 1.0x
+  // avdFactor = avdMin / 10
+  // Minimum floor of 0.1 (very low AVD), no cap (high AVD rewarded)
+  const factor = Math.max(0.1, avdMin / 10);
+  return factor;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Shorts retention factor (allows >100%)
+// 100% = base 1.0, scales linearly, no cap
+// ─────────────────────────────────────────────────────────────────────────────
+export function getShortsRetentionFactor(retentionRate) {
+  // Base at 100% retention = 1.0
+  // Each % above/below shifts proportionally
+  // Below 50%: penalized; above 100%: rewarded
+  const rate = Math.max(0, retentionRate);
+  if (rate >= 100) {
+    return 1.0 + (rate - 100) * 0.01; // +1% per % above 100
+  } else if (rate >= 50) {
+    return 0.7 + (rate - 50) * 0.006; // 0.7 → 1.0 between 50%–100%
+  } else {
+    return Math.max(0.2, rate / 50 * 0.7); // penalized below 50%
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────────────────────────────────────────
 function expandNiches(rawNiches) {
@@ -80,29 +113,39 @@ const sortedCountries = [...countryRPM].sort((a, b) =>
   a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
 );
 
-export function toUSD(views, rpm, countryMult, isShorts, retentionRate, durationMin) {
+/**
+ * toUSD — calculates estimated earnings in USD.
+ *
+ * For LONG-FORM:
+ *   - avdMin: Average Viewed Duration in minutes (absolute, not relative)
+ *   - RPM is scaled by avdFactor = avdMin / 10 (10min AVD = ×1, 20min = ×2, etc.)
+ *   - Duration factor (durationMin) still applies for ad slot unlocks
+ *
+ * For SHORTS:
+ *   - retentionRate: can be > 100%
+ *   - avdMin is ignored
+ */
+export function toUSD(views, rpm, countryMult, isShorts, retentionRate, durationMin, avdMin) {
   views = Math.max(0, Number(views) || 0);
   rpm = Math.max(0, Number(rpm) || 0);
-  retentionRate = Math.max(0, Math.min(100, Number(retentionRate) || 45));
-  durationMin = Math.max(0.1, Number(durationMin) || 0.1);
   countryMult = Math.max(0, Number(countryMult) || BASE_COUNTRY_MULT);
 
   const countryFactor = countryMult / BASE_COUNTRY_MULT;
 
-  let retentionFactor;
-  if (retentionRate >= 45) {
-    retentionFactor = 1 + (retentionRate - 45) * 0.005;
-  } else {
-    retentionFactor = 1 - (45 - retentionRate) * 0.006;
-  }
-  retentionFactor = Math.max(0.7, Math.min(1.3, retentionFactor));
-
   if (isShorts) {
+    retentionRate = Math.max(0, Number(retentionRate) || 100);
+    const retentionFactor = getShortsRetentionFactor(retentionRate);
     const SHORTS_RATIO = rpm > 10 ? 0.012 : 0.018;
     const geoFactor = 0.7 + countryFactor * 0.3;
     const shortsRPM = rpm * SHORTS_RATIO * geoFactor * retentionFactor;
     return (views / 1000) * shortsRPM;
   }
+
+  // Long-form: use AVD factor instead of retention
+  avdMin = Math.max(0.1, Number(avdMin) || 1);
+  durationMin = Math.max(0.1, Number(durationMin) || 0.1);
+
+  const avdFactor = getAvdFactor(avdMin);
 
   let durationFactor;
   if (durationMin < 4) durationFactor = 0.72;
@@ -111,7 +154,7 @@ export function toUSD(views, rpm, countryMult, isShorts, retentionRate, duration
   else if (durationMin < 30) durationFactor = 1.38;
   else durationFactor = 1.55;
 
-  const adjustedRPM = rpm * countryFactor * retentionFactor * durationFactor;
+  const adjustedRPM = rpm * countryFactor * avdFactor * durationFactor;
   return (views / 1000) * adjustedRPM;
 }
 
@@ -217,10 +260,14 @@ function CalculatorInner() {
   const viewsRef = useRef(null);
   const countryRef = useRef(null);
   const formatRef = useRef(null);
+  // Shorts: retention (can be >100%). Long-form: unused (replaced by AVD)
   const retentionRef = useRef(null);
   const nichesRef = useRef(null);
   const durationMinRef = useRef(null);
   const durationSecRef = useRef(null);
+  // Long-form AVD (Average Viewed Duration) — min + sec
+  const avdMinRef = useRef(null);
+  const avdSecRef = useRef(null);
 
   const layoutRef = useRef(null);
   const resultsRef = useRef(null);
@@ -274,20 +321,10 @@ function CalculatorInner() {
           setShareOpen(false);
         },
       })
-      .to(
-        backdrop,
-        { opacity: 0, duration: 0.22, ease: "power2.in" },
-        0
-      )
+      .to(backdrop, { opacity: 0, duration: 0.22, ease: "power2.in" }, 0)
       .to(
         panel,
-        {
-          opacity: 0,
-          y: 22,
-          scale: 0.96,
-          duration: 0.28,
-          ease: "power3.in",
-        },
+        { opacity: 0, y: 22, scale: 0.96, duration: 0.28, ease: "power3.in" },
         0
       );
   }, []);
@@ -420,13 +457,7 @@ function CalculatorInner() {
       ease: "power2.out",
     }).to(
       panel,
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.48,
-        ease: "back.out(1.12)",
-      },
+      { opacity: 1, y: 0, scale: 1, duration: 0.48, ease: "back.out(1.12)" },
       "-=0.24"
     );
 
@@ -500,7 +531,6 @@ function CalculatorInner() {
       .to(".form__btn", { scale: 1, duration: 0.4, ease: "elastic.out(1, 0.5)" });
 
     const views = parseFloat(rawViews.replace(/,/g, ""));
-    const retentionRate = parseFloat(retentionRef.current?.value || "");
     const nicheId = nichesRef.current?.value || "";
     const countryId = countryRef.current?.value || "";
     const shorts = isShorts;
@@ -512,11 +542,25 @@ function CalculatorInner() {
     if (!views || views <= 0) return setError("Please enter a valid view count.");
     if (!nicheId) return setError("Please select a niche.");
     if (!countryId) return setError("Please select a geography.");
-    if (isNaN(retentionRate) || retentionRate < 0 || retentionRate > 100) {
-      return setError("Retention rate must be between 0 and 100.");
-    }
     if (totalDurSec <= 0) return setError("Please enter a valid video duration.");
     if (shorts && totalDurMin > 3) return setError("Shorts cannot exceed 3 minutes.");
+
+    let retentionRate = 100;
+    let avdMin = 1;
+
+    if (shorts) {
+      retentionRate = parseFloat(retentionRef.current?.value || "100");
+      if (isNaN(retentionRate) || retentionRate < 0) {
+        return setError("Retention rate must be 0% or more.");
+      }
+    } else {
+      // Long-form: parse AVD (Average Viewed Duration)
+      const avdM = parseInt(avdMinRef.current?.value || "0", 10);
+      const avdS = parseInt(avdSecRef.current?.value || "0", 10);
+      const totalAvdSec = avdM * 60 + avdS;
+      avdMin = totalAvdSec / 60;
+      if (totalAvdSec <= 0) return setError("Please enter a valid Average Viewed Duration (AVD).");
+    }
 
     const nicheData = visibleNiches.find((n) => n.id === nicheId);
     const countryData = sortedCountries.find((c) => c.id === countryId);
@@ -530,7 +574,8 @@ function CalculatorInner() {
       countryData.multiplier,
       shorts,
       retentionRate,
-      totalDurMin
+      totalDurMin,
+      avdMin
     );
 
     const adSlots = shorts
@@ -550,15 +595,12 @@ function CalculatorInner() {
         country_id: countryId,
         country_label: countryData.name,
         views_bracket: getViewsBracket(views),
-        retention_rate: retentionRate,
+        ...(shorts
+          ? { retention_rate: retentionRate }
+          : { avd_min: Math.round(avdMin * 100) / 100 }),
         duration_sec: totalDurSec,
         ad_slots: adSlots,
         estimated_usd: Math.round(earningsUSD * 100) / 100,
-        effective_rpm:
-          Math.round(
-            toUSD(1000, nicheData.rpm, countryData.multiplier, shorts, retentionRate, totalDurMin) *
-              100
-          ) / 100,
         display_currency: currency.code,
       });
     }
@@ -568,7 +610,15 @@ function CalculatorInner() {
         id: n.id,
         name: n.niche.length > 18 ? n.niche.slice(0, 16) + "…" : n.niche,
         fullName: n.niche,
-        earningsUSD: toUSD(views, n.rpm, countryData.multiplier, shorts, retentionRate, totalDurMin),
+        earningsUSD: toUSD(
+          views,
+          n.rpm,
+          countryData.multiplier,
+          shorts,
+          retentionRate,
+          totalDurMin,
+          avdMin
+        ),
         isSelected: n.id === nicheId,
       }))
       .sort((a, b) => b.earningsUSD - a.earningsUSD);
@@ -584,24 +634,22 @@ function CalculatorInner() {
           : "1 mid-roll"
         : "Pre-roll only";
 
-    const retentionFactor = Math.max(
-      0.7,
-      Math.min(
-        1.3,
-        retentionRate >= 45 ? 1 + (retentionRate - 45) * 0.005 : 1 - (45 - retentionRate) * 0.006
-      )
-    );
     const countryFactor = countryData.multiplier / BASE_COUNTRY_MULT;
 
     let effectiveRPMusd;
     if (shorts) {
+      const retentionFactor = getShortsRetentionFactor(retentionRate);
       const SHORTS_RATIO = nicheData.rpm > 10 ? 0.017 : 0.025;
       const geoFactor = 0.7 + countryFactor * 0.3;
       effectiveRPMusd = nicheData.rpm * SHORTS_RATIO * geoFactor * retentionFactor;
     } else {
+      const avdFactor = getAvdFactor(avdMin);
       effectiveRPMusd =
-        nicheData.rpm * countryFactor * retentionFactor * getDurationMultiplier(totalDurMin, shorts);
+        nicheData.rpm * countryFactor * avdFactor * getDurationMultiplier(totalDurMin, shorts);
     }
+
+    // Format AVD label for display
+    const avdLabel = shorts ? null : fmtDuration(Math.round(avdMin * 60));
 
     setResult({
       earningsUSD,
@@ -610,11 +658,14 @@ function CalculatorInner() {
       country: countryData.name,
       format: shorts ? "Shorts" : "Long Form",
       views,
-      retentionRate,
+      retentionRate: shorts ? retentionRate : null,
+      avdLabel,
+      avdMin: shorts ? null : avdMin,
       averageUSD,
       allNicheEarnings,
       durationLabel,
       midrollNote,
+      isShorts: shorts,
     });
   }
 
@@ -641,21 +692,23 @@ function CalculatorInner() {
   function getShareText() {
     if (!result) return "";
     const url = getSharePageUrl();
+    const watchLine = result.isShorts
+      ? `• Retention : ${result.retentionRate}%`
+      : `• AVD : ${result.avdLabel}`;
     return [
-      `J’ai estimé mes revenus YouTube !`,
+      `J'ai estimé mes revenus YouTube !`,
       `• Gains estimés : ${fmt(displayEarnings, currency)}`,
       `• Niche : ${result.niche}`,
       `• Pays : ${result.country}`,
       `• Format : ${result.format}`,
       `• Views : ${result.views.toLocaleString("en-US")}`,
-      `• Retention : ${result.retentionRate}%`,
+      watchLine,
       `• Durée : ${result.durationLabel}`,
       "",
       url,
     ].join("\n");
   }
 
-  /** Texte court + lien (limites de caractères sur X, WhatsApp, etc.) */
   function getShareCompactText() {
     if (!result) return "";
     const url = getSharePageUrl();
@@ -692,7 +745,7 @@ function CalculatorInner() {
       setShareOpen(true);
     } catch (err) {
       console.error(err);
-      setShareError("Impossible de générer l’image.");
+      setShareError("Impossible de générer l'image.");
     } finally {
       setShareBusy(false);
     }
@@ -786,7 +839,7 @@ function CalculatorInner() {
         <div className="layout" ref={layoutRef}>
           <aside className="panel panel--form">
             <div className="panel__head">
-              <span className="panel__badge">Engine v1.5</span>
+              <span className="panel__badge">Engine <i style={{ color: "#00FF00"}}>v1.6</i></span>
               <h1 className="panel__title">YouTube Revenue Calculator</h1>
               <p className="panel__sub">Estimate your YouTube earnings</p>
             </div>
@@ -804,16 +857,45 @@ function CalculatorInner() {
                 />
               </Field>
 
-              <Field label="Retention (%)">
-                <input
-                  ref={retentionRef}
-                  className="field__input"
-                  type="number"
-                  placeholder="45"
-                  min="0"
-                  max="100"
-                />
-              </Field>
+              {/* Shorts: retention (allows >100%). Long-form: AVD */}
+              {isShorts ? (
+                <Field label="Retention (%)">
+                  <input
+                    ref={retentionRef}
+                    className="field__input"
+                    type="number"
+                    placeholder="100"
+                    min="0"
+                    // No max — allows >100% for Shorts
+                  />
+                  <p className="field__hint">Shorts can exceed 100% (loops)</p>
+                </Field>
+              ) : (
+                <Field label="Average Viewed Duration (AVD)">
+                  <div className="duration-input">
+                    <input
+                      ref={avdMinRef}
+                      className="field__input duration-input__part"
+                      type="number"
+                      placeholder="0"
+                      min="0"
+                    />
+                    <span className="duration-input__sep">m</span>
+                    <input
+                      ref={avdSecRef}
+                      className="field__input duration-input__part"
+                      type="number"
+                      placeholder="00"
+                      min="0"
+                      max="59"
+                    />
+                    <span className="duration-input__sep">s</span>
+                  </div>
+                  <p className="field__hint">
+                    10 min AVD = base RPM · 20 min = ×2 · 30 min = ×3
+                  </p>
+                </Field>
+              )}
 
               <div className="form__row">
                 <Field label="Format">
@@ -897,8 +979,6 @@ function CalculatorInner() {
                 Calculate earnings
                 <span className="form__btn-arrow">→</span>
               </button>
-
-              
             </div>
           </aside>
 
@@ -940,7 +1020,11 @@ function CalculatorInner() {
                   <MetaTag label="Country" value={result.country} />
                   <MetaTag label="Format" value={result.format} />
                   <MetaTag label="Views" value={result.views.toLocaleString("en-US")} />
-                  <MetaTag label="Retention" value={`${result.retentionRate}%`} />
+                  {result.isShorts ? (
+                    <MetaTag label="Retention" value={`${result.retentionRate}%`} />
+                  ) : (
+                    <MetaTag label="AVD" value={result.avdLabel} highlight />
+                  )}
                   <MetaTag label="Duration" value={result.durationLabel} />
                   <MetaTag label="Ad slots" value={result.midrollNote} highlight />
                 </div>
@@ -1011,16 +1095,16 @@ function CalculatorInner() {
                     disabled={!result || shareBusy}
                   >
                     {shareBusy ? "Generating…" : "Share result"}
-               
                   </button>
 
-              {shareError && <p className="form__error">⚠ {shareError}</p>}
+                  {shareError && <p className="form__error">⚠ {shareError}</p>}
                 </div>
               </div>
             )}
           </main>
         </div>
 
+        {/* ── Off-screen share card ── */}
         {result && (
           <div
             ref={shareCardRef}
@@ -1034,7 +1118,7 @@ function CalculatorInner() {
           >
             <aside className="panel panel--form">
               <div className="panel__head">
-                <span className="panel__badge">Engine v1.5</span>
+                <span className="panel__badge">Engine v1.6</span>
                 <h1 className="panel__title">YouTube Revenue Calculator</h1>
                 <p className="panel__sub">Estimate your YouTube earnings</p>
               </div>
@@ -1044,9 +1128,15 @@ function CalculatorInner() {
                   <div className="field__input">{result.views.toLocaleString("en-US")}</div>
                 </Field>
 
-                <Field label="Retention (%)">
-                  <div className="field__input">{result.retentionRate}%</div>
-                </Field>
+                {result.isShorts ? (
+                  <Field label="Retention (%)">
+                    <div className="field__input">{result.retentionRate}%</div>
+                  </Field>
+                ) : (
+                  <Field label="Average Viewed Duration (AVD)">
+                    <div className="field__input">{result.avdLabel}</div>
+                  </Field>
+                )}
 
                 <div className="form__row">
                   <Field label="Format">
@@ -1110,7 +1200,11 @@ function CalculatorInner() {
                   <MetaTag label="Country" value={result.country} />
                   <MetaTag label="Format" value={result.format} />
                   <MetaTag label="Views" value={result.views.toLocaleString("en-US")} />
-                  <MetaTag label="Retention" value={`${result.retentionRate}%`} />
+                  {result.isShorts ? (
+                    <MetaTag label="Retention" value={`${result.retentionRate}%`} />
+                  ) : (
+                    <MetaTag label="AVD" value={result.avdLabel} highlight />
+                  )}
                   <MetaTag label="Duration" value={result.durationLabel} />
                   <MetaTag label="Ad slots" value={result.midrollNote} highlight />
                 </div>
@@ -1173,6 +1267,7 @@ function CalculatorInner() {
           </div>
         )}
 
+        {/* ── Share modal ── */}
         {shareOpen && (
           <div
             className="share-modal"
@@ -1194,10 +1289,7 @@ function CalculatorInner() {
                   <h2 id="share-modal-title" className="share-modal__title">
                     Share result
                   </h2>
-                  <p className="share-modal__sub">
-                    Share your results with everyone
-               
-                  </p>
+                  <p className="share-modal__sub">Share your results with everyone</p>
                 </div>
                 <button
                   type="button"
@@ -1272,7 +1364,6 @@ function CalculatorInner() {
             </div>
           </div>
         )}
- 
       </div>
     </div>
   );
