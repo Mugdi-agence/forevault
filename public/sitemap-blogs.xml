@@ -110,7 +110,7 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/blog/hook-killing-videos" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/blog/hook-killing-videos" />
   </url>
-  
+
   <!-- EN version -->
   <url>
     <loc>https://forevault.ink/en/blog/iteration-strategy</loc>
@@ -258,4 +258,42 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/blog/three-pillars-viral" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/blog/three-pillars-viral" />
   </url>
+
+  <!-- EN version -->
+  <url>
+    <loc>https://forevault.ink/en/blog/views-predictor-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/blog/views-predictor-guide" />
+  </url>
+  <!-- FR version -->
+  <url>
+    <loc>https://forevault.ink/fr/blog/views-predictor-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/blog/views-predictor-guide" />
+  </url>
+  <!-- DE version -->
+  <url>
+    <loc>https://forevault.ink/de/blog/views-predictor-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/blog/views-predictor-guide" />
+  </url>
+  <!-- JA version -->
+  <url>
+    <loc>https://forevault.ink/ja/blog/views-predictor-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://forevault.ink/en/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://forevault.ink/fr/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://forevault.ink/de/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://forevault.ink/ja/blog/views-predictor-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://forevault.ink/en/blog/views-predictor-guide" />
+  </url>
+
 </urlset>

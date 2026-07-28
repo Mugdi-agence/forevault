@@ -5,49 +5,49 @@ import { getArticleMeta as getLoopRetentionMeta } from "./loop-effect-retention"
 import { getArticleMeta as getNicheMatterMeta } from "./niche-doesnt-matter";
 import { getArticleMeta as getStructureViralMeta } from "./perfect-structure-viral";
 import { getArticleMeta as getPllarsViralMeta } from "./three-pillars-viral";
+import { getArticleMeta as getViewsPredictorMeta } from "./views-predictor-guide";
 
 const REGISTRY = [
     {
-        id:         "analyze-viral-content",
-        getMeta:    (lang) => getAnalyzeViralMeta(lang),
+        id:            "analyze-viral-content",
+        getMeta:       (lang) => getAnalyzeViralMeta(lang),
         importContent: () => import("./analyze-viral-content"),
     },
-
     {
-        id: "hook-killing-videos",
-        getMeta: (lang) => getHookKillingMeta(lang),
-        importContent: () => import("./hook-killing-videos")
+        id:            "hook-killing-videos",
+        getMeta:       (lang) => getHookKillingMeta(lang),
+        importContent: () => import("./hook-killing-videos"),
     },
-
     {
-        id:         "iteration-strategy",
-        getMeta:    (lang) => getIterationStrategyMeta(lang),
+        id:            "iteration-strategy",
+        getMeta:       (lang) => getIterationStrategyMeta(lang),
         importContent: () => import("./iteration-strategy"),
     },
-
     {
-        id: "loop-effect-retention",
-        getMeta: (lang) => getLoopRetentionMeta(lang),
-        importContent: () => import("./loop-effect-retention")
+        id:            "loop-effect-retention",
+        getMeta:       (lang) => getLoopRetentionMeta(lang),
+        importContent: () => import("./loop-effect-retention"),
     },
-
     {
-        id: "niche-doesnt-matter",
-        getMeta: (lang) => getNicheMatterMeta(lang),
-        importContent: () => import("./niche-doesnt-matter")
+        id:            "niche-doesnt-matter",
+        getMeta:       (lang) => getNicheMatterMeta(lang),
+        importContent: () => import("./niche-doesnt-matter"),
     },
-
     {
-        id:         "perfect-structure-viral",
-        getMeta:    (lang) => getStructureViralMeta(lang),
+        id:            "perfect-structure-viral",
+        getMeta:       (lang) => getStructureViralMeta(lang),
         importContent: () => import("./perfect-structure-viral"),
     },
-
     {
-        id: "three-pillars-viral",
-        getMeta: (lang) => getPllarsViralMeta(lang),
-        importContent: () => import("./three-pillars-viral")
-    }
+        id:            "three-pillars-viral",
+        getMeta:       (lang) => getPllarsViralMeta(lang),
+        importContent: () => import("./three-pillars-viral"),
+    },
+    {
+        id:            "views-predictor-guide",
+        getMeta:       (lang) => getViewsPredictorMeta(lang),
+        importContent: () => import("./views-predictor-guide"),
+    },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────

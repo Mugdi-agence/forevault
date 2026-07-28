@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
           property="og:description"
           content="Stop guessing your RPM. Use the Forevault Engine to calculate exactly what your channel earns based on niche and geography."
         />
-        <meta property="og:image" content="/main.png" />
+        <meta property="og:image" content="https://forevault.ink/main.png" />
         <meta property="og:url" content="https://forevault.ink" />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -58,9 +58,11 @@ export default function RootLayout({ children }) {
           name="twitter:description"
           content="Predict your views and calculate your AdSense revenue with accuracy."
         />
-        <meta name="twitter:image" content="/main.png" />
+        <meta name="twitter:image" content="https://forevault.ink/main.png" />
 
-        <link rel="icon" href="/main.png" />
+        <link rel="icon" href="https://forevault.ink/main.png" />
+
+        <link rel="icon" href="./main.png" />
 
         <Script
           id="json-ld"
