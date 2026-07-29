@@ -60,9 +60,9 @@ export default function RootLayout({ children }) {
         />
         <meta name="twitter:image" content="https://forevault.ink/main.png" />
 
-        <link rel="icon" href="https://forevault.ink/main.png" />
-
-        <link rel="icon" href="./main.png" />
+        {/* CORRECTION ICI : Remplacement de ./main.png par /main.png */}
+        <link rel="icon" href="/main.png" />
+        <link rel="apple-touch-icon" href="/main.png" />
 
         <Script
           id="json-ld"
@@ -107,7 +107,6 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-
 
         <Script
           async
