@@ -115,6 +115,19 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
         />
 
+        {/* Google Analytics via Next.js Script (instead of <script> GTAG in body) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-81MGEYBBMX"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-81MGEYBBMX');
+          `}
+        </Script>
       </head>
 
       <body suppressHydrationWarning>
@@ -133,7 +146,7 @@ export default function RootLayout({ children }) {
         </div>
           {children}
           <CookieConsent />
-        <GoogleAnalytics gaId="G-N2X7Y2KNGF" />
+        <GoogleAnalytics gaId="G-81MGEYBBMX" />
         <Analytics />
       </body>
     </html>
