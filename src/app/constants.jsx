@@ -120,6 +120,36 @@ export const niches = [
     trending: true,
     format: "Long-form"
   },
+  // Nouvelle niche HORREUR
+  {
+    id: "horror",
+    niche: "Horreur",
+    topic: "Histoires effrayantes, creepypasta, analyses de films d'horreur",
+    rpm: 2.3,
+    audienceShare: 0.022,   // ~2.2% → ~46.2B (estimation globale)
+    faceless: "faceless",
+    saturation: 3,
+    economic_potential: 2,
+    creation_ease: 2,
+    popularity: "medium-intent",
+    trending: true,
+    format: "Long-form"
+  },
+  // Nouvelle niche VIDEO GENEREE PAR IA (potentiel économique le plus faible)
+  {
+    id: "ai_generated",
+    niche: "Vidéo générée par IA",
+    topic: "Courts-métrages, animations, parodies ou contenus générés intégralement par IA",
+    rpm: 0.4,
+    audienceShare: 0.012,   // ~1.2% → ~25.2B (tendance émergente)
+    faceless: "faceless",
+    saturation: 3,
+    economic_potential: 0,
+    creation_ease: 3,
+    popularity: "low-intent",
+    trending: true,
+    format: "Long-form"
+  },
   {
     id: "business",
     niche: "Business & Entrepreneurship",
@@ -530,6 +560,36 @@ export const niches = [
     creation_ease: 2,
     popularity: "medium-intent",
     trending: false,
+    format: "Shorts"
+  },
+  // Niche HORREUR pour Shorts
+  {
+    id: "short_horror",
+    niche: "Horror (Shorts)",
+    topic: "Short horror stories, viral urban legends, creepy AI-generated clips",
+    rpm: 1.8,
+    audienceShare: 0.029,   // ~2.9% → ~60.9B (potential viral effect)
+    faceless: "faceless",
+    saturation: 3,
+    economic_potential: 1,
+    creation_ease: 2,
+    popularity: "medium-intent",
+    trending: true,
+    format: "Shorts"
+  },
+  // Niche AI-GENERATED VIDEO for Shorts
+  {
+    id: "short_ai_generated",
+    niche: "AI-Generated Video (Shorts)",
+    topic: "Clips or memes quickly created using generative AI (image/video/voice), automated content",
+    rpm: 0.3,
+    audienceShare: 0.015,   // ~1.5% → ~31.5B (croissance forte, CPM bas)
+    faceless: "faceless",
+    saturation: 3,
+    economic_potential: 0,
+    creation_ease: 3,
+    popularity: "low-intent",
+    trending: true,
     format: "Shorts"
   }
 ];
